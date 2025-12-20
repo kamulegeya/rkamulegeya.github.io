@@ -3,84 +3,415 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Terms of Use & Privacy Policy</title>
+  <title>Terms of Use and Privacy Policy | Landlord</title>
+  <meta name="description" content="Terms of Use and Privacy Policy for the Landlord mobile application." />
+
   <style>
-    body{ font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-          margin: 18px; color:#111; background:#fff; line-height: 1.55; }
-    h1{ margin: 0 0 8px; font-size: 22px; }
-    h2{ margin-top: 18px; font-size: 16px; }
-    h3{ margin-top: 14px; font-size: 14px; }
-    .muted{ color:#555; }
-    a{ color:#0b57d0; }
-    hr{ border:0; border-top:1px solid #ddd; margin: 16px 0; }
-    ul{ padding-left: 18px; }
+    :root{
+      --bg: #0b1020;
+      --card: rgba(255,255,255,.06);
+      --card-2: rgba(255,255,255,.08);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.72);
+      --faint: rgba(255,255,255,.56);
+      --border: rgba(255,255,255,.12);
+      --accent: #7dd3fc;
+      --accent-2: #a78bfa;
+      --shadow: 0 18px 50px rgba(0,0,0,.45);
+      --radius: 16px;
+      --radius-sm: 12px;
+      --max: 980px;
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root{
+        --bg: #f6f8fc;
+        --card: rgba(17, 24, 39, .04);
+        --card-2: rgba(17, 24, 39, .06);
+        --text: rgba(17, 24, 39, .92);
+        --muted: rgba(17, 24, 39, .72);
+        --faint: rgba(17, 24, 39, .58);
+        --border: rgba(17, 24, 39, .14);
+        --accent: #0284c7;
+        --accent-2: #6d28d9;
+        --shadow: 0 16px 45px rgba(17,24,39,.10);
+      }
+    }
+
+    *{ box-sizing: border-box; }
+    html, body{ height: 100%; }
+    body{
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+      line-height: 1.6;
+      color: var(--text);
+      background:
+        radial-gradient(1200px 700px at 10% -10%, rgba(125,211,252,.25), transparent 55%),
+        radial-gradient(1000px 600px at 110% 10%, rgba(167,139,250,.18), transparent 60%),
+        linear-gradient(180deg, var(--bg), var(--bg));
+      padding: 32px 16px;
+    }
+
+    a{ color: inherit; }
+    a:focus-visible{
+      outline: 3px solid color-mix(in srgb, var(--accent), transparent 40%);
+      outline-offset: 3px;
+      border-radius: 8px;
+    }
+
+    .wrap{
+      width: min(var(--max), 100%);
+      margin: 0 auto;
+    }
+
+    header{
+      padding: 24px;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, var(--card), transparent);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    .kicker{
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--card-2);
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: .2px;
+    }
+
+    h1{
+      margin: 14px 0 6px;
+      font-size: clamp(26px, 3vw, 36px);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    .sub{
+      margin: 0;
+      color: var(--muted);
+      max-width: 70ch;
+    }
+
+    .grid{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    @media (min-width: 900px){
+      .grid{
+        grid-template-columns: 1fr 320px;
+        align-items: start;
+      }
+    }
+
+    .content{
+      padding: 22px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    nav.toc{
+      padding: 18px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 16px;
+      backdrop-filter: blur(10px);
+    }
+
+    nav.toc h2{
+      margin: 0 0 8px;
+      font-size: 14px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .toc a{
+      display: block;
+      padding: 8px 10px;
+      border-radius: 10px;
+      text-decoration: none;
+      color: var(--text);
+      border: 1px solid transparent;
+    }
+    .toc a:hover{
+      border-color: var(--border);
+      background: var(--card-2);
+    }
+
+    h2{
+      margin: 0 0 10px;
+      font-size: 22px;
+      letter-spacing: -0.01em;
+    }
+
+    h3{
+      margin: 26px 0 10px;
+      font-size: 18px;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+
+    h4{
+      margin: 18px 0 8px;
+      font-size: 16px;
+      color: var(--text);
+    }
+
+    p{ margin: 0 0 12px; color: var(--muted); }
+    strong, b{ color: var(--text); }
+
+    .divider{
+      height: 1px;
+      background: var(--border);
+      margin: 20px 0;
+    }
+
+    .callout{
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      background: linear-gradient(180deg, var(--card-2), transparent);
+      border-radius: var(--radius-sm);
+      padding: 14px 14px 14px 12px;
+      margin: 14px 0 18px;
+      color: var(--muted);
+    }
+
+    ul{
+      margin: 8px 0 14px 18px;
+      color: var(--muted);
+    }
+    li{ margin: 6px 0; }
+
+    .meta{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .pill{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border: 1px solid var(--border);
+      background: var(--card-2);
+      border-radius: 999px;
+    }
+
+    .footer{
+      margin-top: 16px;
+      color: var(--faint);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    /* Print-friendly */
+    @media print{
+      body{
+        background: #fff !important;
+        color: #000 !important;
+        padding: 0;
+      }
+      header, .content, nav.toc{
+        box-shadow: none !important;
+        background: #fff !important;
+        border: 1px solid #ddd !important;
+      }
+      nav.toc{ display: none; }
+      a{ text-decoration: underline; }
+    }
   </style>
 </head>
+
 <body>
-  <h1>Terms of Use and Privacy Policy</h1>
-  <p class="muted">Last updated: November 2025</p>
+  <div class="wrap">
+    <header>
+      <span class="kicker">Landlord App • Legal</span>
+      <h1>Terms of Use and Privacy Policy</h1>
+      <p class="sub">
+        This document outlines the Terms of Use and Privacy Policy for the <b>Landlord</b> mobile application,
+        including subscription options, usage restrictions, and how data is handled on your device.
+      </p>
+      <div class="meta" aria-label="Document metadata">
+        <span class="pill"><b>Last Updated:</b>&nbsp;November 2025</span>
+      </div>
+    </header>
 
-  <hr>
+    <div class="grid">
+      <main class="content" id="top">
+        <section id="terms">
+          <h2>Section 1: Terms of Use</h2>
 
-  <h2>Section 1: Terms of Use</h2>
+          <h4>1. Introduction</h4>
+          <p>
+            These Terms of Use ("Terms") govern your use of the <b>Landlord</b> mobile application ("the App"),
+            a rental property management tool designed to help users manage property and tenant data.
+            By installing or using the App, you agree to comply with these Terms.
+            If you do not agree, please uninstall and discontinue use immediately.
+          </p>
 
-  <h3>1. Introduction</h3>
-  <p>These Terms govern your use of the Landlord mobile application (“the App”). By installing or using the App, you agree to comply with these Terms. If you do not agree, please uninstall and discontinue use immediately.</p>
+          <h4>2. Versions and Access</h4>
+          <p>The App is offered in two versions:</p>
+          <ul>
+            <li><b>Free Version</b> – Allows management of one property and up to three (3) rental units.</li>
+            <li><b>Standard Version</b> – Allows management of unlimited property owners, properties, and rental units.</li>
+          </ul>
+          <p>The Standard Version is available under two subscription modes:</p>
+          <ul>
+            <li>Monthly Subscription</li>
+            <li>Annual Subscription</li>
+          </ul>
+          <p>
+            Subscription fees are subject to change at any time and will apply at the start of the next billing period
+            after notice to users.
+          </p>
 
-  <h3>2. Versions and Access</h3>
-  <ul>
-    <li><b>Free Version</b> – Allows management of one property and up to three (3) rental units.</li>
-    <li><b>Standard Version</b> – Allows management of unlimited property owners, properties, and rental units.</li>
-  </ul>
-  <p>The Standard Version is available under Monthly or Annual subscription modes. Fees may change and will apply from the next billing period after notice.</p>
+          <h4>3. Account and Security</h4>
+          <p>
+            Each user must create and maintain a secure password to access the App. Data is stored locally using SQLite and encrypted.
+            You are responsible for maintaining the confidentiality of your password and device access.
+            The developer is not responsible for unauthorized access due to lost credentials or device compromise.
+          </p>
 
-  <h3>3. Account and Security</h3>
-  <p>Data is stored locally on your device. You are responsible for maintaining the confidentiality of your password and device access.</p>
+          <h4>4. Data Backup and Restoration</h4>
+          <p>
+            You are solely responsible for regularly backing up your App data to a secure external location such as
+            a locked drive or cloud storage. The App may offer export options, but the developer is not liable for loss of data
+            due to device malfunction, damage, or negligence.
+          </p>
 
-  <h3>4. Data Backup and Restoration</h3>
-  <p>You are responsible for backing up your app data to a secure location. The developer is not liable for data loss due to device malfunction, damage, or negligence.</p>
+          <h4>5. Subscriptions and Payments</h4>
+          <p>
+            Subscriptions are managed through Google Play Billing. Renewal occurs automatically unless canceled.
+            Fees and refunds follow Google Play policies. Subscription renewals occur automatically unless canceled through
+            Google Play account settings before the renewal date.
+          </p>
 
-  <h3>5. Subscriptions and Payments</h3>
-  <p>Subscriptions are managed through Google Play Billing. Renewal occurs automatically unless canceled through your Google Play account settings before renewal.</p>
+          <h4>6. Use Restrictions</h4>
+          <p>
+            You agree not to reverse engineer, decompile, or modify the App, or use it for unlawful purposes or to store illegal information.
+          </p>
 
-  <h3>6. Use Restrictions</h3>
-  <p>You agree not to reverse engineer, decompile, or modify the App, or use it for unlawful purposes.</p>
+          <h4>7. Limitation of Liability</h4>
+          <p>
+            The App is provided “as is.” The developer makes no warranties of any kind regarding reliability, accuracy, or availability.
+            In no event shall the developer be liable for any loss of data, revenue, or damages arising from use or inability to use the App.
+          </p>
 
-  <h3>7. Limitation of Liability</h3>
-  <p>The App is provided “as is.” The developer makes no warranties regarding reliability, accuracy, or availability.</p>
+          <h4>8. Termination</h4>
+          <p>
+            The developer may suspend or terminate your access to the App if you violate these Terms or misuse the application.
+          </p>
+        </section>
 
-  <h3>8. Termination</h3>
-  <p>The developer may suspend or terminate access if you violate these Terms or misuse the application.</p>
+        <div class="divider" role="separator" aria-label="Divider"></div>
 
-  <hr>
+        <section id="privacy">
+          <h2>Section 2: Privacy Policy</h2>
 
-  <h2>Section 2: Privacy Policy</h2>
-  <p><b>Key point:</b> The App does not transmit or collect personal data over the internet; your data is stored locally on your device.</p>
+          <div class="callout">
+            <b>Key point:</b> The App does not transmit or collect personal data over the internet; your data is stored locally on your device.
+          </div>
 
-  <h3>1. Data Collection and Storage</h3>
-  <p>All user data (including property and tenant information) is stored locally in a secure database on your device. No data is uploaded or transmitted to the developer or external servers.</p>
+          <h4>1. Introduction</h4>
+          <p>
+            This Privacy Policy explains how <b>Landlord</b> (“the App”, “we”, “our”, or “us”) collects, uses, and protects information when you use the App.
+            By using the App, you agree to this Privacy Policy.
+          </p>
 
-  <h3>2. Data Security</h3>
-  <p>Data is protected by login controls and encryption. Keep your password and device secure.</p>
+          <h4>2. Data Collection and Storage</h4>
+          <p>
+            The App does not transmit or collect personal data over the internet.
+            All user data, including property and tenant information, is stored locally on your device using a secure SQLite database.
+            No data is uploaded, shared, or transmitted to the developer or any external servers.
+          </p>
 
-  <h3>3. Backups</h3>
-  <p>You are responsible for creating backups. The app may offer export options to external storage or cloud services such as Google Drive.</p>
+          <h4>3. Data Security</h4>
+          <p>
+            Your data is encrypted and protected by a password login. We recommend using a strong password and keeping your device secure.
+            The developer is not responsible for data breaches resulting from device loss, unauthorized access, or rooted devices.
+          </p>
 
-  <h3>4. Data Sharing</h3>
-  <p>The App does not sell, share, or transmit your data to third parties.</p>
+          <h4>4. Backups and Data Recovery</h4>
+          <p>
+            You are solely responsible for creating and maintaining backups of your data. The App may offer export options to external storage or
+            cloud services such as Google Drive. Backups should be stored securely to enable recovery in case of device damage or loss.
+          </p>
 
-  <h3>5. Permissions</h3>
-  <p>The App may request limited permissions (e.g., storage access) only to support backup/restore.</p>
+          <h4>5. Data Sharing</h4>
+          <p>
+            The App does not share, sell, or transmit your data to any third parties. Your data remains private and under your full control.
+          </p>
 
-  <h3>6. Subscription Payments</h3>
-  <p>Payments are processed via Google Play Billing; the App does not store or process card/payment details.</p>
+          <h4>6. Permissions Used</h4>
+          <p>
+            The App may request limited permissions such as storage access to allow backup and restore functionality.
+            These permissions are used solely for that purpose.
+          </p>
 
-  <h3>7. User Rights</h3>
-  <p>You can delete all app data by clearing the App’s storage or uninstalling it.</p>
+          <h4>7. Subscription and Payments</h4>
+          <p>
+            Subscription payments for the Standard version are processed securely through Google Play Billing.
+            The App itself does not store or process any payment information.
+            Please refer to Google Play’s privacy and billing policies for details on payment data handling.
+          </p>
 
-  <h3>8. Contact</h3>
-  <p>Email: <a href="mailto:ronald.kamulegeya.2014@gmail.com">ronald.kamulegeya.2014@gmail.com</a></p>
+          <h4>8. User Rights</h4>
+          <p>
+            You have full control of your data stored within the App. You may delete all data at any time by clearing the App’s storage or uninstalling it.
+            Since data is not transmitted externally, deletion within your device is sufficient.
+          </p>
 
+          <h4>9. Changes to This Policy</h4>
+          <p>
+            We may update this Privacy Policy periodically. Any updates will be reflected in the App and accompanied by a revised date.
+            Continued use of the App after updates constitutes acceptance of the new Policy.
+          </p>
+
+          <h4 id="contact">10. Contact</h4>
+          <p>
+            If you have questions about this document, please contact us:<br />
+            Email: <a href="mailto:ronald.kamulegeya.2014@gmail.com">ronald.kamulegeya.2014@gmail.com</a><br />
+            Developer: KAMULEGEYA RONALD
+          </p>
+        </section>
+
+        <p class="footer">
+          © <span id="year"></span> Landlord App. All rights reserved where applicable.
+        </p>
+      </main>
+
+      <nav class="toc" aria-label="Table of contents">
+        <h2>Contents</h2>
+        <a href="#terms">Terms of Use</a>
+        <a href="#privacy">Privacy Policy</a>
+        <a href="#contact">Contact</a>
+        <a href="#top">Back to top</a>
+      </nav>
+    </div>
+  </div>
+
+  <script>
+    // Cosmetic: keep the footer year current for this document.
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
-
