@@ -57,17 +57,51 @@
   <h2>Section 2: Privacy Policy</h2>
   <p><b>Key point:</b> The App does not transmit or collect personal data over the internet; your data is stored locally on your device.</p>
 
-  <h3>1. Data Collection and Storage</h3>
-  <p>All user data (including property and tenant information) is stored locally in a secure database on your device. No data is uploaded or transmitted to the developer or external servers.</p>
+  <h4>1. Data Collection and Storage</h4>
+<p>
+  The App is designed to store your rental property and tenant information locally on your device using a secure SQLite database.
+  We do not upload your property and tenant records to our own servers.
+</p>
+<p>
+  However, to improve app stability and diagnose unexpected errors, the App uses <b>Firebase Crashlytics</b> (a Google Firebase service)
+  to collect and transmit crash diagnostics when the App crashes or encounters a serious error.
+  These diagnostics help us identify and fix bugs and improve reliability.
+</p>
 
   <h3>2. Data Security</h3>
   <p>Data is protected by login controls and encryption. Keep your password and device secure.</p>
+  
+  <h4>2A. Crash Reporting and Diagnostics (Firebase Crashlytics)</h4>
+<p>
+  When enabled, Firebase Crashlytics automatically collects crash reports and diagnostics to help us understand and fix stability issues.
+  Crash reports may include crash traces, device and app metadata (such as OS version, device model, app version), and identifiers like
+  Crashlytics Installation UUIDs and Firebase installation IDs.
+</p>
+<p>
+  Crashlytics retains crash-related data for a limited period (for example, around 90 days) before removal processes begin.
+</p>
+<p>
+  The App does not intentionally include your tenant names, phone numbers, addresses, or other private records in crash reports.
+  However, if such data is included in an error message or log output generated on the device, it may be captured as part of a crash trace.
+  We recommend keeping in-app logs and error messages free of personal information.
+</p>
+
 
   <h3>3. Backups</h3>
   <p>You are responsible for creating backups. The app may offer export options to external storage or cloud services such as Google Drive.</p>
+  
 
-  <h3>4. Data Sharing</h3>
-  <p>The App does not sell, share, or transmit your data to third parties.</p>
+  
+  <h4>4. Data Sharing</h4>
+<p>
+  We do not sell your data.
+  The App does not share your locally stored property and tenant records with third parties.
+</p>
+<p>
+  If crash reporting is enabled, crash diagnostics are shared with Google Firebase (Firebase Crashlytics) for the purpose of
+  crash reporting and app stability improvements.
+</p>
+
 
   <h3>5. Permissions</h3>
   <p>The App may request limited permissions (e.g., storage access) only to support backup/restore.</p>
