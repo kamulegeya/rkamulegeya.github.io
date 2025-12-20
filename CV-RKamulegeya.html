@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ronald Kamulegeya | CV</title>
+  <meta name="description" content="Curriculum Vitae - Ronald Kamulegeya" />
+
+  <!-- Same background + glass card aesthetic as your Terms/Privacy page -->
+  <style>
+    :root{
+      --bg: #0b1020;
+      --card: rgba(255,255,255,.06);
+      --card-2: rgba(255,255,255,.08);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.72);
+      --faint: rgba(255,255,255,.56);
+      --border: rgba(255,255,255,.12);
+      --accent: #7dd3fc;
+      --accent-2: #a78bfa;
+      --shadow: 0 18px 50px rgba(0,0,0,.45);
+      --radius: 16px;
+      --radius-sm: 12px;
+      --max: 1080px;
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root{
+        --bg: #f6f8fc;
+        --card: rgba(17, 24, 39, .04);
+        --card-2: rgba(17, 24, 39, .06);
+        --text: rgba(17, 24, 39, .92);
+        --muted: rgba(17, 24, 39, .72);
+        --faint: rgba(17, 24, 39, .58);
+        --border: rgba(17, 24, 39, .14);
+        --accent: #0284c7;
+        --accent-2: #6d28d9;
+        --shadow: 0 16px 45px rgba(17,24,39,.10);
+      }
+    }
+
+    *{ box-sizing: border-box; }
+    html, body{ height: 100%; }
+
+    body{
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans";
+      line-height: 1.6;
+      color: var(--text);
+      background:
+        radial-gradient(1200px 700px at 10% -10%, rgba(125,211,252,.25), transparent 55%),
+        radial-gradient(1000px 600px at 110% 10%, rgba(167,139,250,.18), transparent 60%),
+        linear-gradient(180deg, var(--bg), var(--bg));
+      padding: 32px 16px;
+    }
+
+    a{ color: inherit; }
+    a:focus-visible{
+      outline: 3px solid color-mix(in srgb, var(--accent), transparent 40%);
+      outline-offset: 3px;
+      border-radius: 10px;
+    }
+
+    .wrap{
+      width: min(var(--max), 100%);
+      margin: 0 auto;
+    }
+
+    header{
+      padding: 24px;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, var(--card), transparent);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    .kicker{
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--card-2);
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: .2px;
+    }
+
+    h1{
+      margin: 12px 0 6px;
+      font-size: clamp(28px, 3.2vw, 42px);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .sub{
+      margin: 0;
+      color: var(--muted);
+      max-width: 90ch;
+    }
+
+    .meta{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .pill{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border: 1px solid var(--border);
+      background: var(--card-2);
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .grid{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    @media (min-width: 980px){
+      .grid{
+        grid-template-columns: 1fr 320px;
+        align-items: start;
+      }
+    }
+
+    .content, .toc{
+      border: 1px solid var(--border);
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    .content{ padding: 22px; }
+
+    .toc{
+      padding: 18px;
+      position: sticky;
+      top: 16px;
+    }
+
+    .toc h2{
+      margin: 0 0 8px;
+      font-size: 14px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .toc a{
+      display: block;
+      padding: 8px 10px;
+      border-radius: 10px;
+      text-decoration: none;
+      color: var(--text);
+      border: 1px solid transparent;
+    }
+    .toc a:hover{
+      border-color: var(--border);
+      background: var(--card-2);
+    }
+
+    h2{
+      margin: 0 0 10px;
+      font-size: 20px;
+      letter-spacing: -0.01em;
+    }
+
+    h3{
+      margin: 22px 0 8px;
+      font-size: 16px;
+      letter-spacing: -0.01em;
+      color: var(--text);
+    }
+
+    p{ margin: 0 0 12px; color: var(--muted); }
+    strong, b{ color: var(--text); }
+
+    .divider{
+      height: 1px;
+      background: var(--border);
+      margin: 18px 0;
+    }
+
+    .section-label{
+      margin: 0 0 10px;
+      font-size: 13px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .item{
+      padding: 14px 0;
+      border-top: 1px solid var(--border);
+    }
+    .item:first-of-type{ border-top: none; padding-top: 0; }
+
+    .row{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: baseline;
+    }
+
+    .role{
+      margin: 0;
+      font-weight: 750;
+      letter-spacing: -0.01em;
+      color: var(--text);
+    }
+
+    .org{
+      margin: 4px 0 0;
+      color: var(--muted);
+    }
+
+    .when{
+      color: var(--faint);
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    ul{
+      margin: 10px 0 0 18px;
+      color: var(--muted);
+    }
+    li{ margin: 6px 0; }
+
+    .tags{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .tag{
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--card-2);
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .callout{
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      background: linear-gradient(180deg, var(--card-2), transparent);
+      border-radius: var(--radius-sm);
+      padding: 14px 14px 14px 12px;
+      margin: 12px 0 16px;
+      color: var(--muted);
+    }
+
+    .small{ font-size: 14px; color: var(--muted); }
+    .faint{ color: var(--faint); }
+
+    footer{
+      margin-top: 16px;
+      color: var(--faint);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    @media print{
+      body{ background: #fff !important; color: #000 !important; padding: 0; }
+      header, .content, .toc{ box-shadow: none !important; background: #fff !important; border: 1px solid #ddd !important; }
+      .toc{ display: none; }
+      a{ text-decoration: underline; color: #000 !important; }
+      .tag, .pill{ background: #f3f4f6 !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header id="top">
+      <span class="kicker">Curriculum Vitae</span>
+      <h1>Ronald Kamulegeya</h1>
+      <p class="sub">
+        Certified Public Accountant of Uganda with over 20 years of finance domain experience across public and private sectors.
+        Experienced in budgeting, accounts payable/receivable, taxation, and financial reporting, with hands-on ERP and accounting package expertise.
+      </p>
+
+      <div class="meta" aria-label="Contact information">
+        <span class="pill"><b>Location:</b> Kampala, Uganda</span>
+        <span class="pill"><b>Phone:</b> <a href="tel:+256774243239">+256 774 243 239</a></span>
+        <span class="pill"><b>Email:</b> <a href="mailto:ronald.kamulegeya.2014@gmail.com">ronald.kamulegeya.2014@gmail.com</a></span>
+      </div>
+    </header>
+
+    <div class="grid">
+      <main class="content" aria-label="CV content">
+        <section id="summary">
+          <h2>Professional Summary</h2>
+          <div class="callout">
+            Finance professional with strong Oracle Cloud Financials functional capability and practical automation experience (Microsoft Access, SQL Server, VBA).
+          </div>
+          <p>
+            I am a Certified Public Accountant of Uganda with over 20 years of finance domain working experience, both in the public and private sectors.
+            I am an all-around finance professional with experience in Budgeting, Accounts payable, Accounts receivable, Taxation, and Financial Reporting.
+            I have hands-on working experience in several ERPs and Accounting packages. I am a problem solver, and I like working in an environment that nurtures creativity and learning.
+          </p>
+        </section>
+
+        <div class="divider" role="separator" aria-label="Divider"></div>
+
+        <section id="skills">
+          <h2>Core Skills</h2>
+          <div class="tags" aria-label="Skills tags">
+            <span class="tag">Oracle Cloud Financials (GL, AP, AR, FA, AH)</span>
+            <span class="tag">Taxation (VAT, PAYE, Corporation Tax)</span>
+            <span class="tag">Budgeting & Financial Reporting</span>
+            <span class="tag">Advanced Excel (Pivot, Modeling)</span>
+            <span class="tag">Python</span>
+            <span class="tag">Java</span>
+            <span class="tag">VBA</span>
+            <span class="tag">Microsoft Access</span>
+            <span class="tag">SQL / SQL Server</span>
+            <span class="tag">QuickBooks</span>
+            <span class="tag">Pastel</span>
+            <span class="tag">Data Analysis (Python)</span>
+          </div>
+        </section>
+
+        <div class="divider" role="separator" aria-label="Divider"></div>
+
+        <section id="certifications">
+          <h2>Certifications</h2>
+          <ul>
+            <li>Oracle Cloud Financials: General Ledger 2021 Implementation Specialist</li>
+            <li>Oracle Cloud Financials: Accounting Hub Cloud 2022 Certified Implementation Professional</li>
+            <li>Oracle Cloud Financials: Payables 2022 Certified Implementation Professional</li>
+            <li>Oracle Cloud Financials: Receivables 2022 Certified Implementation Professional</li>
+          </ul>
+        </section>
+
+        <section id="affiliations">
+          <h3>Professional Affiliations</h3>
+          <p>I am a member of the Institute of Certified Public Accountants of Uganda.</p>
+        </section>
+
+        <div class="divider" role="separator" aria-label="Divider"></div>
+
+        <section id="experience">
+          <h2>Experience</h2>
+
+          <section class="item">
+            <div class="row">
+              <p class="role">Business Process Analyst — Oracle Cloud Financials</p>
+              <span class="when">Jul 2018 – 31-Dec-2025</span>
+            </div>
+            <p class="org">Uganda National Roads Authority (UNRA)</p>
+            <ul>
+              <li>Led the team that developed the Chart of Accounts and other GL components.</li>
+              <li>Process owner for General Ledger, Accounts Payable, and Fixed Assets modules (process documentation with consultant).</li>
+              <li>Participated in key user acceptance tests and data migration (template preparation) before go-live.</li>
+              <li>Trained users of GL, Fixed Assets, and AP modules post go-live; provided ongoing onsite/remote support.</li>
+              <li>Financial Applications Administrator: period control, account code creation, cross-validation rules, FX rates, budget uploads, and other administration tasks.</li>
+              <li>Prepared payments integration files; supported troubleshooting with consultants post go-live.</li>
+              <li>Developed OTBI reports, ad-hoc Smart View reports, and Financial Reporting Studio reports.</li>
+            </ul>
+          </section>
+
+          <section class="item">
+            <div class="row">
+              <p class="role">Accounts Payable Manager</p>
+              <span class="when">Dec 2015 – 31-Dec-2025</span>
+            </div>
+            <p class="org">Uganda National Roads Authority (UNRA), Kampala</p>
+            <ul>
+              <li>Processed monthly payroll for over 1,700 employees.</li>
+              <li>Prepared annual budgets and quarterly cash flow management for stations under supervision.</li>
+              <li>Processed payments for over 100,000 project-affected persons (2015 to date).</li>
+              <li>Processed payments for contractors and suppliers.</li>
+            </ul>
+          </section>
+
+          <section class="item">
+            <div class="row">
+              <p class="role">Assistant Accountant</p>
+              <span class="when">Jul 2008 – Dec 2015</span>
+            </div>
+            <p class="org">Uganda National Roads Authority (UNRA), Kampala</p>
+            <ul>
+              <li>Managed station HR functions, including daily staff attendance records.</li>
+              <li>Managed annual station budget of over USD 1M and processed payments to staff and suppliers.</li>
+              <li>Prepared end-of-month financial reports and quarterly reports to Uganda Road Fund.</li>
+            </ul>
+          </section>
+
+          <section class="item">
+            <div class="row">
+              <p class="role">Accountant</p>
+              <span class="when">Aug 2007 – Jul 2008</span>
+            </div>
+            <p class="org">Namirembe Guesthouse, Kampala</p>
+            <ul>
+              <li>Accounts Receivable: ensured prompt billing in QuickBooks; designed collection strategy for timely receivables.</li>
+              <li>Treasury Management: ensured cash collections were promptly banked.</li>
+              <li>Accounts Payable: ensured payroll, supplier payments, and statutory deductions were on time.</li>
+              <li>Managed transition from manual bookkeeping to QuickBooks; presented monthly management reports to Board.</li>
+              <li>Maintained records for regulatory reporting/taxation; supported reconciliations and month-end close.</li>
+            </ul>
+          </section>
+
+          <section class="item">
+            <div class="row">
+              <p class="role">Senior Town Treasurer</p>
+              <span class="when">Jul 2003 – Jul 2007</span>
+            </div>
+            <p class="org">Rakai Town Council, Rakai</p>
+            <ul>
+              <li>Supported change from cash-based accounting to accrual basis.</li>
+              <li>Ensured annual budgets were submitted to Council for approval on time.</li>
+              <li>Led tax compliance; met budget targets through planning and resource allocation.</li>
+            </ul>
+          </section>
+        </section>
+
+        <div class="divider" role="separator" aria-label="Divider"></div>
+
+        <section id="accomplishments">
+          <h2>Accomplishments</h2>
+          <ul>
+            <li>Developed an in-house payroll application (Microsoft Access) used by HR to process salary for over 1,500 employees (2017–2020).</li>
+            <li>
+              Developed a Microsoft Access application automating invoice creation in Oracle EBS Accounts Payable; delivered over 300% productivity increase (invoices paid) for Finance & Accounts.
+              Also used for employee travel expenses, delivering cost savings of over USD 200,000 per year since April 2018 by enforcing HR travel policy.
+            </li>
+            <li>Part of the team that successfully implemented Oracle Cloud Financials at UNRA.</li>
+          </ul>
+        </section>
+
+        <div class="divider" role="separator" aria-label="Divider"></div>
+
+        <section id="projects">
+          <h2>Oracle Cloud ERP Implementation & Finance Projects</h2>
+          <ul>
+            <li>Uganda National Roads Authority (GL and AP implementation).</li>
+            <li>
+              Managing donor-funded projects with a combined annual budget of over USD 100M:
+              annual budgets, cash flow forecasts, funds requisitions, disbursement documents,
+              quarterly donor reports, and annual financial statements for audit.
+            </li>
+            <li>Handled annual audits by the Office of the Auditor General and other donor-funded project audits.</li>
+            <li>Prepared annual financial statements.</li>
+          </ul>
+        </section>
+
+        <div class="divider" role="separator" aria-label="Divider"></div>
+
+        <section id="education">
+          <h2>Education</h2>
+
+          <section class="item">
+            <div class="row">
+              <p class="role">PGD in Revenue and Tax Administration</p>
+              <span class="when">2010</span>
+            </div>
+            <p class="org">—</p>
+          </section>
+
+          <section class="item">
+            <div class="row">
+              <p class="role">CPA Uganda</p>
+              <span class="when">—</span>
+            </div>
+            <p class="org">Institute of Certified Public Accountants of Uganda</p>
+            <ul>
+              <li>Best student in Advanced Financial Management.</li>
+            </ul>
+          </section>
+
+          <section class="item">
+            <div class="row">
+              <p class="role">Bachelor of Commerce (Accounting)</p>
+              <span class="when">2003</span>
+            </div>
+            <p class="org">Makerere University, Kampala, Uganda</p>
+            <ul>
+              <li>CGPA: 4.3 / 5.0</li>
+              <li>Among the top 5 best students in class.</li>
+            </ul>
+          </section>
+
+          <section class="item">
+            <div class="row">
+              <p class="role">A-Levels</p>
+              <span class="when">1998</span>
+            </div>
+            <p class="org">St Henry's College Kitovu, Masaka</p>
+            <ul>
+              <li>Mathematics A</li>
+              <li>Economics A</li>
+              <li>Geography B</li>
+            </ul>
+          </section>
+        </section>
+
+        <div class="divider" role="separator" aria-label="Divider"></div>
+
+        <section id="languages">
+          <h2>Languages</h2>
+          <ul>
+            <li>English: First Language</li>
+          </ul>
+        </section>
+
+        <div class="divider" role="separator" aria-label="Divider"></div>
+
+        <section id="references">
+          <h2>Professional References</h2>
+          <p class="small faint">Available upon request, or as listed below.</p>
+          <ul>
+            <li><b>Mr. Brazza Kwesiga</b> — Former Director of Corporate Services, UNRA — Tel: +256-772-57-28-74</li>
+            <li><b>Mr. Oyesigye Onesmus</b> — Executive Secretary, Uganda Business and Technical Examination Board — Tel: +256-772-38-23-28</li>
+            <li><b>Dr Michael Mayanja Lugemwa</b> — Director Finance and Operations, Deposit Protection Fund of Uganda — Tel: 0752277982</li>
+          </ul>
+        </section>
+
+        <footer>
+          © <span id="year"></span> Ronald Kamulegeya
+        </footer>
+      </main>
+
+      <nav class="toc" aria-label="Contents">
+        <h2>Contents</h2>
+        <a href="#summary">Professional Summary</a>
+        <a href="#skills">Core Skills</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#experience">Experience</a>
+        <a href="#accomplishments">Accomplishments</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#languages">Languages</a>
+        <a href="#references">References</a>
+        <a href="#top">Back to top</a>
+        <div class="divider" role="separator" aria-label="Divider"></div>
+        <p class="small" style="margin:0;">
+          Optional: link your legal page here<br />
+          <a href="terms-and-privacy.html#privacy">Privacy Policy</a>
+        </p>
+      </nav>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
