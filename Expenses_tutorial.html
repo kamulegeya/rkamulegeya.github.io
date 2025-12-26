@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Landlord App — Expenses & Inventory Guide</title>
+  <meta name="description" content="Guide for Landlord App Expenses and Inventory: recording expenses, attachments (photos, PDF, Word), export to PDF, bulk import via template + CSV, inventory navigation, inventory landing page, add inventory item, assignment workflow, ending assignments, item disposal workflows, and inventory bulk import." />
+
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; color: #111; background: #fff; line-height: 1.55; }
+    main { max-width: 980px; margin: 0 auto; padding: 18px; }
+    header { padding: 12px 0 6px; border-bottom: 1px solid #e6e6e6; margin-bottom: 14px; }
+    h1 { font-size: 24px; margin: 0 0 6px; }
+    h2 { font-size: 18px; margin: 18px 0 8px; }
+    h3 { font-size: 15px; margin: 14px 0 6px; }
+    h4 { font-size: 14px; margin: 12px 0 6px; }
+    p { margin: 0 0 10px; }
+    .muted { color: #555; }
+    .path { background: #f6f7f9; border: 1px solid #e6e6e6; padding: 8px 10px; border-radius: 8px; margin: 10px 0 12px; }
+    nav { margin: 10px 0 0; }
+    nav a { margin-right: 10px; color: #0b57d0; text-decoration: none; white-space: nowrap; }
+    nav a:hover { text-decoration: underline; }
+    hr { border: 0; border-top: 1px solid #e6e6e6; margin: 16px 0; }
+    ul, ol { margin: 8px 0 12px 20px; }
+    li { margin: 4px 0; }
+    table { width: 100%; border-collapse: collapse; margin: 10px 0 14px; }
+    th, td { border: 1px solid #e6e6e6; padding: 8px; vertical-align: top; text-align: left; }
+    th { background: #fafafa; }
+    .note { border-left: 4px solid #0b57d0; padding: 8px 10px; background: #f7fbff; margin: 10px 0 14px; }
+    .small { font-size: 13px; color: #555; }
+    .toplink { font-size: 13px; }
+    code { background: #f6f7f9; border: 1px solid #e6e6e6; padding: 1px 6px; border-radius: 6px; }
+
+    /* Screenshot placeholders */
+    figure { margin: 12px 0 16px; }
+    figure img { max-width: 360px; width: 100%; height: auto; border: 1px solid #e6e6e6; border-radius: 12px; background: #fff; }
+    figcaption { margin-top: 8px; font-size: 13px; color: #555; }
+    .figgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; align-items: start; }
+  </style>
+</head>
+
+<body>
+  <main id="top">
+    <header>
+      <h1>Landlord App — Expenses &amp; Inventory Guide</h1>
+      <p class="muted">
+        This document explains how to capture property expenses, classify them (major/minor categories), track payees,
+        add supporting attachments (photos, PDF, Word), export attachments to PDF, and bulk-import expense data using templates.
+        It also covers Inventory Management: navigation, inventory landing page, add inventory items, assignment workflows,
+        ending assignments, item disposal workflows, and bulk import of inventory records.
+      </p>
+      <p class="small"><b>Last updated:</b> December 2025</p>
+
+      <div class="note">
+        <b>Optional screenshots (placeholders):</b><br />
+        Place screenshots in a folder named <code>images</code> next to this HTML file. You can keep these suggested names:
+        <ul>
+          <li><b>Expenses:</b>
+            <ul>
+              <li><code>images/expenses-list.jpeg</code></li>
+              <li><code>images/expense-context-menu.jpeg</code></li>
+              <li><code>images/add-expense.jpeg</code></li>
+              <li><code>images/expense-attachments.jpeg</code></li>
+              <li><code>images/expenses-import-template.jpeg</code></li>
+            </ul>
+          </li>
+          <li><b>Inventory:</b>
+            <ul>
+              <li><code>images/menu-inventory.jpeg</code> (Main menu showing “Inventory Items”)</li>
+              <li><code>images/inventory-landing.jpeg</code> (Inventory landing page)</li>
+              <li><code>images/inventory-context-menu.jpeg</code> (Inventory long-press menu with disposal actions)</li>
+              <li><code>images/add-inventory-item.jpeg</code> (Add Inventory Item screen)</li>
+              <li><code>images/assign-item.jpeg</code> (Assign Item screen)</li>
+              <li><code>images/item-assignment-actions.jpeg</code> (Assignment actions: Edit/Delete/End Assignment)</li>
+              <li><code>images/inventory-disposal-create.jpeg</code> (Create Item Disposal screen)</li>
+              <li><code>images/inventory-disposal-view.jpeg</code> (View Item Disposal screen)</li>
+              <li><code>images/inventory-import-template.jpeg</code> (Inventory template + CSV import)</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <nav aria-label="Contents">
+        <a href="#overview">Expenses Overview</a>
+        <a href="#list">Expenses List</a>
+        <a href="#add">Add Expense</a>
+        <a href="#add-images">Add Images / Attachments</a>
+        <a href="#actions">Expense Actions</a>
+        <a href="#attachments">Attachments & PDF Export</a>
+        <a href="#bulk-import">Bulk Import Expenses</a>
+
+        <a href="#inventory-nav">Inventory Navigation</a>
+        <a href="#inventory-landing">Inventory Landing Page</a>
+        <a href="#inventory-add">Add Inventory Item</a>
+        <a href="#inventory-assign">Assign Item</a>
+        <a href="#inventory-assignment-actions">Assignment Actions</a>
+        <a href="#inventory-disposal">Item Disposal</a>
+        <a href="#inventory-import">Bulk Import Inventory</a>
+      </nav>
+    </header>
+
+    <!-- =========================
+         EXPENSES
+    ========================== -->
+
+    <section id="overview">
+      <h2>1) Expenses Overview</h2>
+      <div class="path"><b>Menu area:</b> Expenses (module) → Expenses list</div>
+
+      <p>
+        The <b>Expenses</b> module records costs incurred in operating or maintaining a property (e.g. plumbing repairs,
+        electricity bills, painting, cleaning, security services). Expenses can be linked to:
+      </p>
+      <ul>
+        <li><b>A Property</b> (required)</li>
+        <li><b>An Apartment/Unit</b> (optional, where the expense is unit-specific)</li>
+        <li><b>A Major Expense Category</b> (required; e.g. Utilities, Repairs, Administration)</li>
+        <li><b>A Minor Expense Category</b> (required; e.g. Electricity Bill, Toilet Repairs, Stationery)</li>
+        <li><b>A Payee</b> (optional/required depending on configuration)</li>
+        <li><b>Attachments</b> (optional but recommended; receipts, invoices, work completion evidence)</li>
+      </ul>
+
+      <h3>Prerequisites (recommended setup order)</h3>
+      <ol>
+        <li>Create <b>Properties</b> and <b>Apartments/Units</b> (if unit-level allocation is required).</li>
+        <li>Configure <b>Major Expense Categories</b> and <b>Minor Expense Categories</b>.</li>
+        <li>Configure <b>Payees</b> (common suppliers/contractors) for consistent reporting.</li>
+      </ol>
+
+      <div class="note">
+        <b>Best practice:</b> Always enter an expense with a clear <b>Narration</b> and correct <b>Date Incurred</b>.
+        Attach evidence (receipt/invoice/photo) to strengthen audit trail and owner reporting.
+      </div>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <section id="list">
+      <h2>2) Expenses List</h2>
+      <div class="path"><b>Screen:</b> Expenses list (with SEARCH and summary totals)</div>
+
+      <div class="figgrid">
+        <figure>
+          <img src="images/expenses-list.jpeg" alt="Expenses landing page showing totals and list of expenses (placeholder)." loading="lazy" />
+          <figcaption>Placeholder: Expenses landing page (totals + expense records list).</figcaption>
+        </figure>
+
+        <div>
+          <p>The expenses list shows recorded expense entries. Typical summary cards include:</p>
+          <ul>
+            <li><b>Total Items</b>: count of expense records.</li>
+            <li><b>Total Expenses</b>: sum of expenses (based on active filters/date scope).</li>
+            <li><b>Expenses this month</b>: expenses incurred within the current month.</li>
+          </ul>
+          <p class="muted">Use <b>SEARCH</b> to quickly locate expenses by narration, property, apartment/unit, or payee.</p>
+        </div>
+      </div>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <section id="add">
+      <h2>3) Add Expense</h2>
+      <div class="path"><b>Action:</b> Expenses list → Tap <b>+</b> to add a new expense</div>
+
+      <div class="figgrid">
+        <figure>
+          <img src="images/add-expense.jpeg" alt="Add Expense screen (placeholder)." loading="lazy" />
+          <figcaption>Placeholder: Add Expense screen (property, categories, payee, date, amount, narration).</figcaption>
+        </figure>
+
+        <div>
+          <h3>Typical fields</h3>
+          <ul>
+            <li><b>Select Property</b> (required)</li>
+            <li><b>Select Apartment/Unit</b> (optional)</li>
+            <li><b>Major Expense Category</b> and <b>Minor Expense Category</b></li>
+            <li><b>Select Payee</b> (where applicable)</li>
+            <li><b>Date Incurred</b></li>
+            <li><b>Expense Amount</b></li>
+            <li><b>Narration</b> (required; describe the expense clearly)</li>
+          </ul>
+
+          <div class="note">
+            <b>Tip:</b> Consistent category and payee usage makes reporting, audits, and analytics cleaner.
+          </div>
+        </div>
+      </div>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <section id="add-images">
+      <h2>4) Add Images / Attachments (Supporting Documents)</h2>
+      <div class="path"><b>Where:</b> Add Expense screen → <b>Add Images / Attachments</b></div>
+
+      <p>
+        You can attach supporting documents to an expense record. Attachments may include:
+      </p>
+      <ul>
+        <li>Photos (take a photo or choose from gallery)</li>
+        <li>PDF documents (supplier invoice, receipt, quotation)</li>
+        <li>Word documents (signed job note, supplier quotation, approvals)</li>
+      </ul>
+
+      <div class="note">
+        <b>Operational value:</b> Attachments create a complete “expense pack” for owners, internal review, and audit compliance.
+      </div>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <section id="actions">
+      <h2>5) Expense Actions (Long-Press Context Menu)</h2>
+      <div class="path"><b>Action:</b> Expenses list → Long-press an expense card</div>
+
+      <div class="figgrid">
+        <figure>
+          <img src="images/expense-context-menu.jpeg" alt="Expense long-press context menu (placeholder)." loading="lazy" />
+          <figcaption>Placeholder: Expense context menu (Edit, Delete, View Attachments, Export Images to PDF).</figcaption>
+        </figure>
+
+        <div>
+          <p>Common actions include:</p>
+          <ul>
+            <li><b>Edit</b>: update expense details.</li>
+            <li><b>Delete</b>: remove expense record (use for duplicates/incorrect entries).</li>
+            <li><b>View Attachments</b>: review evidence linked to expense.</li>
+            <li><b>Export Images to PDF</b>: compile evidence into a PDF for sharing.</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <section id="attachments">
+      <h2>6) Attachments &amp; PDF Export</h2>
+      <div class="path"><b>Menu path:</b> Expenses list → Long-press expense → View Attachments / Export Images to PDF</div>
+
+      <div class="figgrid">
+        <figure>
+          <img src="images/expense-attachments.jpeg" alt="Expense attachments and export to PDF screen (placeholder)." loading="lazy" />
+          <figcaption>Placeholder: View Attachments and Export to PDF.</figcaption>
+        </figure>
+
+        <div>
+          <h3>Why export to PDF?</h3>
+          <ul>
+            <li>Send a single consolidated document to owners or internal teams.</li>
+            <li>Attach evidence to emails and owner reports.</li>
+            <li>Preserve an audit trail (expense + evidence together).</li>
+          </ul>
+
+          <div class="note">
+            <b>Recommendation:</b> Export after attaching evidence so each expense has a complete supporting pack.
+          </div>
+        </div>
+      </div>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <section id="bulk-import">
+      <h2>7) Bulk Import Expenses (Initial Setup)</h2>
+      <div class="path"><b>Screen:</b> Expenses list → Template (small +) and CSV Import buttons</div>
+
+      <div class="figgrid">
+        <figure>
+          <img src="images/expenses-import-template.jpeg" alt="Expense template generation and CSV import buttons (placeholder)." loading="lazy" />
+          <figcaption>Placeholder: Expense import template (small +) and CSV import button.</figcaption>
+        </figure>
+
+        <div>
+          <p>Bulk import is recommended where a large number of expenses must be migrated during initial setup.</p>
+          <ol>
+            <li>Tap the <b>template button</b> (small “+”) to generate/download the template.</li>
+            <li>Fill the template in Excel (one row per expense).</li>
+            <li>Save as <b>CSV</b>.</li>
+            <li>Import using the <b>CSV</b> button.</li>
+          </ol>
+
+          <div class="note">
+            <b>Import hygiene:</b> Do not rename headers. Ensure required fields are filled. Validate dates and amounts before importing.
+          </div>
+        </div>
+      </div>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <!-- =========================
+         INVENTORY MANAGEMENT (WITH IMAGE PLACEHOLDERS)
+    ========================== -->
+
+    <section id="inventory-nav">
+      <h2>8) Inventory Management — Navigation</h2>
+      <div class="path"><b>Menu path:</b> Main menu (☰) → <b>Inventory Items</b></div>
+
+      <div class="figgrid">
+        <figure>
+          <img src="images/menu-inventory.jpeg" alt="Main menu showing Inventory Items (placeholder)." loading="lazy" />
+          <figcaption>Placeholder: Main menu navigation to Inventory Items.</figcaption>
+        </figure>
+
+        <div>
+          <p>
+            The <b>Inventory Items</b> module tracks physical assets used in property operations (e.g., meters, furniture, appliances).
+            It supports registering items, tracking value, assigning items to locations, and disposing items that are no longer in service.
+          </p>
+        </div>
+      </div>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <section id="inventory-landing">
+      <h2>9) Inventory Items — Landing Page &amp; Long-Press Actions</h2>
+      <div class="path"><b>Screen:</b> Inventory Items list (with SEARCH and summary totals)</div>
+
+      <div class="figgrid">
+        <figure>
+          <img src="images/inventory-landing.jpeg" alt="Inventory items landing page showing totals and inventory list (placeholder)." loading="lazy" />
+          <figcaption>Placeholder: Inventory landing page (Total Items, Active Items, Total Value).</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/inventory-context-menu.jpeg" alt="Inventory item long-press context menu including Create Item Disposal and View Item Disposal (placeholder)." loading="lazy" />
+          <figcaption>Placeholder: Inventory long-press context menu (includes Create Item Disposal / View Item Disposal).</figcaption>
+        </figure>
+      </div>
+
+      <h3>Context menu actions (long-press on an item)</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Menu item</th>
+            <th>What it does</th>
+            <th>When to use it / rules</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Edit Item</b></td>
+            <td>Update item details (name, number, category, brand, condition, purchase info).</td>
+            <td>Use to correct data or update item attributes.</td>
+          </tr>
+          <tr>
+            <td><b>Delete Item</b></td>
+            <td>Remove item record.</td>
+            <td>Use for wrong/duplicate entries. For items leaving service, prefer <b>Create Item Disposal</b> to keep history.</td>
+          </tr>
+          <tr>
+            <td><b>Assign Item</b></td>
+            <td>Assign item to a location.</td>
+            <td>Use when installing/issuing to a unit/location.</td>
+          </tr>
+          <tr>
+            <td><b>View Item Assignment</b></td>
+            <td>View assignment history/current placement.</td>
+            <td>Use to confirm where the item is placed and review movement history.</td>
+          </tr>
+          <tr>
+            <td><b>Create Item Disposal</b></td>
+            <td>Record item disposal and mark item inactive.</td>
+            <td>Use when item is out of service (sold/scrapped/lost/donated/stolen/transferred).</td>
+          </tr>
+          <tr>
+            <td><b>View Item Disposal</b></td>
+            <td>View disposal record(s) for that item.</td>
+            <td>Use to confirm disposal details and audit trail.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="note">
+        <b>Key control:</b> Assignment answers “Where is the item?” Disposal answers “Is the item still usable/active?”
+        A disposed item should not be assigned again unless disposal is reversed and the item is reactivated (where supported).
+      </div>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <section id="inventory-add">
+      <h2>10) Add Inventory Item</h2>
+      <div class="path"><b>Action:</b> Inventory Items list → Tap <b>+</b></div>
+
+      <div class="figgrid">
+        <figure>
+          <img src="images/add-inventory-item.jpeg" alt="Add Inventory Item screen (placeholder)." loading="lazy" />
+          <figcaption>Placeholder: Add Inventory Item screen.</figcaption>
+        </figure>
+
+        <div>
+          <h3>Typical fields</h3>
+          <ul>
+            <li><b>Select Property</b></li>
+            <li><b>Item Name</b></li>
+            <li><b>Item Number</b> (serial/asset ID)</li>
+            <li><b>Purchase Date</b> (optional)</li>
+            <li><b>Purchase Value</b></li>
+            <li><b>Item Condition</b></li>
+            <li><b>Brand</b> (optional)</li>
+            <li><b>Category</b></li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <section id="inventory-assign">
+      <h2>11) Assign Item</h2>
+      <div class="path"><b>Action:</b> Inventory Items list → Long-press item → <b>Assign Item</b></div>
+
+      <div class="figgrid">
+        <figure>
+          <img src="images/assign-item.jpeg" alt="Assign Item screen showing location type, location, assignment date, notes (placeholder)." loading="lazy" />
+          <figcaption>Placeholder: Assign Item screen.</figcaption>
+        </figure>
+
+        <div>
+          <p>
+            Use this screen to assign an item to a location (e.g., Kitchen → Main Kitchen, or a unit-specific location as configured).
+          </p>
+          <div class="note">
+            <b>Important rule:</b> An item can only be assigned to another location when the current assignment is ended.
+          </div>
+        </div>
+      </div>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <section id="inventory-assignment-actions">
+      <h2>12) Assignment Actions (Edit, Delete, End Assignment)</h2>
+      <div class="path"><b>Action:</b> View Item Assignment → Long-press an assignment record</div>
+
+      <div class="figgrid">
+        <figure>
+          <img src="images/item-assignment-actions.jpeg" alt="Assignment record context menu showing Edit, Delete, End Assignment (placeholder)." loading="lazy" />
+          <figcaption>Placeholder: Assignment actions menu (Edit, Delete, End Assignment).</figcaption>
+        </figure>
+
+        <div>
+          <p>
+            Ending the assignment closes the current placement of an item. The item can only be re-assigned after the active assignment is ended.
+          </p>
+          <ul>
+            <li><b>Edit</b>: correct assignment data (location/date/notes).</li>
+            <li><b>Delete</b>: remove wrong/duplicate assignment records.</li>
+            <li><b>End Assignment</b>: close active assignment so the item can move.</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <section id="inventory-disposal">
+      <h2>13) Item Disposal (Create and View Disposal)</h2>
+      <div class="path"><b>Action:</b> Inventory Items list → Long-press item → <b>Create Item Disposal</b> / <b>View Item Disposal</b></div>
+
+      <div class="figgrid">
+        <figure>
+          <img src="images/inventory-disposal-create.jpeg" alt="Create Item Disposal screen (placeholder)." loading="lazy" />
+          <figcaption>Placeholder: Create Item Disposal screen.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/inventory-disposal-view.jpeg" alt="View Item Disposal screen showing disposal details (placeholder)." loading="lazy" />
+          <figcaption>Placeholder: View Item Disposal screen.</figcaption>
+        </figure>
+      </div>
+
+      <h3>When to use disposal</h3>
+      <p>
+        Disposal is used when an item is no longer in service or no longer available, such as:
+        <b>SOLD</b>, <b>SCRAPPED</b>, <b>LOST</b>, <b>DONATED</b>, <b>STOLEN</b>, <b>TRANSFERRED</b>.
+      </p>
+
+      <div class="note">
+        <b>Recommended control:</b> End active assignment first before disposal to avoid an item appearing as both “assigned” and “disposed”.
+        After disposal, the item is marked inactive and should not be assigned again unless disposal is reversed and item is reactivated (if supported).
+      </div>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <section id="inventory-import">
+      <h2>14) Bulk Import Inventory Items (Initial Setup)</h2>
+      <div class="path"><b>Screen:</b> Inventory Items list → Template (small +) and CSV Import buttons</div>
+
+      <div class="figgrid">
+        <figure>
+          <img src="images/inventory-import-template.jpeg" alt="Inventory template generation (small +) and CSV import button (placeholder)." loading="lazy" />
+          <figcaption>Placeholder: Inventory import template (small +) and CSV import button.</figcaption>
+        </figure>
+
+        <div>
+          <ol>
+            <li>Generate the template using the <b>template button</b> (small “+”).</li>
+            <li>Fill the template in Excel (one row per inventory item).</li>
+            <li>Save the completed file as <b>CSV</b>.</li>
+            <li>Import using the <b>CSV</b> button.</li>
+          </ol>
+
+          <div class="note">
+            <b>Import hygiene:</b> Do not change headers. Fill required columns. Validate numbers and dates before importing.
+          </div>
+        </div>
+      </div>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+    </section>
+
+    <hr />
+    <p class="small muted">End of document.</p>
+  </main>
+</body>
+</html>
