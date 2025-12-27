@@ -1,57 +1,207 @@
 <!doctype html>
-<html>
-  <head><meta charset="utf-8"><title>Kamulegeya Pages</title></head>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kamulegeya Pages</title>
+
+    <style>
+      :root{
+        --bg: #f6f7fb;
+        --card: #ffffff;
+        --text: #111827;
+        --muted: #6b7280;
+        --border: #e5e7eb;
+        --shadow: 0 10px 25px rgba(17,24,39,.08);
+        --radius: 14px;
+        --link: #1d4ed8;
+        --linkHover: #1e40af;
+      }
+
+      * { box-sizing: border-box; }
+
+      body{
+        margin: 0;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        color: var(--text);
+        background: radial-gradient(1200px 500px at 10% 0%, #eef2ff, transparent 60%),
+                    radial-gradient(900px 450px at 90% 10%, #ecfeff, transparent 55%),
+                    var(--bg);
+        line-height: 1.6;
+      }
+
+      .wrap{
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 28px 18px 44px;
+      }
+
+      header{
+        padding: 18px 18px 16px;
+        background: rgba(255,255,255,.7);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(8px);
+      }
+
+      h1{
+        margin: 0 0 6px;
+        font-size: 34px;
+        letter-spacing: -0.02em;
+      }
+
+      .subtitle{
+        margin: 0;
+        color: var(--muted);
+        font-size: 14.5px;
+      }
+
+      main{
+        margin-top: 16px;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      section{
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 18px 18px 14px;
+        box-shadow: var(--shadow);
+      }
+
+      h2{
+        margin: 0 0 10px;
+        font-size: 20px;
+        letter-spacing: -0.01em;
+      }
+
+      p{
+        margin: 0 0 10px;
+      }
+
+      ul, ol{
+        margin: 10px 0 0;
+        padding-left: 20px;
+      }
+
+      li{ margin: 7px 0; }
+
+      a{
+        color: var(--link);
+        text-decoration: none;
+      }
+
+      a:hover{
+        color: var(--linkHover);
+        text-decoration: underline;
+      }
+
+      .guides ul{
+        list-style: none;
+        padding-left: 0;
+        margin-top: 10px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 10px;
+      }
+
+      .guides li{
+        margin: 0;
+      }
+
+      .guides a{
+        display: block;
+        padding: 12px 12px;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        background: #fbfdff;
+      }
+
+      .guides a:hover{
+        background: #f3f7ff;
+        text-decoration: none;
+      }
+
+      footer{
+        margin-top: 14px;
+        color: var(--muted);
+        font-size: 12.5px;
+        padding: 0 4px;
+      }
+    </style>
+  </head>
+
   <body>
-    <h1>Welcome</h1>
+    <div class="wrap">
+      <header>
+        <h1>Welcome</h1>
+        <p class="subtitle">Documentation hub for the Landlord App</p>
+      </header>
 
-    <h2>Landlord App — Value Proposition</h2>
-    <p>
-      The Landlord App is a professional, automation-driven property management platform designed to replace manual spreadsheets
-      and fragmented tools. It helps landlords and agencies manage local and multi-country rental portfolios with accuracy,
-      minimal manual effort, and compliance-ready financial records.
-    </p>
+      <main>
+        <section>
+          <h2>Landlord App — Value Proposition</h2>
+          <p>
+            The Landlord App is a professional, automation-driven property management platform designed to replace manual spreadsheets
+            and fragmented tools. It helps landlords and agencies manage local and multi-country rental portfolios with accuracy,
+            minimal manual effort, and compliance-ready financial records.
+          </p>
+        </section>
 
-    <h2>Why it is valuable</h2>
-    <ul>
-      <li><b>Automated billing:</b> invoices can be generated automatically at the start of each billing period based on active tenancies, with review and approval before posting.</li>
-      <li><b>Fast payment capture:</b> bulk receipt import (Excel/CSV) supports high-volume collections and reduces reconciliation effort.</li>
-      <li><b>Professional tenant communication:</b> invoices, reminders, receipts, statements, PDFs, and SMS can be produced and shared quickly (where supported).</li>
-      <li><b>Multi-currency operations:</b> supports multiple currencies across tenancies, invoices, receipts, expenses, and reports, with exchange rate handling where required.</li>
-      <li><b>Scales with portfolio growth:</b> designed for large landlords and agencies managing multiple owners, properties, locations, and currencies.</li>
-      <li><b>Audit and compliance readiness:</b> preserved history, structured exports, supporting evidence for expenses, and integrity-first workflows support audits and dispute resolution.</li>
-    </ul>
+        <section>
+          <h2>Why it is valuable</h2>
+          <ul>
+            <li><b>Automated billing:</b> invoices can be generated automatically at the start of each billing period based on active tenancies, with review and approval before posting.</li>
+            <li><b>Fast payment capture:</b> bulk receipt import (Excel/CSV) supports high-volume collections and reduces reconciliation effort.</li>
+            <li><b>Professional tenant communication:</b> invoices, reminders, receipts, statements, PDFs, and SMS can be produced and shared quickly (where supported).</li>
+            <li><b>Multi-currency operations:</b> supports multiple currencies across tenancies, invoices, receipts, expenses, and reports, with exchange rate handling where required.</li>
+            <li><b>Scales with portfolio growth:</b> designed for large landlords and agencies managing multiple owners, properties, locations, and currencies.</li>
+            <li><b>Audit and compliance readiness:</b> preserved history, structured exports, supporting evidence for expenses, and integrity-first workflows support audits and dispute resolution.</li>
+          </ul>
+        </section>
 
-    <h2>What the app covers</h2>
-    <ul>
-      <li><b>Tenancy-centric management:</b> tenancies link tenants, units, rent, currency, and billing rules for consistent invoicing and reporting.</li>
-      <li><b>Documents:</b> one-click PDF invoices/receipts/demand notes and auto-generated tenancy agreements (Word format), where supported.</li>
-      <li><b>Expenses:</b> expense tracking with evidence attachments (photos/PDF/Word), where supported.</li>
-      <li><b>Inventory and assets:</b> valuation, assignments, and history to improve handovers and inspections.</li>
-      <li><b>Reporting and analytics:</b> dashboards for cashflow, arrears, occupancy, payment behavior and trends, with PDF/Excel/CSV exports.</li>
-      <li><b>Export-first design:</b> structured data exports to support accountants, auditors, and regulators.</li>
-      <li><b>Rental tax intelligence:</b> country-specific tax profiles (flat, progressive, VAT, withholding, provisional), where configured.</li>
-    </ul>
+        <section>
+          <h2>What the app covers</h2>
+          <ul>
+            <li><b>Tenancy-centric management:</b> tenancies link tenants, units, rent, currency, and billing rules for consistent invoicing and reporting.</li>
+            <li><b>Documents:</b> one-click PDF invoices/receipts/demand notes and auto-generated tenancy agreements (Word format), where supported.</li>
+            <li><b>Expenses:</b> expense tracking with evidence attachments (photos/PDF/Word), where supported.</li>
+            <li><b>Inventory and assets:</b> valuation, assignments, and history to improve handovers and inspections.</li>
+            <li><b>Reporting and analytics:</b> dashboards for cashflow, arrears, occupancy, payment behavior and trends, with PDF/Excel/CSV exports.</li>
+            <li><b>Export-first design:</b> structured data exports to support accountants, auditors, and regulators.</li>
+            <li><b>Rental tax intelligence:</b> country-specific tax profiles (flat, progressive, VAT, withholding, provisional), where configured.</li>
+          </ul>
+        </section>
 
-    <h2>Required setup (in order)</h2>
-    <p>
-      To start using the app effectively, complete the core setup in this order: add the property owner(s), add properties,
-      set up rental units under each property, define tenancy terms (rent amount, billing cycle, deposits, start/end rules),
-      add tenants, and then allocate tenants to units to activate tenancy management, billing, receipts, expenses, inventory,
-      and reporting.
-    </p>
+        <section>
+          <h2>Required setup (in order)</h2>
+          <p>
+            To start using the app effectively, complete the core setup in this order: add the property owner(s), add properties,
+            set up rental units under each property, define tenancy terms (rent amount, billing cycle, deposits, start/end rules),
+            add tenants, and then allocate tenants to units to activate tenancy management, billing, receipts, expenses, inventory,
+            and reporting.
+          </p>
+        </section>
 
-    <h2>Guides</h2>
-    <ul>      
-      <li><a href="privacy.html"> Terms of Use and Privacy Policy</a></li>
-      <li><a href="manage proprties1.html">Set Up Property Owners,Properties,Rental Units and Tenancy Terms Guide</a></li>
-      <li><a href="Manage Tenancies1.html">Set Up Tenants,and  Tenancy  Guide</a></li>
-      <li><a href="Creating Invoices1.html">Create Invoices and Receipts User Guide</a></li>	  
-      <li><a href="Expenses1.html">Expenses and Inventory Guide</a></li>
-      <li><a href="reports_analytics.html">Reports and Analytics  Guide</a></li>
-    </ul>
+        <section class="guides">
+          <h2>Guides</h2>
+          <ul>
+            <li><a href="privacy.html"> Terms of Use and Privacy Policy</a></li>
+            <li><a href="manage proprties1.html">Set Up Property Owners,Properties,Rental Units and Tenancy Terms Guide</a></li>
+            <li><a href="Manage Tenancies1.html">Set Up Tenants,and  Tenancy  Guide</a></li>
+            <li><a href="Creating Invoices1.html">Create Invoices and Receipts User Guide</a></li>
+            <li><a href="Expenses1.html">Expenses and Inventory Guide</a></li>
+            <li><a href="reports_analytics.html">Reports and Analytics  Guide</a></li>
+          </ul>
+        </section>
+      </main>
 
+      <footer>
+        Tip: Keep filenames and link text consistent (case-sensitive) to avoid GitHub Pages 404 errors.
+      </footer>
+    </div>
   </body>
 </html>
-
-
-
