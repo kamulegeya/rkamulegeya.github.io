@@ -1,0 +1,749 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Landlord App — Reports, Analytics, Data Export & Rental Tax Guide</title>
+  <meta name="description" content="Documentation for Reports and Analytics: Financial Reports, Cash Projections, Collection Timeliness, Invoices vs Receipts, Apartment dashboards, Year-on-Year comparison, Tenant and Tenancy dashboards, Tenant Type Analytics, exporting data to CSV/Excel by date range, and Rental Tax Guide (Tax Profiles, Tax Periods, Compute Taxes)." />
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; color: #111; background: #fff; line-height: 1.55; }
+    main { max-width: 1100px; margin: 0 auto; padding: 18px; }
+    header { padding: 12px 0 6px; border-bottom: 1px solid #e6e6e6; margin-bottom: 14px; }
+    h1 { font-size: 24px; margin: 0 0 6px; }
+    h2 { font-size: 18px; margin: 18px 0 8px; }
+    h3 { font-size: 15px; margin: 14px 0 6px; }
+    h4 { font-size: 14px; margin: 12px 0 6px; }
+    p { margin: 0 0 10px; }
+    .muted { color: #555; }
+    .path { background: #f6f7f9; border: 1px solid #e6e6e6; padding: 8px 10px; border-radius: 8px; margin: 10px 0 12px; }
+    nav { margin: 10px 0 0; }
+    nav a { margin-right: 10px; color: #0b57d0; text-decoration: none; white-space: nowrap; }
+    nav a:hover { text-decoration: underline; }
+    hr { border: 0; border-top: 1px solid #e6e6e6; margin: 16px 0; }
+    ul, ol { margin: 8px 0 12px 20px; }
+    li { margin: 4px 0; }
+    table { width: 100%; border-collapse: collapse; margin: 10px 0 14px; }
+    th, td { border: 1px solid #e6e6e6; padding: 8px; vertical-align: top; text-align: left; }
+    th { background: #fafafa; }
+    .note { border-left: 4px solid #0b57d0; padding: 8px 10px; background: #f7fbff; margin: 10px 0 14px; }
+    .small { font-size: 13px; color: #555; }
+    .toplink { font-size: 13px; }
+    code { background: #f6f7f9; border: 1px solid #e6e6e6; padding: 1px 6px; border-radius: 6px; }
+
+    figure { margin: 12px 0 16px; }
+
+    figcaption { margin-top: 8px; font-size: 13px; color: #555; }
+    .figgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; align-items: start; }
+
+    /* Tax help content spacing */
+    .taxhelp h2, .taxhelp h3, .taxhelp h4, .taxhelp h5 { margin-top: 14px; }
+    .taxhelp table { width: 100%; border-collapse: collapse; }
+    .taxhelp table th, .taxhelp table td { border: 1px solid #e6e6e6; padding: 8px; }
+    .taxhelp table th { background: #fafafa; }
+  </style>
+</head>
+
+<body>
+  <main id="top">
+    <header>
+      <h1>Landlord App — Reports, Analytics, Data Export & Rental Tax Guide</h1>
+      <p class="muted">
+        This document explains the Reports & Analytics module (dashboards, charts, and exports), how to export raw data to CSV/Excel
+        using date ranges, and how to set up and compute rental taxes using the Rental Tax Guide.
+      </p>
+
+      <p class="small"><b>Last updated:</b> December 2025</p>
+
+      <nav aria-label="Contents">
+        <a href="#overview">Overview</a>
+        <a href="#financial-reports">Financial Reports</a>
+        <a href="#cash-projections">Cash Projections</a>
+        <a href="#collection-time">Collection Timeliness</a>
+        <a href="#invoices-vs-receipts">Invoices vs Receipts</a>
+
+        <a href="#apartment-status">Apartment Status</a>
+        <a href="#apartment-dashboard">Apartment Dashboard</a>
+        <a href="#year-on-year">Year-on-Year</a>
+
+        <a href="#tenant-dashboard">Tenant Dashboard</a>
+        <a href="#tenancy-dashboard">Tenancy Dashboard</a>
+        <a href="#tenant-type-analytics">Tenant Type Analytics</a>
+
+        <a href="#data-export">Export Data to CSV/Excel</a>
+        <a href="#rental-tax-guide">Rental Tax Guide</a>
+
+        <a href="#export">Exports (PDF/Excel/CSV)</a>
+        <a href="#definitions">Definitions</a>
+      </nav>
+    </header>
+
+    <!-- OVERVIEW -->
+    <section id="overview">
+      <h2>1) Overview</h2>
+      <div class="path"><b>Menu path:</b> Main menu (☰) → <b>Reports and Analytics</b></div>
+
+      <p>
+        The <b>Reports and Analytics</b> module provides dashboards and downloadable outputs to help landlords and agencies:
+      </p>
+      <ul>
+        <li>Generate formal owner reports (PDF/Excel) for a selected year.</li>
+        <li>Forecast near-term inflows (cash projections by due buckets).</li>
+        <li>Measure payment timeliness (on-time vs late).</li>
+        <li>Compare billing vs collection (Invoices vs Receipts).</li>
+        <li>Monitor apartment-level occupancy and status distribution.</li>
+        <li>Review portfolio performance over time (Year-on-Year comparison).</li>
+        <li>Analyze tenant and tenancy metrics (duration, arrears, expiries).</li>
+        <li>Analyze revenue and recovery by tenant type.</li>
+      </ul>
+
+      <div class="note">
+        <b>Data quality dependency:</b> Analytics accuracy depends on correct tenancy dates, invoice due dates, and receipt/payment dates.
+        If any of these are incomplete or inaccurate, the dashboards will be distorted.
+      </div>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <!-- FINANCIAL REPORTS -->
+    <section id="financial-reports">
+      <h2>2) Financial Reports</h2>
+      <div class="path"><b>Tab:</b> Reports → <b>Financial Reports</b></div>
+
+      <p>
+        The <b>Financial Reports</b> screen generates formal reports for a selected <b>Property Owner</b> and <b>Year</b>.
+        It is typically used for monthly earnings summaries and other structured owner-facing outputs.
+      </p>
+
+      <h3>Inputs</h3>
+      <ul>
+        <li><b>Select Property Owner</b>: Choose whose portfolio to report on.</li>
+        <li><b>Select Report Type</b>: Example shown: “Monthly Rental Earnings”.</li>
+        <li><b>Select Year</b>: The reporting year (e.g., 2025).</li>
+      </ul>
+
+      <h3>Outputs</h3>
+      <ul>
+        <li><b>Generate PDF</b>: Printable/shareable report.</li>
+        <li><b>Generate Excel</b>: Spreadsheet output for reconciliation and deeper analysis.</li>
+      </ul>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <!-- CASH PROJECTIONS -->
+    <section id="cash-projections">
+      <h2>3) Cash Projections</h2>
+      <div class="path"><b>Tab:</b> Cash projections</div>
+
+      <p>
+        <b>Cash projections</b> estimate expected cash inflows based on what is due now and what becomes due within defined future buckets.
+      </p>
+
+      <h3>What the buckets mean</h3>
+      <ul>
+        <li><b>Due Now</b>: Amount already due (overdue or due today).</li>
+        <li><b>11–20 days</b>, <b>31–40 days</b>, etc.: Amount expected to become due in that future window.</li>
+      </ul>
+
+      <h3>Common actions</h3>
+      <ul>
+        <li><b>Filter dropdown</b> (e.g., “All”): Limits the projection scope.</li>
+        <li><b>Show Details</b>: Opens records contributing to the selected bucket.</li>
+        <li><b>Export to PDF</b>: Generates a shareable snapshot of the chart and key values.</li>
+      </ul>
+
+      <div class="note">
+        <b>Management use:</b> “Due Now” is the collections action list. Future buckets support planning and prioritization.
+      </div>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <!-- COLLECTION TIME PIE -->
+    <section id="collection-time">
+      <h2>4) Collection Time Pie Chart (Payment Timeliness)</h2>
+      <div class="path"><b>Tab:</b> Collection Time Pie Chart</div>
+
+      <p>
+        This view shows the proportion of payments that are <b>On-time</b> versus <b>Late</b>, typically by comparing invoice due date
+        to receipt/payment date.
+      </p>
+
+      <h3>How to read it</h3>
+      <ul>
+        <li><b>On-time</b>: Paid on or before due date.</li>
+        <li><b>Late</b>: Paid after due date.</li>
+        <li><b>Per-property breakdown</b>: Highlights properties with strong/weak payment discipline.</li>
+      </ul>
+
+      <div class="note">
+        <b>Important:</b> Timeliness depends on accurate invoice due dates and accurate receipt dates.
+      </div>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <!-- INVOICES VS RECEIPTS -->
+    <section id="invoices-vs-receipts">
+      <h2>5) Invoices vs Receipts (Bar Graphs)</h2>
+      <div class="path"><b>Tab:</b> Invoices Vs Receipts Bar Graphs</div>
+
+      <p>
+        This chart compares <b>Total Invoices</b> (amount billed) versus <b>Total Receipts</b> (amount collected), typically broken down by property.
+      </p>
+
+      <h3>Interpretation</h3>
+      <ul>
+        <li><b>Receipts &lt; Invoices</b>: Usually indicates <b>arrears</b> and/or <b>collection lag</b>.</li>
+        <li><b>Receipts &gt; Invoices</b>: May indicate <b>prepayments</b>, <b>overpayments</b>, or receipts posted against prior periods.</li>
+      </ul>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <!-- APARTMENT STATUS DASHBOARD -->
+    <section id="apartment-status">
+      <h2>6) Apartment Status Dashboard</h2>
+      <div class="path"><b>Tab:</b> Apartment Status</div>
+
+      <div class="figgrid">
+        <figure>
+          
+          <figcaption>Apartment Status: status summary and a unit-by-unit list for quick review.</figcaption>
+        </figure>
+
+        <div>
+          <p>
+            The <b>Apartment Status</b> screen provides an operational summary of all units by current status (Occupied, Vacant, Out of use, Discontinued),
+            and a list of units with their details.
+          </p>
+
+          <h3>Status definitions</h3>
+          <ul>
+            <li><b>Occupied</b>: Unit currently has an active tenancy.</li>
+            <li><b>Vacant</b>: Unit is available but has no active tenancy.</li>
+            <li><b>Out of use</b>: Temporarily unavailable (e.g., maintenance). Can return to available later.</li>
+            <li><b>Discontinued</b>: Permanently removed from letting (e.g., converted to another use).</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <!-- APARTMENT DASHBOARD -->
+    <section id="apartment-dashboard">
+      <h2>7) Apartment Dashboard</h2>
+      <div class="path"><b>Tab:</b> Apartment Dashboard</div>
+
+      <div class="figgrid">
+        <figure>
+          
+          <figcaption>Apartment Dashboard: totals, occupancy rate, downtime metrics, and monthly occupancy trend.</figcaption>
+        </figure>
+
+        <div>
+          <p>
+            The <b>Apartment Dashboard</b> consolidates counts, rates, downtime, and trend lines to show how occupancy is evolving over time.
+          </p>
+
+          <h3>Typical components</h3>
+          <ul>
+            <li><b>Apartment Overview</b>: Total units and breakdown by status.</li>
+            <li><b>Occupancy Rate</b>: Commonly <code>Occupied ÷ Total Lettable Units × 100%</code> (lettable rules may vary).</li>
+            <li><b>Duration Metrics</b>: Average occupied/vacant/out-of-use periods (depends on available history).</li>
+            <li><b>Monthly Occupancy Trend</b>: Trend line showing changes in occupancy over time.</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <!-- YEAR ON YEAR -->
+    <section id="year-on-year">
+      <h2>8) Year-on-Year Comparison</h2>
+      <div class="path"><b>Tab:</b> Year on Year Comparison</div>
+
+      <div class="figgrid">
+        <figure>
+          
+          <figcaption>Year-on-Year: compares key metrics for current year vs previous year and shows % change.</figcaption>
+        </figure>
+
+        <div>
+          <p>
+            The <b>Year-on-Year Comparison</b> dashboard compares key portfolio metrics for a selected year against the prior year.
+            It supports performance reviews and owner communication.
+          </p>
+
+          <h3>Metrics typically compared</h3>
+          <ul>
+            <li><b>Invoices</b>: Total billed amount.</li>
+            <li><b>Receipts</b>: Total collected amount.</li>
+            <li><b>Expenses</b>: Total expenses incurred.</li>
+            <li><b>Occupancy</b>: Annualized/average occupancy measure (implementation-defined).</li>
+          </ul>
+
+          <h3>% Change</h3>
+          <p>
+            The % Change indicates growth/decline from the previous year to the current year. If the previous year is zero, % change may be N/A
+            or handled specially.
+          </p>
+        </div>
+      </div>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <!-- TENANT DASHBOARD -->
+    <section id="tenant-dashboard">
+      <h2>9) Tenant Analytics Dashboard</h2>
+      <div class="path"><b>Tab:</b> Tenant Dashboard → Tenant Analytics Dashboard</div>
+
+      <p>
+        The <b>Tenant Analytics Dashboard</b> summarizes tenant-level metrics such as tenant count, payment behavior, tenancy duration, and arrears position.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Meaning</th>
+            <th>Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Total Tenants</b></td>
+            <td>Number of tenants registered in the selected scope.</td>
+            <td>Portfolio sizing and setup validation.</td>
+          </tr>
+          <tr>
+            <td><b>Avg Tenancy Duration (months)</b></td>
+            <td>Average time tenants stay in tenancies (months).</td>
+            <td>Stability/churn indicator.</td>
+          </tr>
+          <tr>
+            <td><b>Avg Payment Days</b></td>
+            <td>Average payment timing in days (commonly due date vs receipt date).</td>
+            <td>Collection discipline indicator.</td>
+          </tr>
+          <tr>
+            <td><b>Tenants with Multiple Apartments</b></td>
+            <td>Tenants linked to more than one unit.</td>
+            <td>Concentration and relationship management.</td>
+          </tr>
+          <tr>
+            <td><b>Total Paid</b></td>
+            <td>Total receipts collected.</td>
+            <td>Collection performance monitoring.</td>
+          </tr>
+          <tr>
+            <td><b>Total Due / Arrears</b></td>
+            <td>Outstanding balance, subject to sign conventions.</td>
+            <td>Credit control prioritization.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <!-- TENANCY DASHBOARD -->
+    <section id="tenancy-dashboard">
+      <h2>10) Tenancy Dashboard</h2>
+      <div class="path"><b>Tab:</b> Tenancy Dashboard</div>
+
+      <p>
+        The <b>Tenancy Dashboard</b> focuses on tenancy-level operational metrics such as active tenancies, expiries, and rent aggregates.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Meaning</th>
+            <th>Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Active Tenancies</b></td>
+            <td>Number of ongoing tenancies.</td>
+            <td>Occupancy operations.</td>
+          </tr>
+          <tr>
+            <td><b>Expiring Soon</b></td>
+            <td>Tenancies nearing end date within an app-defined window.</td>
+            <td>Renewal planning and vacancy risk reduction.</td>
+          </tr>
+          <tr>
+            <td><b>Average Rent</b></td>
+            <td>Average rent across active tenancies.</td>
+            <td>Pricing benchmark and rent review.</td>
+          </tr>
+          <tr>
+            <td><b>Total Rent (per currency)</b></td>
+            <td>Total rent aggregated per currency.</td>
+            <td>Multi-currency visibility and revenue scale.</td>
+          </tr>
+          <tr>
+            <td><b>Avg Tenancy Duration</b></td>
+            <td>Average tenancy length (months) based on start/end (or ongoing duration).</td>
+            <td>Portfolio stability.</td>
+          </tr>
+          <tr>
+            <td><b>Tenants Count</b></td>
+            <td>Number of tenants linked to tenancies in scope.</td>
+            <td>Cross-check tenant register vs active occupancy.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <!-- TENANT TYPE ANALYTICS -->
+    <section id="tenant-type-analytics">
+      <h2>11) Tenant Type Analytics</h2>
+      <div class="path"><b>Tab:</b> Analytics → Tenant Type Analytics</div>
+
+      <p>
+        <b>Tenant Type Analytics</b> breaks down revenue and recovery performance by tenant type (e.g., Individual, Company, etc.).
+      </p>
+
+      <h3>Summary values</h3>
+      <ul>
+        <li><b>Revenue</b>: Total billed/expected revenue for the selected scope/timeframe.</li>
+        <li><b>Collected</b>: Total receipts recorded.</li>
+        <li><b>Arrears</b>: Outstanding balance (commonly Revenue minus Collected).</li>
+      </ul>
+
+      <h3>Charts</h3>
+      <ul>
+        <li><b>Revenue Share by Tenant Type</b>: Distribution of revenue across tenant types.</li>
+        <li><b>Recovery Rate (%) by Tenant Type</b>: Typically <code>(Collected ÷ Revenue) × 100</code> per tenant type.</li>
+      </ul>
+
+      <h3>Exports</h3>
+      <ul>
+        <li><b>Export CSV</b>: Extracts underlying data.</li>
+        <li><b>Export PDF</b>: Produces a shareable analytics report snapshot.</li>
+      </ul>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <!-- DATA EXPORT TO CSV/EXCEL -->
+    <section id="data-export">
+      <h2>12) Export Data to CSV/Excel (Raw Data Export)</h2>
+      <div class="path"><b>Menu path:</b> Main menu (☰) → <b>Export Data to CSV/Excel</b></div>
+
+      <p>
+        The <b>Export Data to CSV/Excel</b> feature allows you to export raw transactional and master data from the app for a selected date range.
+        This is useful for reconciliation, audits, external reporting, and sharing data with accountants.
+      </p>
+
+      <h3>Step-by-step process</h3>
+      <ol>
+        <li>Open the main menu (☰).</li>
+        <li>Select <b>Export Data to CSV/Excel</b>.</li>
+        <li><b>Double tap to select start date</b>.</li>
+        <li><b>Double tap to select end date</b>.</li>
+        <li>Open the dropdown and choose the dataset to export (e.g., Invoices, Receipts, Expenses, Tenants, Rental Units/Apartments).</li>
+        <li>Tap <b>Generate CSV File</b>.</li>
+      </ol>
+
+      <div class="note">
+        <b>Date range guidance:</b>
+        <ul>
+          <li>Use a date range that matches the period you want (full month/quarter/year as needed).</li>
+          <li>If an export looks incomplete, re-check that the date range matches the “date field” for that dataset (invoice date, receipt date, expense date, etc.).</li>
+        </ul>
+      </div>
+
+      <h3>Typical export options (dropdown)</h3>
+      <p class="muted">
+        Options commonly include Invoices, Receipts, Over Due Invoices, Expenses, Inventory Items, Security Deposit Fee, Cash Forecast,
+        Tenants, Rental Units/Apartments, Properties, Tenancy Terms, Tenant Payment Days Analysis, Apartment Occupancy Days, Monthly VAT Report (where applicable).
+      </p>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <!-- NEW: RENTAL TAX GUIDE -->
+    <section id="rental-tax-guide">
+      <h2>13) Rental Tax Guide</h2>
+      <div class="path"><b>Menu path:</b> Main menu (☰) → <b>Rental Tax Guide</b></div>
+
+      <p>
+        The <b>Rental Tax Guide</b> module helps you compute rental income taxes in a consistent and transparent way based on local tax rules.
+        The workflow is intentionally structured into three steps:
+      </p>
+
+      <ol>
+        <li><b>Step 1 — Set up Country Tax Profile</b></li>
+        <li><b>Step 2 — Add a Tax Period</b></li>
+        <li><b>Step 3 — Compute Taxes</b></li>
+      </ol>
+
+      <div class="note">
+        <b>Important:</b> The Tax Profile controls the “rules engine” for computation (rates, thresholds, basis, expense deductions, VAT/withholding/provisional rules).
+        Ensure the correct country profile is selected before computing taxes.
+      </div>
+
+      <h3>Step 1 — Set up a Country Tax Profile</h3>
+      <p>
+        A <b>Tax Profile</b> defines how rental income tax is calculated for a jurisdiction. It includes the country identity,
+        filing calendar rules, tax type (flat/progressive/withholding), basis (gross/net/threshold), and all special logic
+        such as VAT, withholding tax, and provisional tax handling.
+      </p>
+
+      <h3>Step 2 — Add a Tax Period</h3>
+      <p>
+        A <b>Tax Period</b> is the time window for which you want to compute and file rental taxes. Examples:
+      </p>
+      <ul>
+        <li><b>Monthly</b> period: e.g., 2025-10-01 to 2025-10-31</li>
+        <li><b>Quarterly</b> period: e.g., 2025-07-01 to 2025-09-30</li>
+        <li><b>Annual</b> period: aligned to the country’s fiscal year start (e.g., 07-01) where applicable</li>
+      </ul>
+      <p>
+        The app uses the profile’s <b>filing frequency</b> and <b>fiscal year start</b> to guide correct period boundaries.
+        If the country uses <b>provisional tax</b>, tax periods may also include mid-year or quarterly provisional checkpoints.
+      </p>
+
+      <h3>Step 3 — Compute Taxes</h3>
+      <p>
+        When you compute taxes for a period, the app aggregates rental revenue (and deductions where allowed), applies thresholds and tax rates,
+        and produces the tax payable for the period. In progressive systems, it computes the tax using configured bands and the selected progressive mode.
+      </p>
+
+      <h3>Tax Profile Help (Reference)</h3>
+      <div class="note taxhelp">
+        <!-- Directly embedded from your string resource (tax_profile_help) -->
+        <h2>Understanding the Tax Profile System</h2>
+
+        <p>
+          The <b>tax_profile</b> system defines how rental income tax is calculated for each supported country.
+          It ensures that every property owner’s tax is derived consistently and transparently according to local laws.
+        </p>
+
+        <h3>1. Core Identity Fields</h3>
+        <ul>
+          <li><b>country_code</b>: Unique short code (e.g. UG, GH, TZ).</li>
+          <li><b>country_name</b>: The full name of the country.</li>
+          <li><b>currency_code</b>: The base currency used for reporting and filing.</li>
+          <li><b>fiscal_year_start</b>: The first month and day of the fiscal year (e.g. “07-01” for July 1).</li>
+        </ul>
+
+        <h3>2. Rental Tax Type and Basis</h3>
+        <ul>
+          <li><b>rental_tax_type</b> determines how tax is applied:
+            <ul>
+              <li><b>Flat</b>: A single fixed rate (e.g. 12%) on all taxable income.</li>
+              <li><b>Progressive</b>: Different rates apply to different income brackets.</li>
+              <li><b>Withholding</b>: Tax is deducted at source by the payer.</li>
+              <li><b>None</b>: No rental tax in this jurisdiction.</li>
+            </ul>
+          </li>
+
+          <li><b>rental_tax_basis</b> determines what portion of rent is taxed:
+            <ul>
+              <li><b>Gross</b> – total income before deductions.</li>
+              <li><b>Net</b> – after allowable expenses.</li>
+              <li><b>Gross minus threshold</b> – only income above an exempt threshold is taxed.</li>
+            </ul>
+          </li>
+        </ul>
+
+        <h3>3. Filing and Payment Rules</h3>
+        <ul>
+          <li><b>filing_frequency</b>: How often tax returns are submitted (monthly, quarterly, annual, etc.).</li>
+          <li><b>payment_mode</b>: Whether tax is <i>self-assessed</i> or <i>withheld</i> by a tenant or agent.</li>
+          <li><b>filing_due_day</b>: Day of the month when filing is due (e.g. 30th).</li>
+        </ul>
+
+        <h3>4. Tax Rate and Threshold</h3>
+        <p>
+          <b>rental_tax_rate</b> defines the rate (e.g. 10%) applied to taxable income.
+          If a <b>threshold_amount</b> exists, only income above that value is taxable.
+        </p>
+
+        <h3>5. Expenses and Deductions</h3>
+        <p>
+          If <b>allow_expenses = 1</b>, landlords can deduct allowable operating expenses before calculating tax.
+          The cap is defined by <b>expense_limit_type</b> (percentage, fixed, or unlimited) and <b>expense_limit_value</b>.
+        </p>
+
+        <h3>6. Progressive Taxation and Tax Bands</h3>
+        <p>
+          Countries that use <b>progressive taxation</b> divide income into <b>bands</b>.
+          Each band represents a range of income taxed at its own rate — higher bands attract higher rates.
+        </p>
+
+        <h4>Example of Progressive Tax Bands (Tanzania)</h4>
+        <table cellpadding="4" cellspacing="0" width="100%">
+          <tr><th>Band</th><th>Income Range (TZS)</th><th>Rate</th></tr>
+          <tr><td>1</td><td>0 – 2,000,000</td><td>0%</td></tr>
+          <tr><td>2</td><td>2,000,001 – 4,000,000</td><td>9%</td></tr>
+          <tr><td>3</td><td>4,000,001 – 6,000,000</td><td>20%</td></tr>
+          <tr><td>4</td><td>6,000,001 and above</td><td>25%</td></tr>
+        </table>
+
+        <h4>Example Income: 5,000,000 TZS</h4>
+
+        <h5>▶ Bracket Mode (True Progressive)</h5>
+        <p>Each portion of income is taxed at the rate for its band:</p>
+        <ul>
+          <li>First 2,000,000 @ 0% = 0</li>
+          <li>Next 2,000,000 @ 9% = 180,000</li>
+          <li>Next 1,000,000 @ 20% = 200,000</li>
+        </ul>
+        <p><b>Total Tax = 380,000 TZS</b><br/>
+           <b>Effective Rate = 7.6%</b></p>
+
+        <h5>▶ Marginal Mode</h5>
+        <p>Entire income is taxed at the highest band reached (20%):</p>
+        <ul>
+          <li>5,000,000 × 20% = <b>1,000,000 TZS</b></li>
+        </ul>
+        <p><b>Effective Rate = 20%</b></p>
+
+        <h5>▶ Effective Mode</h5>
+        <p>The system calculates a blended or averaged rate, producing a smoother tax burden between bands:</p>
+        <ul>
+          <li>Average effective rate for 5M TZS ≈ 10%</li>
+          <li>Total Tax = 5,000,000 × 10% = <b>500,000 TZS</b></li>
+        </ul>
+        <p>
+          This illustrates how <b>progressive_mode</b> determines whether tax grows in steps,
+          jumps to the top rate, or averages smoothly between bands.
+        </p>
+
+        <h3>7. VAT and Withholding</h3>
+        <ul>
+          <li><b>vat_rate</b>: VAT rate applied to rent if applicable.</li>
+          <li><b>has_vat</b>: Indicates whether rental income attracts VAT.</li>
+          <li><b>has_withholding</b>: Enables withholding tax logic for tenants that pay on behalf of landlords.</li>
+          <li><b>has_provisional</b>: Indicates countries requiring advance (provisional) tax payments.</li>
+        </ul>
+
+        <h3>8. Example – Uganda (Flat System)</h3>
+        <p>
+          <b>Tax Type:</b> Flat<br/>
+          <b>Rate:</b> 12%<br/>
+          <b>Basis:</b> Gross minus threshold<br/>
+          <b>Threshold:</b> UGX 2,820,000<br/>
+          <b>Frequency:</b> Annual
+        </p>
+
+        <p>
+          Gross Rent = 12,000,000<br/>
+          Credit Notes = (1,000,000)<br/>
+          Bad Debts = (200,000)<br/>
+          Taxable Income = 9,400,000<br/>
+          Tax = 9,400,000 × 12% = <b>1,128,000 UGX</b>
+        </p>
+
+        <p>
+          The Landlord app automatically applies these computations
+          to ensure consistent, fair, and jurisdiction-specific rental tax calculations.
+        </p>
+
+        <h3>9. Provisional Tax Explained</h3>
+
+        <p>
+          <b>Provisional tax</b> refers to the advance payment of income tax before the final tax return is due.
+          It ensures that tax liability is settled progressively throughout the year rather than as a lump sum at year-end.
+        </p>
+
+        <h4>How It Works</h4>
+        <ul>
+          <li>The tax authority requires landlords to estimate their annual rental income and pay a portion (often 50%) by a provisional due date — typically mid-year.</li>
+          <li>The balance is paid when the final return is filed, after deducting any credits for provisional payments already made.</li>
+          <li>Interest or penalties may apply for under- or over-estimation, depending on local tax laws.</li>
+        </ul>
+
+        <h4>In the Landlord App</h4>
+        <ul>
+          <li>When <b>has_provisional = 1</b> in the tax profile, the system automatically checks whether a country’s tax rules require mid-year or quarterly provisional payments.</li>
+          <li>Provisional tax entries are linked to the <b>Tax Period</b> records for tracking — for example, “First Provisional Payment for FY 2025/26”.</li>
+          <li>During computation, provisional payments already made are subtracted from total tax payable to derive the <b>Balance Due</b> or <b>Tax Refund</b>.</li>
+        </ul>
+
+        <h4>Example (Uganda)</h4>
+        <p>Assume total annual rental tax due is UGX 2,000,000. If provisional tax of UGX 800,000 was already paid mid-year:</p>
+        <ul>
+          <li>Total tax due: UGX 2,000,000</li>
+          <li>Less provisional tax: UGX 800,000</li>
+          <li><b>Balance payable with final return: UGX 1,200,000</b></li>
+        </ul>
+
+        <p>
+          This mechanism helps landlords manage cash flow and stay compliant by pre-funding part of their annual tax obligation.
+        </p>
+      </div>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <!-- EXPORTS -->
+    <section id="export">
+      <h2>14) Exports (PDF / Excel / CSV)</h2>
+
+      <ul>
+        <li><b>Export to PDF</b>: Best for sharing snapshots of charts/dashboards with owners and management.</li>
+        <li><b>Generate Excel</b>: Best for reconciliation, audits, and deeper calculations outside the app.</li>
+        <li><b>Export CSV</b>: Best for raw data extraction and integration into other reporting workflows.</li>
+      </ul>
+
+      <div class="note">
+        <b>Recommendation:</b> Use PDF for distribution; use Excel/CSV for verification and analysis.
+      </div>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <!-- DEFINITIONS -->
+    <section id="definitions">
+      <h2>15) Definitions & Notes</h2>
+
+      <h3>Common terms</h3>
+      <ul>
+        <li><b>Invoice</b>: A bill raised for rent/charges for a tenancy period.</li>
+        <li><b>Receipt</b>: A recorded payment collected from a tenant.</li>
+        <li><b>Due date</b>: The date by which a tenant is expected to pay an invoice.</li>
+        <li><b>Arrears</b>: Outstanding unpaid amount (difference between billed and collected), subject to sign conventions.</li>
+        <li><b>Recovery rate</b>: Percentage of billed revenue that has been collected.</li>
+        <li><b>Occupied/Vacant/Out of use/Discontinued</b>: Unit availability states as used in Apartment dashboards.</li>
+      </ul>
+
+      <div class="note">
+        <b>Troubleshooting:</b> If analytics look incorrect, verify: tenancy start/end dates, invoice due dates, receipt dates,
+        and whether receipts have been properly matched/allocated to invoices.
+      </div>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+    </section>
+
+    <hr />
+    <p class="small muted">End of document.</p>
+  </main>
+</body>
+</html>
