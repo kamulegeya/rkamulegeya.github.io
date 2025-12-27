@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Landlord App — Expenses & Inventory Guide</title>
+  <meta name="description" content="Guide for Landlord App Expenses and Inventory: recording expenses, attachments (photos, PDF, Word), export to PDF, bulk import via template + CSV, inventory navigation, inventory landing page, add inventory item, assignment workflow, ending assignments, item disposal workflow, and inventory bulk import." />
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; color: #111; background: #fff; line-height: 1.55; }
+    main { max-width: 980px; margin: 0 auto; padding: 18px; }
+    header { padding: 12px 0 6px; border-bottom: 1px solid #e6e6e6; margin-bottom: 14px; }
+    h1 { font-size: 24px; margin: 0 0 6px; }
+    h2 { font-size: 18px; margin: 18px 0 8px; }
+    h3 { font-size: 15px; margin: 14px 0 6px; }
+    h4 { font-size: 14px; margin: 12px 0 6px; }
+    p { margin: 0 0 10px; }
+    .muted { color: #555; }
+    .path { background: #f6f7f9; border: 1px solid #e6e6e6; padding: 8px 10px; border-radius: 8px; margin: 10px 0 12px; }
+    nav { margin: 10px 0 0; }
+    nav a { margin-right: 10px; color: #0b57d0; text-decoration: none; white-space: nowrap; }
+    nav a:hover { text-decoration: underline; }
+    hr { border: 0; border-top: 1px solid #e6e6e6; margin: 16px 0; }
+    ul, ol { margin: 8px 0 12px 20px; }
+    li { margin: 4px 0; }
+    table { width: 100%; border-collapse: collapse; margin: 10px 0 14px; }
+    th, td { border: 1px solid #e6e6e6; padding: 8px; vertical-align: top; text-align: left; }
+    th { background: #fafafa; }
+    .note { border-left: 4px solid #0b57d0; padding: 8px 10px; background: #f7fbff; margin: 10px 0 14px; }
+    .small { font-size: 13px; color: #555; }
+    .toplink { font-size: 13px; }
+    code { background: #f6f7f9; border: 1px solid #e6e6e6; padding: 1px 6px; border-radius: 6px; }
+  </style>
+</head>
+
+<body>
+  <main id="top">
+    <header>
+      <h1>Landlord App — Expenses & Inventory Guide</h1>
+      <p class="muted">
+        This document explains how to capture property expenses, classify them (major/minor categories), track payees,
+        add supporting attachments (photos, PDF, Word), export attachments to PDF, and bulk-import expense data using templates.
+        It also covers Inventory Management: navigation, inventory landing page, add inventory items, assignment workflows,
+        ending assignments, item disposal workflows, and bulk import of inventory records.
+      </p>
+      <p class="small"><b>Last updated:</b> December 2025</p>
+
+      <nav aria-label="Contents">
+        <a href="#overview">Expenses Overview</a>
+        <a href="#list">Expenses List</a>
+        <a href="#add">Add Expense</a>
+        <a href="#add-images">Add Images / Attachments</a>
+        <a href="#actions">Expense Actions</a>
+        <a href="#attachments">Attachments & PDF Export</a>
+        <a href="#bulk-import">Bulk Import Expenses</a>
+
+        <a href="#inventory-nav">Inventory Navigation</a>
+        <a href="#inventory-landing">Inventory Landing Page</a>
+        <a href="#inventory-add">Add Inventory Item</a>
+        <a href="#inventory-assign">Assign Item</a>
+        <a href="#inventory-assignment-list">View Item Assignment</a>
+        <a href="#inventory-assignment-actions">Assignment Actions</a>
+
+        <a href="#inventory-disposal">Item Disposal</a>
+        <a href="#inventory-disposal-create">Create Item Disposal</a>
+        <a href="#inventory-disposal-view">View Item Disposal</a>
+
+        <a href="#inventory-import">Bulk Import Inventory</a>
+      </nav>
+    </header>
+
+    <!-- =========================
+         EXPENSES (unchanged)
+    ========================== -->
+
+    <section id="overview">
+      <h2>1) Expenses Overview</h2>
+      <div class="path"><b>Menu area:</b> Expenses (module) → Expenses list</div>
+
+      <p>
+        The <b>Expenses</b> module records costs incurred in operating or maintaining a property (e.g., plumbing repairs,
+        electricity bills, painting, cleaning, security services). Expenses can be linked to:
+      </p>
+      <ul>
+        <li><b>A Property</b> (required)</li>
+        <li><b>An Apartment/Unit</b> (optional, where the expense is unit-specific)</li>
+        <li><b>A Major Expense Category</b> (required; e.g., Utilities, Repairs, Administration)</li>
+        <li><b>A Minor Expense Category</b> (required; e.g., Electricity Bill, Toilet Repairs, Stationery)</li>
+        <li><b>A Payee</b> (optional/required depending on your configuration; e.g., Plumber, Supplier, Company)</li>
+        <li><b>Attachments</b> (optional but recommended; receipts, invoices, work completion evidence)</li>
+      </ul>
+
+      <h3>Prerequisites (recommended setup order)</h3>
+      <ol>
+        <li>Create <b>Properties</b> and <b>Apartments/Units</b> (if you want unit-level allocation).</li>
+        <li>Configure <b>Major Expense Categories</b> and <b>Minor Expense Categories</b>.</li>
+        <li>Configure <b>Payees</b> (common suppliers/contractors) for consistent reporting.</li>
+      </ol>
+
+      <div class="note">
+        <b>Best practice:</b> Always enter an expense with a clear <b>Narration</b> (what the cost was for) and a correct
+        <b>Date Incurred</b>. Attach supporting documents (receipt/invoice/photo) to strengthen audit trail and owner reporting.
+      </div>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <section id="list">
+      <h2>2) Expenses List</h2>
+      <div class="path"><b>Screen:</b> Expenses list (with SEARCH and summary totals)</div>
+
+      <p>
+        The expenses list shows recorded expense entries. At the top, the app may display summary cards such as:
+      </p>
+      <ul>
+        <li><b>Total Items</b>: count of expense records saved.</li>
+        <li><b>Total Expenses</b>: sum of recorded expenses (based on the filters/date window applied by the app).</li>
+        <li><b>Expenses this month</b>: sum of expenses incurred within the current month.</li>
+      </ul>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <section id="add">
+      <h2>3) Add Expense</h2>
+      <div class="path"><b>Action:</b> Expenses list → Tap <b>+</b> to add a new expense</div>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <section id="add-images">
+      <h2>4) Add Images / Attachments (Supporting Documents)</h2>
+      <div class="path"><b>Where:</b> Expense entry screen (Add Expense) → <b>Add Images / Attachments</b></div>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <section id="actions">
+      <h2>5) Expense Actions (Long-Press Context Menu)</h2>
+      <div class="path"><b>Action:</b> Expenses list → Long-press an expense card to open the action menu</div>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <section id="attachments">
+      <h2>6) Attachments & PDF Export</h2>
+      <div class="path"><b>Menu area:</b> Expenses list → Long-press expense → View Attachments / Export Images to PDF</div>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <section id="bulk-import">
+      <h2>7) Bulk Import Expenses (Initial Setup)</h2>
+      <div class="path"><b>Screen:</b> Expenses list → Template (small +) and CSV Import buttons</div>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <!-- =========================
+         INVENTORY MANAGEMENT (UPDATED WITH DISPOSAL)
+    ========================== -->
+
+    <section id="inventory-nav">
+      <h2>8) Inventory Management — Navigation</h2>
+      <div class="path"><b>Menu path:</b> Main menu (☰) → <b>Inventory Items</b></div>
+
+      <p>
+        The <b>Inventory Items</b> module is used to track physical assets owned/used in property operations,
+        such as meters, furniture, appliances, tools, or equipment. It supports registering items, tracking their value,
+        assigning items to a location, and disposing items that are no longer in service.
+      </p>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <section id="inventory-landing">
+      <h2>9) Inventory Items — Landing Page</h2>
+      <div class="path"><b>Screen:</b> Inventory Items list (with SEARCH and summary totals)</div>
+
+      <p>
+        The inventory landing page shows a list of items recorded in the system. At the top, the app typically shows summary cards such as:
+        <b>Total Items</b>, <b>Active Items</b>, and <b>Total Value</b>.
+      </p>
+
+      <h3>Item-level actions (long-press)</h3>
+      <p>
+        Long-press an item card to open the context menu. Typical actions include:
+        <b>Edit Item</b>, <b>Delete Item</b>, <b>Assign Item</b>, <b>View Item Assignment</b>,
+        <b>Create Item Disposal</b>, and <b>View Item Disposal</b>.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Menu item</th>
+            <th>What it does</th>
+            <th>When to use it / important rules</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Edit Item</b></td>
+            <td>Updates item details (name, number, purchase value/date, category, brand, condition).</td>
+            <td>Use to correct mistakes or update item attributes.</td>
+          </tr>
+
+          <tr>
+            <td><b>Delete Item</b></td>
+            <td>Removes the item record.</td>
+            <td>Use only for wrong/duplicate items created by mistake. For items that are no longer usable, prefer <b>Create Item Disposal</b> to keep history and audit trail.</td>
+          </tr>
+
+          <tr>
+            <td><b>Assign Item</b></td>
+            <td>Assigns the item to a location (unit or property area).</td>
+            <td>Use when an item is installed/issued to a location.</td>
+          </tr>
+
+          <tr>
+            <td><b>View Item Assignment</b></td>
+            <td>Shows assignment history and current active assignment.</td>
+            <td>Use to confirm where an item is currently placed and review movement history.</td>
+          </tr>
+
+          <tr>
+            <td><b>Create Item Disposal</b></td>
+            <td>Records that an item has been disposed (out of service) and marks it inactive.</td>
+            <td>
+              Use when an item is no longer available for use (e.g., <b>sold</b>, <b>scrapped</b>, <b>lost</b>, <b>donated</b>, <b>stolen</b>, <b>transferred</b>).
+              In most implementations, each item should have only <b>one</b> disposal record (to avoid conflicting status).
+            </td>
+          </tr>
+
+          <tr>
+            <td><b>View Item Disposal</b></td>
+            <td>Shows disposal records (history) for that item.</td>
+            <td>Use to confirm disposal details and audit the reason/date for deactivation.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="note">
+        <b>Key concept:</b> <b>Assignment</b> answers “Where is the item placed?” while <b>Disposal</b> answers “Is the item still active/usable?”
+        A disposed item should not be re-assigned until the disposal entry is reversed/removed and the item is reactivated (if your system supports reactivation).
+      </div>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <section id="inventory-add">
+      <h2>10) Add Inventory Item</h2>
+      <div class="path"><b>Action:</b> Inventory Items list → Tap <b>+</b> to add a new item</div>
+
+      <p>
+        Use the add inventory screen to register an item under a property, capture its identifying details (name and item number),
+        and categorize it (condition, brand, category). Purchase date is optional.
+      </p>
+
+      <h3>Typical fields on Add Inventory screen</h3>
+      <ul>
+        <li><b>Select Property</b></li>
+        <li><b>Item Name</b></li>
+        <li><b>Item Number</b> (serial/meter/asset ID)</li>
+        <li><b>Purchase Date</b> (optional)</li>
+        <li><b>Purchase Value</b></li>
+        <li><b>Item Condition</b> (e.g., New)</li>
+        <li><b>Brand</b> (optional)</li>
+        <li><b>Category</b></li>
+      </ul>
+
+      <div class="note">
+        <b>Tip:</b> Item Number should be unique where possible. This supports inspections, handovers, and audit reconciliation.
+      </div>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <section id="inventory-assign">
+      <h2>11) Assign Item (Inventory Assignment Screen)</h2>
+      <div class="path"><b>Action:</b> Inventory Items list → Long-press item → <b>Assign Item</b></div>
+
+      <p>
+        The <b>Assign Item</b> screen is used to assign an inventory item to a physical location. This can be a unit location
+        (e.g., Apartment 001) or another defined place within the property (e.g., Main Kitchen), depending on the configured Location Types.
+      </p>
+
+      <h3>Fields on the Assign Item screen</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Field</th>
+            <th>What to select / enter</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Item Condition</td>
+            <td>Select the condition at the time of assignment.</td>
+            <td>Useful for tracking deterioration over time.</td>
+          </tr>
+          <tr>
+            <td>Location Type</td>
+            <td>Select the location type (e.g., Kitchen).</td>
+            <td>Location Types standardize where items can be assigned.</td>
+          </tr>
+          <tr>
+            <td>Location</td>
+            <td>Select the specific location (e.g., Main Kitchen).</td>
+            <td>Represents the exact assigned place.</td>
+          </tr>
+          <tr>
+            <td>Assignment Date</td>
+            <td>Tap to select date.</td>
+            <td>Records when the item started being used in that location.</td>
+          </tr>
+          <tr>
+            <td>Notes (optional)</td>
+            <td>Add any notes about the assignment.</td>
+            <td>Example: “Installed by plumber”, “Newly issued”.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Assigning workflow</h3>
+      <ol>
+        <li>Choose Location Type and Location.</li>
+        <li>Select Assignment Date.</li>
+        <li>Optionally add Notes.</li>
+        <li>Tap <b>Assign Item</b> to save the assignment.</li>
+      </ol>
+
+      <div class="note">
+        <b>Important rule:</b> An item can only have <b>one active assignment</b> at a time. To assign the item to a new location,
+        you must first <b>End Assignment</b> on the current assignment.
+      </div>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <section id="inventory-assignment-list">
+      <h2>12) View Item Assignment (Assignment Landing Page)</h2>
+      <div class="path"><b>Action:</b> Inventory Items list → Long-press item → <b>View Item Assignment</b></div>
+
+      <p>
+        The <b>View Item Assignment</b> screen shows assignment records for an item. Each record typically includes:
+      </p>
+      <ul>
+        <li><b>Item Name</b></li>
+        <li><b>Assignment Date</b></li>
+        <li><b>Item Condition</b></li>
+        <li><b>Place Assigned</b> (location code/name)</li>
+        <li><b>Assignment End Date</b>:
+          <ul>
+            <li><b>Active</b> indicates the assignment is still open.</li>
+            <li>A date indicates the assignment has been ended/closed.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <p>
+        Long-press an assignment record on this screen to open additional actions such as <b>Edit</b>, <b>Delete</b>, and <b>End Assignment</b>.
+      </p>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <section id="inventory-assignment-actions">
+      <h2>13) Assignment Actions (Edit, Delete, End Assignment)</h2>
+      <div class="path"><b>Action:</b> View Item Assignment → Long-press an assignment record</div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Action</th>
+            <th>What it does</th>
+            <th>When to use it</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Edit</b></td>
+            <td>Updates assignment details (location type/location, assignment date, notes, condition).</td>
+            <td>Use to correct mistakes (wrong location selected, wrong date, missing notes).</td>
+          </tr>
+          <tr>
+            <td><b>Delete</b></td>
+            <td>Removes an assignment record.</td>
+            <td>Use only for wrong/duplicate assignment entries. For real movement history, prefer ending assignments.</td>
+          </tr>
+          <tr>
+            <td><b>End Assignment</b></td>
+            <td>Closes an active assignment by recording an end date (assignment becomes inactive).</td>
+            <td>
+              Use when an item is removed from that location (transfer, replacement, disposal, relocation).
+              <b>You must end the active assignment before assigning the same item to a new location.</b>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="note">
+        <b>Operational rule:</b> An item cannot be assigned to another location while the current assignment is still <b>Active</b>.
+        End the current assignment first, then create a new assignment for the new location.
+      </div>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <!-- =========================
+         ITEM DISPOSAL (NEW)
+    ========================== -->
+
+    <section id="inventory-disposal">
+      <h2>14) Item Disposal (Taking Items Out of Service)</h2>
+      <div class="path"><b>Action:</b> Inventory Items list → Long-press item → <b>Create Item Disposal</b> / <b>View Item Disposal</b></div>
+
+      <p>
+        <b>Item Disposal</b> is used to record that an item is no longer in service (no longer usable or no longer owned/available),
+        while keeping a clean audit trail for operations and reporting. Typical disposal types include:
+        <b>SOLD</b>, <b>SCRAPPED</b>, <b>LOST</b>, <b>DONATED</b>, <b>STOLEN</b>, and <b>TRANSFERRED</b>.
+      </p>
+
+      <div class="note">
+        <b>Recommended enforcement:</b> One disposal entry per item (unique disposal per item) to ensure the item has only one final “out of service” state.
+        If you need to reverse a disposal, delete the disposal entry and reactivate the item (if your app supports this workflow).
+      </div>
+
+      <h3>Key rules (to prevent inconsistent status)</h3>
+      <ul>
+        <li><b>If an item has an active assignment</b>, you should end the assignment first before disposal (so the item is not shown as “actively assigned” while disposed).</li>
+        <li>After disposal, the item should be marked <b>Inactive</b> and excluded from Active Items counts by default.</li>
+        <li>A disposed item should not be assigned to a new location until it is reactivated (if reactivation is allowed).</li>
+      </ul>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <section id="inventory-disposal-create">
+      <h2>15) Create Item Disposal</h2>
+      <div class="path"><b>Action:</b> Inventory Items list → Long-press item → <b>Create Item Disposal</b></div>
+
+      <p>
+        Use this action to capture the disposal transaction/event for a specific item. The disposal record should capture at least:
+      </p>
+      <ul>
+        <li><b>Item</b> (the selected item_id from the list)</li>
+        <li><b>Disposal Date</b> (when the item left service)</li>
+        <li><b>Disposal Type</b> (e.g., Sold, Scrapped, Lost, Donated, Stolen, Transferred)</li>
+        <li><b>Notes/Remarks</b> (optional but recommended: buyer, police ref, transfer details, etc.)</li>
+      </ul>
+
+      <h3>What happens after saving a disposal record</h3>
+      <ul>
+        <li>The item is marked <b>Inactive</b> (example: <code>date_made_inactive</code> = disposal date).</li>
+        <li>The item will normally not appear under “Active Items” totals.</li>
+        <li>The disposal entry becomes part of the audit trail and can be viewed under <b>View Item Disposal</b>.</li>
+      </ul>
+
+      <div class="note">
+        <b>Implementation note:</b> If you enforce a unique disposal per item, the system should prevent creating a second disposal entry for the same item.
+        In that case, direct the user to <b>View Item Disposal</b> and optionally allow editing/removing the disposal entry (with proper permissions).
+      </div>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <section id="inventory-disposal-view">
+      <h2>16) View Item Disposal (Disposal History)</h2>
+      <div class="path"><b>Action:</b> Inventory Items list → Long-press item → <b>View Item Disposal</b></div>
+
+      <p>
+        This screen shows disposal records for the selected item (or the single disposal record, if you enforce “one disposal per item”).
+        It helps users confirm when and why an item was taken out of service.
+      </p>
+
+      <h3>Typical actions on disposal records</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Action</th>
+            <th>What it does</th>
+            <th>When to use it / important rules</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Delete Disposal (Undo)</b></td>
+            <td>Deletes the disposal entry and reactivates the item (if your workflow supports undo).</td>
+            <td>
+              Use if disposal was recorded by mistake. After deletion, set the item back to active (clear inactive date),
+              then the item can be assigned again if needed.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="note">
+        <b>Operational control:</b> If you support “Undo Disposal” by deleting the disposal record, ensure the item is reactivated
+        and ensure any assignment rules remain valid (for example, do not automatically create a new assignment; user should assign explicitly).
+      </div>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <section id="inventory-import">
+      <h2>17) Bulk Import Inventory Items (Initial Setup)</h2>
+      <div class="path"><b>Screen:</b> Inventory Items list → Template (small +) and CSV Import buttons</div>
+
+      <p class="muted">
+        Inventory records can be bulk imported into the app, and it follows the same pattern used in other modules:
+        <b>generate a template → fill it in Excel → save as CSV → import using the CSV button</b>.
+      </p>
+
+      <h3>How it works (Template → Fill in Excel → Save CSV → Import)</h3>
+      <ol>
+        <li>Tap the <b>template button</b> (small “+”) to generate/download the inventory import template.</li>
+        <li>Fill the template in Excel using the provided columns only (one row per item).</li>
+        <li>If the template includes a date field (e.g., Purchase Date), ensure it is formatted as <code>yyyy-mm-dd</code> before saving CSV.</li>
+        <li>Save/export as <b>CSV</b>.</li>
+        <li>Tap the <b>CSV</b> button and select the saved CSV file to import.</li>
+      </ol>
+
+      <div class="note">
+        <b>Important rules for successful import:</b>
+        <ul>
+          <li><b>Do not change template headers</b> or column order unless the app explicitly allows it.</li>
+          <li>Ensure required fields are provided for every row (especially Property and Item Name/Number as required by the template).</li>
+          <li>After import, verify a sample of items and confirm totals (Total Items / Total Value).</li>
+        </ul>
+      </div>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+    </section>
+
+    <hr />
+    <p class="small muted">End of document.</p>
+  </main>
+</body>
+</html>

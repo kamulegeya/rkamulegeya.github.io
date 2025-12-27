@@ -1,0 +1,873 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Landlord App — Invoices & Receipts</title>
+  <meta name="description" content="Landlord App guide: invoices, receipts, sharing PDFs, overdue invoices actions, bulk invoice processing, migration tools, and settings." />
+  <style>
+    /* Minimal CSS for fast, reliable rendering */
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; color: #111; background: #fff; line-height: 1.55; }
+    main { max-width: 980px; margin: 0 auto; padding: 18px; }
+    header { padding: 12px 0 6px; border-bottom: 1px solid #e6e6e6; margin-bottom: 14px; }
+    h1 { font-size: 24px; margin: 0 0 6px; }
+    h2 { font-size: 18px; margin: 18px 0 8px; }
+    h3 { font-size: 15px; margin: 14px 0 6px; }
+    h4 { font-size: 14px; margin: 12px 0 6px; }
+    p { margin: 0 0 10px; }
+    .muted { color: #555; }
+    .path { background: #f6f7f9; border: 1px solid #e6e6e6; padding: 8px 10px; border-radius: 8px; margin: 10px 0 12px; }
+    nav { margin: 10px 0 0; }
+    nav a { margin-right: 10px; color: #0b57d0; text-decoration: none; white-space: nowrap; }
+    nav a:hover { text-decoration: underline; }
+    hr { border: 0; border-top: 1px solid #e6e6e6; margin: 16px 0; }
+    ul, ol { margin: 8px 0 12px 20px; }
+    li { margin: 4px 0; }
+    table { width: 100%; border-collapse: collapse; margin: 10px 0 14px; }
+    th, td { border: 1px solid #e6e6e6; padding: 8px; vertical-align: top; text-align: left; }
+    th { background: #fafafa; }
+    .note { border-left: 4px solid #0b57d0; padding: 8px 10px; background: #f7fbff; margin: 10px 0 14px; }
+    .warn { border-left: 4px solid #b3261e; padding: 8px 10px; background: #fff7f7; margin: 10px 0 14px; }
+    .small { font-size: 13px; color: #555; }
+    .toplink { font-size: 13px; }
+  </style>
+</head>
+
+<body>
+  <main id="top">
+    <header>
+      <h1>Landlord App — Invoices &amp; Receipts</h1>
+      <p class="muted">
+        This page covers manual invoices, receipts, share/print actions, bulk invoice processing,
+        migration tools, and the <b>Over Due Invoices</b> module for reminders, late charges, bad debt write-off, and recovery.
+      </p>
+      <p class="small"><b>Last updated:</b> December 2025</p>
+
+      <nav aria-label="Contents">
+        <a href="#landing">Invoices Landing</a>
+        <a href="#manual">Manual Invoice</a>
+        <a href="#other">Other Charges</a>
+        <a href="#invoice-menu">Invoice Menu</a>
+        <a href="#credit-notes">Credit/Debit Notes</a>
+        <a href="#bulk">Bulk Invoice Processing</a>
+        <a href="#invoice-migration">Invoice Migration</a>
+        <a href="#receipts">Receipts Landing</a>
+        <a href="#receipt-create">Create Receipt</a>
+        <a href="#receipt-menu">Receipt Menu</a>
+        <a href="#receipt-migration">Receipt Migration</a>
+        <a href="#share-print">Print &amp; Share PDFs</a>
+        <a href="#overdue">Over Due Invoices</a>
+        <a href="#settings-automation">Settings: Email, Reminders &amp; Period Close</a>
+      </nav>
+    </header>
+
+    <!-- INVOICES LANDING PAGE -->
+    <section id="landing">
+      <h2>1) Invoices Landing Page</h2>
+      <div class="path"><b>Screen:</b> Create tenants invoices</div>
+
+      <p>
+        The invoices landing page lists all invoices you have created. Each invoice card typically shows:
+        <b>Tenant</b>, <b>Invoice Number</b>, <b>Date</b>, <b>Amount</b>, and <b>Description</b> (narration),
+        including the covered period and due date.
+      </p>
+
+      <h3>Key actions</h3>
+      <ul>
+        <li><b>SEARCH</b>: find an invoice quickly.</li>
+        <li><b>+</b>: create a new invoice (manual invoice entry).</li>
+        <li><b>Show Other Charges</b>: expands an invoice card to show additional charges attached to it (where available).</li>
+      </ul>
+
+      <div class="note">
+        <b>Context menu:</b> On the invoice landing page, <b>long-press</b> an invoice card to open actions
+        (Edit, Delete, Share PDF, Credit Notes).
+      </div>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <!-- CREATE MANUAL INVOICE -->
+    <section id="manual">
+      <h2>2) Create Manual Invoice</h2>
+      <div class="path"><b>Action:</b> Invoices landing page → Tap <b>+</b></div>
+
+      <p>
+        Manual invoices are used when you want to create an invoice directly (special billing, corrections,
+        off-cycle billing, or one-time invoicing).
+      </p>
+
+      <h3>Fields on the invoice screen</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Field</th>
+            <th>What to enter / select</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Select Tenant (spinner)</td>
+            <td>Select the tenant you are invoicing.</td>
+            <td>Tenant must exist in the Tenants list.</td>
+          </tr>
+          <tr>
+            <td>Invoice #</td>
+            <td>Auto-generated invoice number.</td>
+            <td>Normally you do not need to change it.</td>
+          </tr>
+          <tr>
+            <td>Amount</td>
+            <td>Enter the invoice amount.</td>
+            <td>Typically equals rent + other charges, depending on your workflow.</td>
+          </tr>
+          <tr>
+            <td>Invoice date</td>
+            <td>Double-tap to select invoice date (required).</td>
+            <td>Date the invoice is issued.</td>
+          </tr>
+          <tr>
+            <td>Start date</td>
+            <td>Double-tap to select start date (required).</td>
+            <td>Start of the billing period.</td>
+          </tr>
+          <tr>
+            <td>End date</td>
+            <td>Double-tap to select end date (required).</td>
+            <td>End of the billing period.</td>
+          </tr>
+          <tr>
+            <td>Due date</td>
+            <td>Double-tap to select due date (required).</td>
+            <td>Payment deadline.</td>
+          </tr>
+          <tr>
+            <td>Ex.Rate</td>
+            <td>Exchange rate (defaults to <b>1.00</b>).</td>
+            <td>
+              Use when recording an invoice in a currency that needs conversion for reporting.
+              If not applicable in your workflow, keep <b>1.00</b> (or follow your validation rules).
+            </td>
+          </tr>
+          <tr>
+            <td>Narration</td>
+            <td>Enter invoice narration (required).</td>
+            <td>Include unit + period + due date for clarity.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <!-- OTHER CHARGES -->
+    <section id="other">
+      <h2>3) Other Charges</h2>
+      <div class="path"><b>Action:</b> Invoice screen → Other Charges → Tap <b>+ Add</b></div>
+
+      <p>
+        <b>Other Charges</b> are additional billable items attached to an invoice, such as cleaning, maintenance, or late-payment-related fees.
+      </p>
+
+      <ul>
+        <li>Tap <b>+ Add</b> to add one or more items.</li>
+        <li>After saving, use <b>Show Other Charges</b> on an invoice card to view the breakdown.</li>
+        <li>VAT treatment (if applicable) depends on your VAT setup (Usage Types, owner VAT registration, and VATable flags).</li>
+      </ul>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <!-- INVOICE CONTEXT MENU -->
+    <section id="invoice-menu">
+      <h2>4) Invoice Context Menu (Long-press actions)</h2>
+      <div class="path"><b>Action:</b> Invoices landing page → <b>Long-press</b> an invoice card</div>
+
+      <h3>Context menu items</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Menu item</th>
+            <th>What it does</th>
+            <th>When to use it</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Edit Invoice</b></td>
+            <td>Opens the invoice for editing.</td>
+            <td>Use to correct dates, amount, narration, or add/update exchange rates where applicable.</td>
+          </tr>
+          <tr>
+            <td><b>Delete Invoice</b></td>
+            <td>Removes the invoice record.</td>
+            <td>Use only for incorrect/duplicate invoices. Prefer credit notes for issued invoices.</td>
+          </tr>
+          <tr>
+            <td><b>Share PDF</b></td>
+            <td>Generates a PDF invoice and opens Android sharing options.</td>
+            <td>Send via WhatsApp/email or save/print.</td>
+          </tr>
+          <tr>
+            <td><b>Create Credit Note</b></td>
+            <td>Creates a credit/debit note linked to the invoice.</td>
+            <td>Adjust an issued invoice while keeping an audit trail.</td>
+          </tr>
+          <tr>
+            <td><b>View Credit Notes</b></td>
+            <td>Shows notes already created for that invoice.</td>
+            <td>Review adjustment history.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <!-- CREDIT & DEBIT NOTES -->
+    <section id="credit-notes">
+      <h2>5) Credit &amp; Debit Notes</h2>
+      <div class="path"><b>Action:</b> Long-press invoice → <b>Create Credit Note</b></div>
+
+      <p>
+        Credit/debit notes are used to adjust an invoice after it has been created, without deleting it.
+      </p>
+
+      <ul>
+        <li><b>Credit</b>: reduces the amount owed (discount, correction, waiver).</li>
+        <li><b>Debit</b>: increases the amount owed (additional charge discovered later).</li>
+      </ul>
+
+      <div class="note">
+        <b>Best practice:</b> Use credit/debit notes instead of deleting invoices that were already shared with a tenant.
+      </div>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <!-- BULK INVOICE PROCESSING -->
+    <section id="bulk">
+      <h2>6) Bulk Invoice Processing</h2>
+      <div class="path"><b>Navigation:</b> Main menu (drawer) → <b>Bulk Invoice Process</b></div>
+
+      <p>Bulk Invoice Processing has two major parts:</p>
+
+      <h3>A) Batch Invoice Processing (routine periodic invoicing)</h3>
+      <p>
+        Use this for normal routine periodic invoicing. The list is automatically populated with all unbilled invoices
+        for all active tenancies.
+      </p>
+      <ul>
+        <li>If the list shows <b>“No records to display”</b>, it means your invoicing is fully up to date.</li>
+        <li>You can delete the batch at any time (if you need to restart or correct setup).</li>
+      </ul>
+
+      <div class="note">
+        <b>Editing invoices in the batch:</b>
+        Long-press any invoice row to open the context menu. Use <b>Edit</b> to enter additional details such as exchange rates.
+      </div>
+
+      <h3>B) Invoice History Migration (for past periods already handled)</h3>
+      <p>
+        Use invoice migration ONLY for older periods you want to register in the system (historical billing),
+        especially where money has already been collected and you need complete records for reporting.
+      </p>
+
+      <ul>
+        <li>Select the property you are migrating.</li>
+        <li>Choose the Start and End period (monthly intervals).</li>
+        <li>Preview a CSV “Dry-Run” before posting.</li>
+        <li>Review all generated invoices carefully before final posting.</li>
+      </ul>
+
+      <div class="warn">
+        <b>Important:</b>
+        <ul>
+          <li>Do NOT use migration for normal monthly invoicing.</li>
+          <li>Do NOT migrate future periods.</li>
+          <li>Ensure tenancy start/end dates are correct before generating.</li>
+        </ul>
+      </div>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <!-- INVOICE MIGRATION (DEDICATED ANCHOR) -->
+    <section id="invoice-migration">
+      <h2>7) Invoice Migration (Dedicated Notes)</h2>
+      <p>
+        <b>Example:</b> If you want to migrate 2023 invoices for Property A:
+      </p>
+      <ul>
+        <li>Start Date: 2023-01-01</li>
+        <li>End Date: 2023-12-31</li>
+        <li>The system generates 12 invoices automatically (one per month).</li>
+      </ul>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <!-- RECEIPTS LANDING PAGE -->
+    <section id="receipts">
+      <h2>8) Receipts Landing Page</h2>
+      <div class="path"><b>Screen:</b> Create tenant receipts</div>
+
+      <p>
+        The receipts landing page lists all receipts recorded for tenants.
+      </p>
+
+      <h3>Key actions</h3>
+      <ul>
+        <li><b>SEARCH</b>: find a receipt quickly.</li>
+        <li><b>+</b>: create a new receipt.</li>
+      </ul>
+
+      <div class="note">
+        <b>Context menu:</b> On the receipts landing page, <b>long-press</b> a receipt card to open actions
+        (Edit, Delete, Share PDF, Send SMS).
+      </div>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+<!-- CREATE RECEIPT -->
+<section id="receipt-create">
+  <h2>9) Create Receipt</h2>
+  <div class="path"><b>Action:</b> Receipts landing page → Tap <b>+</b></div>
+
+  <p>
+    Receipts record actual payments received from tenants (cash, mobile money, bank/EFT, cheque, etc.).
+    You can save a receipt as a standalone record and (optionally) apply it to one or more invoices to reduce balances.
+  </p>
+
+  <div class="warn">
+    <b>Forex receipts (non-home currency):</b>
+    If you select a <b>non-home currency</b> and leave the exchange rate as <b>1</b>, the app will warn you.
+    Update the exchange rate if you need conversion for reporting; otherwise follow your workflow/validation rules.
+  </div>
+
+  <h3>A) Receipt header fields</h3>
+  <p>Complete the receipt details first before applying it to invoices.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 28%;">Field</th>
+        <th>What to enter</th>
+        <th style="width: 30%;">Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b>Select a tenant</b></td>
+        <td>Choose the tenant receiving the receipt.</td>
+        <td>Required. This drives which invoices can be shown for allocation.</td>
+      </tr>
+      <tr>
+        <td><b>Currency</b></td>
+        <td>Select the currency used for the payment (e.g., Uganda Shillings).</td>
+        <td>Invoices must be the <b>same currency</b> to apply (see below).</td>
+      </tr>
+      <tr>
+        <td><b>Receipt Amount</b></td>
+        <td>Enter the total amount received.</td>
+        <td>Required. This total will be allocated across invoices (Applied) or left remaining (Unapplied).</td>
+      </tr>
+      <tr>
+        <td><b>Receipt Date</b></td>
+        <td>Confirm or change the payment date.</td>
+        <td>Defaults to today; adjust for backdated receipts.</td>
+      </tr>
+      <tr>
+        <td><b>Narration</b></td>
+        <td>Enter a clear description (e.g., “Dec rent payment – House 1”).</td>
+        <td>Required. Use consistent narration to simplify reporting/audit review.</td>
+      </tr>
+      <tr>
+        <td><b>Payment Method</b></td>
+        <td>Select method (Cash, Mobile Money, Bank/EFT, Cheque, etc.).</td>
+        <td>Choose the most accurate method; it affects how you track references.</td>
+      </tr>
+      <tr>
+        <td><b>Payment Reference</b></td>
+        <td>Enter Mobile Money transaction ID, Cheque #, EFT reference, etc.</td>
+        <td>Recommended for non-cash payments for reconciliation.</td>
+      </tr>
+      <tr>
+        <td><b>Paid By</b></td>
+        <td>Name of the payer (optional).</td>
+        <td>Useful when a third party pays on behalf of the tenant.</td>
+      </tr>
+      <tr>
+        <td><b>Received/Recorded By</b></td>
+        <td>Staff/collector name (optional).</td>
+        <td>Recommended for accountability and audit traceability.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>B) Apply receipt to invoices (optional)</h3>
+  <p>
+    After entering the receipt header, you may allocate the receipt to one or more invoices. This reduces invoice balances.
+  </p>
+
+  <div class="note">
+    <b>Currency rule:</b> Receipt and invoice must be in the <b>same currency</b>. If you do not see invoices to select,
+    confirm the tenant and currency are correct.
+  </div>
+
+  <h4>Allocation controls</h4>
+  <ul>
+    <li><b>Exchange Rate (default 1)</b> — used for conversion when working with non-home currency (if your workflow requires it).</li>
+    <li><b>Select All</b> — selects all invoices in the list for quicker allocation.</li>
+    <li><b>Clear All</b> — removes all selections and resets the allocation inputs.</li>
+  </ul>
+
+  <h4>Invoice list and amounts</h4>
+  <p>
+    The invoice list shows each invoice (ID and balance). Tick the checkbox to apply the receipt to that invoice, then enter an amount.
+  </p>
+  <ul>
+    <li><b>Invoice ID</b> — identifier for the invoice you are settling.</li>
+    <li><b>Balance</b> — outstanding amount on the invoice.</li>
+    <li><b>Enter amount</b> — how much of the receipt to apply to that invoice (do not exceed the invoice balance unless your rules allow).</li>
+  </ul>
+
+  <h4>Applied vs Unapplied totals</h4>
+  <ul>
+    <li><b>Applied</b> — sum allocated to selected invoices.</li>
+    <li><b>Unapplied</b> — remaining amount not yet allocated.</li>
+  </ul>
+
+  <div class="warn">
+    <b>Validation tip:</b> Before saving, confirm that the applied amounts make sense and that <b>Unapplied</b> is expected
+    (e.g., partial payments) or becomes zero if you intend to fully allocate the receipt.
+  </div>
+
+  <h4>Save</h4>
+  <p>
+    Tap <b>Save Receipt</b> to store the receipt and (if allocations were selected) apply it to the chosen invoices.
+  </p>
+
+  <h3>C) Recommended workflow</h3>
+  <ol>
+    <li>Receipts → Tap <b>+</b></li>
+    <li>Select tenant and currency</li>
+    <li>Enter receipt amount, date, and narration</li>
+    <li>Select payment method and fill payment reference (as applicable)</li>
+    <li>(Optional) Allocate to invoices using checkboxes and amounts</li>
+    <li>Verify <b>Applied</b> and <b>Unapplied</b></li>
+    <li>Tap <b>Save Receipt</b></li>
+  </ol>
+
+  <p class="toplink"><a href="#top">Back to top</a></p>
+  <hr />
+</section>
+
+
+   <!-- RECEIPT CONTEXT MENU -->
+<section id="receipt-menu">
+  <h2>10) Receipt Context Menu (Long-press actions)</h2>
+  <div class="path"><b>Action:</b> Receipts landing page → <b>Long-press</b> a receipt card</div>
+
+  <p>
+    On the Receipts landing page, each receipt appears as a card showing key details (Receipt #, Tenant, Date, Amount,
+    and Narration). Long-pressing a card opens a context menu with actions for managing that receipt.
+  </p>
+
+  <h3>A) What you see on the Receipts landing page</h3>
+  <ul>
+    <li><b>Header title</b> (example: “Create tenant receipts”) and a <b>SEARCH</b> action for quick filtering.</li>
+    <li><b>Receipt cards</b> that summarize each receipt:
+      <ul>
+        <li><b>Receipt:</b> receipt reference (e.g., RCT-000018)</li>
+        <li><b>Tenant:</b> tenant name</li>
+        <li><b>Date:</b> receipt date</li>
+        <li><b>Amount:</b> receipt amount</li>
+        <li><b>Narration:</b> receipt narration/description</li>
+      </ul>
+    </li>
+    <li><b>Floating “+” button</b> to create a new receipt.</li>
+  </ul>
+
+  <div class="note">
+    <b>Tip:</b> Use <b>SEARCH</b> to find receipts by tenant, receipt number, date, or narration keywords (depending on your app’s filter rules).
+  </div>
+
+  <h3>B) How to open the context menu</h3>
+  <ol>
+    <li>Go to the Receipts landing page.</li>
+    <li>Locate the receipt card you want to manage.</li>
+    <li><b>Long-press</b> the receipt card to open the context menu.</li>
+  </ol>
+
+  <div class="warn">
+    <b>Device behavior:</b> On some devices/Android versions, a normal tap may expand the card or open details,
+    while <b>long-press</b> opens the context actions menu. Use long-press for the menu actions below.
+  </div>
+
+  <h3>C) Context menu actions</h3>
+  <p>The context menu typically includes the following actions:</p>
+
+  <h4>1) Edit Receipt</h4>
+  <ul>
+    <li>Opens the receipt form pre-filled with the selected receipt details.</li>
+    <li>Update fields such as amount, date, narration, payment method/reference, payer/collector, or invoice allocations (if supported).</li>
+    <li>Tap <b>Save</b> to apply changes.</li>
+  </ul>
+
+  <h4>2) Delete Receipt</h4>
+  <ul>
+    <li>Removes the receipt record from the system.</li>
+    <li>Typically prompts a confirmation before deletion.</li>
+  </ul>
+
+  <div class="warn">
+    <b>Data integrity:</b> If the receipt was applied to invoices, deletion may affect invoice balances and reporting.
+    Confirm your business rules before deleting applied receipts.
+  </div>
+
+  <h4>3) Share PDF</h4>
+  <ul>
+    <li>Generates a PDF receipt document (where supported).</li>
+    <li>Opens the share sheet so you can send via email, WhatsApp, Drive, etc.</li>
+    <li>Use this for official tenant acknowledgements or internal filing.</li>
+  </ul>
+
+  <h4>4) Send SMS</h4>
+  <ul>
+    <li>Sends a receipt notification/summary to the tenant via SMS (where supported).</li>
+    <li>May require SMS permissions and a configured SMS provider or device SMS capability.</li>
+  </ul>
+
+  <div class="note">
+    <b>Operational note:</b> If <b>Send SMS</b> fails, confirm the tenant has a valid phone number on file and that
+    messaging permissions/provider settings are correctly configured.
+  </div>
+
+  <h3>D) Recommended usage guidelines</h3>
+  <ul>
+    <li>Use <b>Edit</b> for corrections (typos, wrong narration, wrong reference) rather than creating duplicates.</li>
+    <li>Use <b>Share PDF</b> for audit-ready documentation and tenant proof of payment.</li>
+    <li>Use <b>Send SMS</b> for quick confirmation to tenants immediately after recording payment.</li>
+    <li>Use <b>Delete</b> sparingly and only when you are certain the receipt is invalid or duplicated.</li>
+  </ul>
+
+  <p class="toplink"><a href="#top">Back to top</a></p>
+  <hr />
+</section>
+
+    <!-- RECEIPT MIGRATION -->
+    <section id="receipt-migration">
+      <h2>11) Receipt Imports (CSV / Batch Import)</h2>
+
+      <p>
+        Use <b>Receipt Import</b> when you already have receipts recorded outside the app (historical receipts, receipts from another system,
+        or a bulk capture from a spreadsheet). Importing loads receipts into a <b>staging area</b> (the receipt batch tables) where you can review,
+        allocate to invoices, then <b>Post</b> to create final receipts in the main receipts list.
+      </p>
+
+      <h3>A) Download the import template</h3>
+      <ul>
+        <li>Open <b>Receipt Import</b> (Receipt Migration / Batch Import screen).</li>
+        <li>Tap <b>Create Template</b> to generate <b>receipt_migration_template.csv</b>.</li>
+        <li>Open the CSV in Excel / Google Sheets, then fill your rows.</li>
+      </ul>
+
+      <h3>B) Template columns</h3>
+      <p class="small muted">Columns are case-insensitive in practice, but values must match your existing tenant/currency names and symbols.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Column</th>
+            <th>Required</th>
+            <th>How it is used</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>tenant_name</b></td>
+            <td>Yes</td>
+            <td>Must match a tenant already created in the app.</td>
+          </tr>
+          <tr>
+            <td><b>currency_symbol</b></td>
+            <td>Yes</td>
+            <td>Must match a currency symbol in the app (example: UGX, USD).</td>
+          </tr>
+          <tr>
+            <td><b>payment_method</b></td>
+            <td>No</td>
+            <td>
+              Method name such as Cash, Mobile Money, Bank, Airtel Money, MTN MoMo.
+              If the method does not exist, the app can create it automatically (depending on your implementation).
+            </td>
+          </tr>
+          <tr>
+            <td><b>payment_ref</b></td>
+            <td>No</td>
+            <td>Transaction reference (MoMo/Airtel/Bank reference). Leave blank for cash.</td>
+          </tr>
+          <tr>
+            <td><b>paid_by</b></td>
+            <td>No</td>
+            <td>Payer name (optional). Useful where the payer is not the tenant (agent/relative/company).</td>
+          </tr>
+          <tr>
+            <td><b>received_by</b></td>
+            <td>No</td>
+            <td>Staff / collector / person who recorded the payment (optional).</td>
+          </tr>
+          <tr>
+            <td><b>date_made</b></td>
+            <td>Yes</td>
+            <td><b>Strict format:</b> yyyy-mm-dd.</td>
+          </tr>
+          <tr>
+            <td><b>receipt_amount</b></td>
+            <td>Yes</td>
+            <td>Total receipt amount (the amount paid).</td>
+          </tr>
+          <tr>
+            <td><b>narration</b></td>
+            <td>Yes</td>
+            <td>Description that will appear on the receipt PDF.</td>
+          </tr>
+          <tr>
+            <td><b>exchange_rate</b></td>
+            <td>No</td>
+            <td>Defaults to 1. Use when the receipt currency needs conversion for reporting.</td>
+          </tr>
+          <tr>
+            <td><b>Invoice_number</b></td>
+            <td>No</td>
+            <td>Invoice to apply against. Leave blank if you will allocate later in the staging screen.</td>
+          </tr>
+          <tr>
+            <td><b>amount_applied</b></td>
+            <td>No</td>
+            <td>Amount applied to that invoice. Leave blank/0 if you will allocate later.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="note">
+  <b>Multiple invoices for one receipt:</b>
+  If one payment covers <b>more than one invoice</b>, do not fill in
+  <b>Invoice_number</b>, <b>Invoice_amount</b>, or any <b>Applied amount</b> on the receipt/import row.
+  Leave these fields blank, save/import the receipt, then use the <b>Apply</b> button on the Import screen
+  to allocate the receipt across the relevant invoices.
+</div>
+
+
+      <h3>C) Import the CSV</h3>
+      <ul>
+        <li>Tap <b>Import CSV</b> and select your completed file.</li>
+        <li>The import validates tenants and currencies. If a tenant or currency does not exist, the import will stop (so you can correct the data).</li>
+        <li>Optional fields (payment method, refs, payer, received by, invoice details) may be blank.</li>
+      </ul>
+
+      <div class="warn">
+        <b>CSV formatting tip:</b> If narration contains commas, wrap the field in quotes in your CSV (example: <code>"Rent, Dec 2025"</code>).
+      </div>
+
+      <h3>D) How staging works (when invoice details are missing)</h3>
+      <p>
+        After import, all rows are stored in the <b>receipt batch</b> staging tables. If a row has no <b>Invoice_number</b> or the <b>Invoice_amount</b> is zero,
+        the receipt is still staged, but it will have <b>no allocations</b>. In the staging screen, select the receipt and allocate it to invoices by entering
+        applied amounts per invoice, then save.
+      </p>
+
+      <ul>
+        <li><b>Receipts without allocations</b> remain in staging until you allocate and post.</li>
+        <li><b>Partial allocations</b> are allowed: you can apply only part of the receipt amount to one invoice and leave the remainder unapplied (or apply to another invoice).</li>
+        <li>When ready, tap <b>Post</b> to create the final receipt record and its invoice applications.</li>
+      </ul>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+<!-- SHARE / PRINT -->
+    <section id="share-print">
+      <h2>12) Print &amp; Share Invoices and Receipts with Tenants</h2>
+
+      <h3>A) Share / Print an Invoice</h3>
+      <div class="path"><b>Action:</b> Invoices landing page → <b>Long-press</b> an invoice → <b>Share PDF</b></div>
+
+      <h3>B) Share / Print a Receipt</h3>
+      <div class="path"><b>Action:</b> Receipts landing page → <b>Long-press</b> a receipt → <b>Share PDF</b></div>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <!-- OVERDUE INVOICES -->
+    <section id="overdue">
+      <h2>9) Over Due Invoices (Main Menu)</h2>
+      <div class="path"><b>Navigation:</b> Main menu (drawer) → <b>Over Due Invoices</b></div>
+
+      <p>
+        The <b>Over Due Invoices</b> module lists invoices whose due dates have passed and are not fully paid.
+        It supports follow-up actions (reminders and demand notes), late fee computation, and bad debt management (write-off and recovery).
+      </p>
+
+      <h3>Tabs on the Over Due Invoices screen</h3>
+      <ul>
+        <li><b>Over Due Invoices</b>: shows invoices currently overdue (unpaid/partially paid beyond the due date).</li>
+        <li><b>Bad Debts Written off</b>: shows invoices (or balances) that were written off as bad debt.</li>
+        <li><b>Run Late Charges Reports</b>: generate PDF/CSV late fee reports for a date range and (optionally) a tenant.</li>
+      </ul>
+
+      <h3>Context menu actions (three-dot menu)</h3>
+      <div class="path"><b>How to access:</b> On an overdue invoice card, tap the <b>three-dot</b> menu</div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Action</th>
+            <th>What it does</th>
+            <th>Notes / best practice</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Send WhatsApp Reminder</b></td>
+            <td>Opens WhatsApp with a reminder message for the tenant about the overdue invoice.</td>
+            <td>Use for friendly follow-up. Confirm tenant phone numbers are correct.</td>
+          </tr>
+          <tr>
+            <td><b>Send Demand Note</b></td>
+            <td>Creates and/or shares a formal demand notice for payment.</td>
+            <td>Use when reminders have not worked and you need a more formal notice.</td>
+          </tr>
+          <tr>
+            <td><b>Compute Late Charges</b></td>
+            <td>Computes late payment charges for the selected overdue invoice.</td>
+            <td>Uses the tenant’s tenancy-term late-charge setup (method) plus invoice days late and balance.</td>
+          </tr>
+          <tr>
+            <td><b>Write Off Bad Debt</b></td>
+            <td>Marks the outstanding amount (or part of it) as bad debt written off.</td>
+            <td>Use when recovery is unlikely; record the reason clearly.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Bad debt recovery</h3>
+      <p>
+        If a tenant later pays a previously written-off amount, use <b>Record Bad Debt Recovered</b> from the record’s three-dot menu
+        under <b>Bad Debts Written off</b>. This keeps reporting accurate (written off vs recovered).
+      </p>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+    </section>
+
+    <!-- SETTINGS: EMAIL AUTOMATION, REMINDERS, PERIOD CLOSE -->
+    <section id="settings-automation">
+      <h2>14) Settings: Auto Emailing, Reminders &amp; Period Close</h2>
+      <div class="path"><b>Navigation:</b> Main menu (drawer) → <b>Settings</b></div>
+
+      <h3>Email Automation</h3>
+      <p>
+        Use Email Automation toggles to automatically send invoices, receipts, reminders, and monthly statements.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Setting</th>
+            <th>What it does</th>
+            <th>When to enable</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Automatically Email Invoices</b></td>
+            <td>Sends invoices automatically after posting/finalizing.</td>
+            <td>Enable if you want tenants to receive invoices immediately once posted.</td>
+          </tr>
+          <tr>
+            <td><b>Automatically Email Receipts</b></td>
+            <td>Sends receipts automatically when payments are recorded.</td>
+            <td>Enable if you want tenants to always receive proof of payment.</td>
+          </tr>
+          <tr>
+            <td><b>Due Date Reminders</b></td>
+            <td>Sends reminders before the invoice due date.</td>
+            <td>Enable to reduce late payments and improve collections.</td>
+          </tr>
+          <tr>
+            <td><b>Reminder Lead Time (Days)</b></td>
+            <td>Sets how many days before due date a reminder is sent.</td>
+            <td>Set to match your policy (example: 3–7 days).</td>
+          </tr>
+          <tr>
+            <td><b>Auto Email Monthly Statements</b></td>
+            <td>Sends statements automatically.</td>
+            <td>Enable if you send routine statements for reconciliation.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- NEW: ACCOUNTING PERIODS -->
+      <h3 id="accounting-periods">Accounting Periods (Period Close)</h3>
+      <p>
+        Accounting Periods help you control when financial records can be changed. This is useful for month-end or year-end closing,
+        and for preventing edits to finalized periods.
+      </p>
+
+      <h4>Close Current Period</h4>
+      <p>
+        <b>Close Current Period</b> “locks all financial records up to the selected date.” After closing, records dated on or before the
+        selected closing date are treated as finalized.
+      </p>
+      <ul>
+        <li>Use this after you have finished posting invoices/receipts and reviewed your reports for the period.</li>
+        <li>Choose a closing date that matches your accounting cutoff (e.g., end of month).</li>
+      </ul>
+
+      <div class="warn">
+        <b>Important:</b> Close a period only when you are confident the period is complete. If you later discover an issue,
+        the safest workflow is usually to post a correcting entry in the next open period (rather than changing closed records),
+        depending on your internal accounting rules.
+      </div>
+
+      <h4>Current Open Period</h4>
+      <p>
+        <b>Current Open Period</b> displays the start date of the open period. Use it as a quick confirmation of the earliest date that
+        remains “open” for normal operational updates.
+      </p>
+
+      <h4>View Closed Period History</h4>
+      <p>
+        <b>View Closed Period History</b> lists all closed accounting periods. Use it to confirm what dates were closed and when,
+        especially during audits or when reviewing historical reports.
+      </p>
+
+      <div class="note">
+        <b>Recommended before closing:</b>
+        <ul>
+          <li>Back up your data.</li>
+          <li>Confirm invoices and receipts are posted and reconciled for the period.</li>
+          <li>Generate/Export key reports (PDF/CSV) for your records.</li>
+        </ul>
+      </div>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+    </section>
+
+    <hr />
+    <p class="small muted">End of guide.</p>
+  </main>
+</body>
+</html>
