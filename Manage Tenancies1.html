@@ -1,0 +1,626 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Landlord App — Tenants, Tenancies & Security Deposit Guide</title>
+  <meta name="description" content="Guide for Landlord App: Tenants landing page, creating tenants, bulk importing tenants/tenancies, creating tenancies, tenancy actions, and managing security deposit fees." />
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; color: #111; background: #fff; line-height: 1.55; }
+    main { max-width: 980px; margin: 0 auto; padding: 18px; }
+    header { padding: 12px 0 6px; border-bottom: 1px solid #e6e6e6; margin-bottom: 14px; }
+    h1 { font-size: 24px; margin: 0 0 6px; }
+    h2 { font-size: 18px; margin: 18px 0 8px; }
+    h3 { font-size: 15px; margin: 14px 0 6px; }
+    h4 { font-size: 14px; margin: 12px 0 6px; }
+    p { margin: 0 0 10px; }
+    .muted { color: #555; }
+    .path { background: #f6f7f9; border: 1px solid #e6e6e6; padding: 8px 10px; border-radius: 8px; margin: 10px 0 12px; }
+    nav { margin: 10px 0 0; }
+    nav a { margin-right: 10px; color: #0b57d0; text-decoration: none; white-space: nowrap; }
+    nav a:hover { text-decoration: underline; }
+    hr { border: 0; border-top: 1px solid #e6e6e6; margin: 16px 0; }
+    ul, ol { margin: 8px 0 12px 20px; }
+    li { margin: 4px 0; }
+    table { width: 100%; border-collapse: collapse; margin: 10px 0 14px; }
+    th, td { border: 1px solid #e6e6e6; padding: 8px; vertical-align: top; text-align: left; }
+    th { background: #fafafa; }
+    .note { border-left: 4px solid #0b57d0; padding: 8px 10px; background: #f7fbff; margin: 10px 0 14px; }
+    .small { font-size: 13px; color: #555; }
+    .toplink { font-size: 13px; }
+    code { background: #f6f7f9; border: 1px solid #e6e6e6; padding: 1px 6px; border-radius: 6px; }
+  </style>
+</head>
+
+<body>
+  <main id="top">
+    <header>
+      <h1>Landlord App — Tenants, Tenancies & Security Deposits</h1>
+      <p class="muted">Focused guide for Tenant records, Tenancies (assignment), tenancy actions, bulk import for initial setup, and Security Deposit Fee management.</p>
+      <p class="small"><b>Last updated:</b> December 2025</p>
+
+      <nav aria-label="Contents">
+        <a href="#landing">Tenants Landing Page</a>
+        <a href="#add-tenant">Create Tenant</a>
+        <a href="#bulk-tenant-import">Bulk Import Tenants</a>
+        <a href="#create-tenancy">Create Tenancy</a>
+        <a href="#bulk-tenancy-import">Bulk Import Tenancies</a>
+        <a href="#tenancy-actions">Tenancy Actions</a>
+        <a href="#security-deposit">Security Deposit Fee</a>
+      </nav>
+    </header>
+
+    <!-- TENANTS LANDING PAGE -->
+    <section id="landing">
+      <h2>1) Tenants Landing Page (Add Tenants tab)</h2>
+      <div class="path"><b>Menu area:</b> Tenants → <b>Add Tenants</b> (tab)</div>
+
+      <p>
+        When you open the <b>Tenants</b> module, the landing page shows a list of saved tenants. Each record displays key
+        fields such as <b>Name</b> and <b>Tel</b>, and may show other details (TIN, NIN, Email, Next of Kin) where available.
+      </p>
+
+      <h3>Common actions</h3>
+      <ul>
+        <li><b>Search</b>: quickly locate a tenant (by name/phone depending on your app search behavior).</li>
+        <li><b>Edit</b> (pencil icon): update tenant details.</li>
+        <li><b>Delete</b> (X icon): remove a tenant record.</li>
+        <li><b>Add</b>: create a new tenant.</li>
+      </ul>
+
+      <div class="note">
+        <b>Recommendation:</b> Keep tenant records complete (phone number, IDs, and email where applicable) to support accurate billing,
+        compliance, and communication. For large initial setup, consider <b>Bulk Import Tenants</b> using the template and CSV import workflow.
+      </div>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <!-- CREATE TENANT -->
+    <section id="add-tenant">
+      <h2>2) Create Tenant</h2>
+      <div class="path"><b>Menu area:</b> Tenants → Add Tenants → <b>Add Tenant</b></div>
+
+      <h3>Steps</h3>
+      <ol>
+        <li>Open the <b>Tenants</b> module.</li>
+        <li>Stay on the <b>Add Tenants</b> tab.</li>
+        <li>Tap <b>+</b> (or <b>Add Tenant</b>) to open the tenant form.</li>
+        <li>Select a <b>Tenant Type</b>, then complete the fields shown for that type.</li>
+        <li>Tap <b>Add Tenant</b> to save.</li>
+      </ol>
+
+      <h3>Tenant fields (common)</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Field (as shown in the app)</th>
+            <th>What to enter</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Tenant Type (spinner)</td>
+            <td>Select tenant type (e.g., Individual, Government).</td>
+            <td>Controls which detail section appears below.</td>
+          </tr>
+          <tr>
+            <td>Full Name</td>
+            <td>Tenant name (person or organization name).</td>
+            <td>Use the legal name for proper records and billing.</td>
+          </tr>
+          <tr>
+            <td>Telephone Number</td>
+            <td>Tenant phone number.</td>
+            <td>Recommended for rent follow-up and communication.</td>
+          </tr>
+          <tr>
+            <td>Tenant TIN</td>
+            <td>Tenant tax ID / TIN (if applicable).</td>
+            <td>Often required for corporate/government tenants depending on compliance needs.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Individual Tenant Details (when Tenant Type = Individual)</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Field</th>
+            <th>What to enter</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Email Address</td>
+            <td>Tenant email.</td>
+            <td>Useful for sending statements/invoices where applicable.</td>
+          </tr>
+          <tr>
+            <td>National ID (NIN)</td>
+            <td>National Identification Number.</td>
+            <td>Use official ID format.</td>
+          </tr>
+          <tr>
+            <td>Next of Kin</td>
+            <td>Next of kin name.</td>
+            <td>Recommended for emergency/reference details.</td>
+          </tr>
+          <tr>
+            <td>Next of Kin Tel. Number</td>
+            <td>Next of kin phone number.</td>
+            <td>Ensure it is reachable.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Corporate / Organization Details (when Tenant Type is Government / Organization)</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Field</th>
+            <th>What to enter</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Contact Person</td>
+            <td>Main contact name at the organization.</td>
+            <td>Used for official communication and follow-up.</td>
+          </tr>
+          <tr>
+            <td>Contact Person Telephone</td>
+            <td>Contact person phone number.</td>
+            <td>Use a direct/active line where possible.</td>
+          </tr>
+          <tr>
+            <td>Contact Person Email</td>
+            <td>Contact person email.</td>
+            <td>Recommended for official notices and billing communication.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <!-- BULK IMPORT TENANTS -->
+    <section id="bulk-tenant-import">
+      <h2>3) Bulk Import Tenants (Initial Setup)</h2>
+      <div class="path"><b>Menu area:</b> Tenants → <b>Add Tenants</b> (tab)</div>
+
+      <p class="muted">
+        For big landlords and agencies, tenant onboarding can be accelerated by capturing tenant data in an Excel template and bulk-importing it into the app.
+        The template is generated from the Tenants screen, completed on a laptop/desktop, saved as CSV, then imported back into the app.
+      </p>
+
+      <h3>When to use bulk import</h3>
+      <ul>
+        <li>Initial onboarding where you have a substantial number of tenants to capture at once.</li>
+        <li>You already have tenant records in a spreadsheet and need a quick migration approach.</li>
+      </ul>
+
+      <h3>How it works (Template → Fill in Excel → Save CSV → Import)</h3>
+      <ol>
+        <li>
+          On <b>Tenants → Add Tenants</b>, tap the <b>template button</b> (the button with a <b>small “+”</b> icon).
+          The app generates/downloads a tenant import template.
+        </li>
+        <li>
+          Open the template on a computer (Excel or another spreadsheet tool). Fill in the tenant records using the provided columns only.
+        </li>
+        <li>
+          Save/export the completed sheet as a <b>CSV file</b> (Comma Separated Values).
+        </li>
+        <li>
+          Back on the <b>Add Tenants</b> screen, tap the <b>CSV Import</b> button (the button labeled <b>CSV</b>) and select the saved CSV file to import.
+        </li>
+      </ol>
+
+      <div class="note">
+        <b>Important rules for successful import:</b>
+        <ul>
+          <li><b>Do not change the template headers</b> (column names) or their order unless the app explicitly allows it.</li>
+          <li>Complete all required fields for every tenant row (especially tenant name and telephone).</li>
+          <li>Use consistent formatting for phone numbers and IDs to minimize duplicates and failed imports.</li>
+          <li>Prefer saving CSV as <b>UTF-8</b> where names may include special characters.</li>
+          <li>After import, search a few tenants and confirm key details (type, telephone, and ID fields) are correct.</li>
+        </ul>
+      </div>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <!-- CREATE TENANCY -->
+    <section id="create-tenancy">
+      <h2>4) Create Tenancy (Assign Tenant to an Apartment/Unit)</h2>
+      <div class="path"><b>Menu area:</b> Tenants → <b>Add Tenancy</b> (tab)</div>
+
+      <p>
+        A <b>Tenancy</b> links a tenant to an apartment/unit, defines the tenancy term rules, sets the billing currency,
+        and captures rent amount and dates. It can also include <b>Recurring Charges</b> (extra charges billed regularly).
+      </p>
+
+      <h3>Fields on the Add Tenancy screen</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Field</th>
+            <th>What to select / enter</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Select a tenant (spinner)</td>
+            <td>Choose the tenant to occupy the unit.</td>
+            <td>Tenant must be created first.</td>
+          </tr>
+          <tr>
+            <td>Select an apartment (spinner)</td>
+            <td>Choose the apartment/unit to be occupied.</td>
+            <td>Apartment/unit must be created first.</td>
+          </tr>
+          <tr>
+            <td>Currency (spinner)</td>
+            <td>Select the billing currency for this tenancy.</td>
+            <td>This currency is used for the rent amount and recurring charges.</td>
+          </tr>
+          <tr>
+            <td>Terms (spinner)</td>
+            <td>Select a tenancy term (e.g., Default Terms).</td>
+            <td>Terms define grace days, deposit, escalation rules, and late charges (where configured).</td>
+          </tr>
+          <tr>
+            <td>Start date</td>
+            <td>Enter/select the tenancy start date.</td>
+            <td>Used to determine when billing/occupancy begins.</td>
+          </tr>
+          <tr>
+            <td>End date</td>
+            <td>Enter/select an end date (if applicable).</td>
+            <td>Optional for open-ended tenancies; required for fixed-term leases.</td>
+          </tr>
+          <tr>
+            <td>Monthly rent amount</td>
+            <td>Enter the rent amount for the tenancy.</td>
+            <td>Use numbers only where possible (no currency symbols).</td>
+          </tr>
+          <tr>
+            <td>Recurring Charges</td>
+            <td>Tap <b>+ Add Recurring Item</b> to add repeating charges.</td>
+            <td>Examples: cleaning, security, maintenance. Behavior depends on your billing rules.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Save Tenancy</h3>
+      <ol>
+        <li>Confirm Tenant, Apartment, Currency, and Terms are correct.</li>
+        <li>Enter Start date, optional End date, and Monthly rent amount.</li>
+        <li>Add recurring charges if needed.</li>
+        <li>Tap <b>Save Tenancy</b>.</li>
+      </ol>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <!-- BULK IMPORT TENANCIES -->
+    <section id="bulk-tenancy-import">
+      <h2>5) Bulk Import Tenancies (Initial Setup)</h2>
+      <div class="path"><b>Menu area:</b> Tenants → <b>Add Tenancy</b> (tab)</div>
+
+      <p class="muted">
+        For big landlords and agencies, you can also bulk-import tenancy records for initial setup.
+        This is useful when you already have an occupancy list (tenant-to-unit assignments) and want to onboard it quickly.
+      </p>
+
+      <h3>When to use bulk import</h3>
+      <ul>
+        <li>Initial onboarding where many units already have sitting tenants and you want to load assignments fast.</li>
+        <li>Migrating tenancy history/starting positions from an existing spreadsheet system.</li>
+      </ul>
+
+      <h3>How it works (Template → Fill in Excel → Save CSV → Import)</h3>
+      <ol>
+        <li>
+          On <b>Tenants → Add Tenancy</b>, tap the <b>template button</b> (the button with a <b>small “+”</b> icon).
+          The app generates/downloads a tenancy import template.
+        </li>
+        <li>
+          Open the template on a computer (Excel or another spreadsheet tool) and fill the tenancy rows using the provided columns only.
+        </li>
+        <li>
+          Save/export the completed sheet as a <b>CSV file</b>.
+        </li>
+        <li>
+          Back on the <b>Add Tenancy</b> screen, tap the <b>CSV Import</b> button (the button labeled <b>CSV</b>) and select the CSV file to import.
+        </li>
+      </ol>
+
+      <div class="note">
+        <b>Critical prerequisite:</b> Tenancies reference other master data. Ensure the following exist before importing tenancies:
+        <ul>
+          <li><b>Tenants</b> are already created/imported.</li>
+          <li><b>Apartments/Units</b> are already created/imported.</li>
+          <li><b>Tenancy Terms</b> are configured.</li>
+          <li><b>Currencies</b> required by the tenancies are configured.</li>
+        </ul>
+      </div>
+
+      <h3>Start Date and End Date import rules (very important)</h3>
+      <div class="note">
+        <b>Date format is strict:</b> In the tenancy import CSV, <b>Start Date</b> and <b>End Date</b> must be supplied in the exact format
+        <code>yyyy-mm-dd</code>.<br /><br />
+        <b>Examples:</b> <code>2025-01-12</code>, <code>2025-11-30</code><br />
+        <b>Not allowed / risky:</b> <code>12/01/2025</code>, <code>01/12/2025</code>, <code>12-01-2025</code>, <code>2025/01/12</code>,
+        or any value that includes time such as <code>2025-01-12 00:00:00</code>.
+      </div>
+
+      <h4>How to format dates correctly in Excel before saving CSV</h4>
+      <ol>
+        <li>Select the <b>Start Date</b> and <b>End Date</b> columns in the template.</li>
+        <li>Right-click → <b>Format Cells</b> → <b>Custom</b> → set to <code>yyyy-mm-dd</code>.</li>
+        <li>Confirm every row displays dates like <code>2025-01-12</code> (4-digit year, 2-digit month, 2-digit day).</li>
+        <li>
+          For maximum reliability, you may force Excel to output the exact text using a helper formula:
+          <ul>
+            <li>In a helper column use: <code>=TEXT(A2,"yyyy-mm-dd")</code> (adjust <code>A2</code> to your date cell).</li>
+            <li>Copy the results → <b>Paste Special → Values</b> back into the Start/End Date columns.</li>
+          </ul>
+        </li>
+        <li>Save the file as <b>CSV</b> and import using the app CSV button.</li>
+      </ol>
+
+      <h4>Final verification before import (recommended)</h4>
+      <ul>
+        <li>Open the saved CSV in a plain text editor (e.g., Notepad) and confirm dates still appear as <code>yyyy-mm-dd</code>.</li>
+        <li>If your CSV shows slashes, ambiguous formats, or time, correct the Excel formatting and re-save.</li>
+      </ul>
+
+      <div class="note">
+        <b>End Date handling:</b> If your tenancy template allows open-ended tenancies, leave End Date <b>blank</b> (empty cell) for ongoing leases.
+        Avoid using <code>N/A</code>, <code>0</code>, or other placeholders unless the template explicitly requires them.
+      </div>
+
+      <div class="note">
+        <b>Important rules for successful import:</b>
+        <ul>
+          <li><b>Do not change template headers</b> or column order unless the app explicitly allows it.</li>
+          <li>Use valid references exactly as expected by the template (for example: exact tenant identifiers/names and exact unit identifiers/names as used in the app lists).</li>
+          <li>Ensure Start Date is not after End Date.</li>
+          <li>Confirm rent amounts and currencies are correct; incorrect currency selection will cause downstream billing errors.</li>
+          <li>After import, review a sample of tenancies to confirm tenant-to-unit mapping, terms, start dates, and rent amounts.</li>
+        </ul>
+      </div>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <!-- TENANCY ACTIONS -->
+    <section id="tenancy-actions">
+      <h2>6) Tenancy List & Context Menu Actions</h2>
+      <div class="path"><b>Menu area:</b> Tenants → <b>Add Tenancy</b> (tab) → Tenancy list</div>
+
+      <p>
+        The tenancy list displays saved tenancies and key details such as Tenant, Apartment, Billing Currency, Start/End dates,
+        Amount, Status, and Tenancy Terms.
+      </p>
+
+      <h3>Opening the tenancy action menu (long-press)</h3>
+      <ul>
+        <li><b>Long-press</b> on a tenancy card to open the tenancy context menu.</li>
+        <li>Use <b>SEARCH</b> to locate a tenancy quickly.</li>
+      </ul>
+
+      <h3>Context menu items (what each one does)</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Menu item</th>
+            <th>What it does</th>
+            <th>When to use it</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Edit</b></td>
+            <td>Updates tenancy details.</td>
+            <td>Correct unit selection, currency, terms, dates, rent amount, or recurring items.</td>
+          </tr>
+          <tr>
+            <td><b>Delete</b></td>
+            <td>Removes the tenancy record.</td>
+            <td>Use only for incorrect/duplicate tenancies; prefer Terminate for real historical tenancies.</td>
+          </tr>
+          <tr>
+            <td><b>Terminate</b></td>
+            <td>Ends an ongoing tenancy and records it as terminated.</td>
+            <td>Use when a tenant moves out or the lease ends early.</td>
+          </tr>
+          <tr>
+            <td><b>Create Statement</b></td>
+            <td>Generates a statement for the tenancy.</td>
+            <td>Use for payment history and balances (based on your statement rules).</td>
+          </tr>
+          <tr>
+            <td><b>Add Documents</b></td>
+            <td>Attach documents to the tenancy.</td>
+            <td>IDs, agreements, move-in forms, correspondence, proof of payment.</td>
+          </tr>
+          <tr>
+            <td><b>View Documents</b></td>
+            <td>Opens the document list for the tenancy.</td>
+            <td>Review previously attached documents.</td>
+          </tr>
+          <tr>
+            <td><b>Create Tenancy Agreement</b></td>
+            <td>Generates a tenancy agreement document.</td>
+            <td>Ensure tenant/unit/dates/rent/terms are correct before generating.</td>
+          </tr>
+          <tr>
+            <td><b>Renew Tenancy</b></td>
+            <td>Creates a new tenancy period after the current one ends.</td>
+            <td>Use for fixed-term renewals (new lease period).</td>
+          </tr>
+          <tr>
+            <td><b>Extend Tenancy</b></td>
+            <td>Extends the current tenancy period (typically end date adjustment).</td>
+            <td>Use when continuing the same tenancy record without creating a new one.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="note">
+        <b>Good practice:</b> Use <b>Terminate</b> for real tenancies that ended, and <b>Delete</b> only for mistakes.
+        Use <b>Renew</b> for a new lease period, and <b>Extend</b> when only adjusting the end date.
+      </div>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <!-- SECURITY DEPOSIT FEE -->
+    <section id="security-deposit">
+      <h2>7) Security Deposit Fee (Manage Deposits)</h2>
+      <div class="path"><b>Screen:</b> Manage Security Deposit Fees</div>
+
+      <p>
+        The <b>Security Deposit Fee</b> module is used to record deposit amounts received from tenants, track whether they
+        have been refunded, and produce receipts where needed.
+      </p>
+
+      <h3>What you see on the Manage Security Deposit screen</h3>
+      <ul>
+        <li><b>Records</b>: number of deposit entries saved.</li>
+        <li><b>Total Deposits</b>: total value of deposits recorded.</li>
+        <li><b>Total Refunded</b>: total value of deposits marked as refunded.</li>
+        <li>A list of deposit entries showing fields like:
+          <ul>
+            <li>Tenant Name</li>
+            <li>Date Received</li>
+            <li>Fee Amount</li>
+            <li>Description</li>
+            <li>Date Refunded (or “Not Yet Refunded”)</li>
+            <li>Amount Refunded (or “Not Yet Refunded”)</li>
+            <li>Reason Refunded (or “Not Yet Refunded”)</li>
+          </ul>
+        </li>
+        <li><b>SEARCH</b> lets you find a deposit record quickly.</li>
+      </ul>
+
+      <h3>Add a new Security Deposit Fee</h3>
+      <div class="path"><b>Action:</b> Tap the <b>+</b> button → Add new Security Deposit Fee</div>
+
+      <ol>
+        <li>Tap <b>+</b> to open <b>Add new Security Deposit Fee</b>.</li>
+        <li>Select the <b>Tenancy</b> the deposit belongs to.</li>
+        <li>Select the <b>Currency</b> for the deposit.</li>
+        <li>Select the <b>Date Received</b> (the screen indicates “double click to select a date”).</li>
+        <li>Enter the <b>Fee Amount</b>.</li>
+        <li>If required, enter the <b>Exchange Rate</b>.</li>
+        <li>Enter a <b>Description</b> (e.g., “Security fees”).</li>
+        <li>Tap <b>Add Security Deposit Fee</b>.</li>
+      </ol>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Field (as shown)</th>
+            <th>What to enter / select</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Select Tenancy (spinner)</td>
+            <td>Select the tenancy for the tenant/unit.</td>
+            <td>Deposit should be tied to the correct tenancy for accurate records.</td>
+          </tr>
+          <tr>
+            <td>Currency (spinner)</td>
+            <td>Select the deposit currency.</td>
+            <td>Use the tenancy currency where applicable.</td>
+          </tr>
+          <tr>
+            <td>Date Received</td>
+            <td>Select the date the deposit was received.</td>
+            <td>The screen indicates “double click to select a date”.</td>
+          </tr>
+          <tr>
+            <td>Enter fee amount</td>
+            <td>Deposit amount received.</td>
+            <td>Use numbers only where possible.</td>
+          </tr>
+          <tr>
+            <td>Enter exchange rate</td>
+            <td>Exchange rate (default is <b>1</b>).</td>
+            <td>
+              The default value is <b>1</b> (meaning no conversion).
+              Keep it as <b>1</b> when the deposit currency is already your reporting/home currency.
+              Only change it when you record a deposit in a different currency and you need conversion for reporting.
+            </td>
+          </tr>
+          <tr>
+            <td>Enter Description</td>
+            <td>Short reason/label for the deposit.</td>
+            <td>Example: “Security deposit”, “Security fees”.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Deposit context menu (long-press)</h3>
+      <p class="note"><b>How to open actions:</b> <b>Long-press</b> a deposit record to show available actions.</p>
+
+      <h3>Context menu items (what each one does)</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Menu item</th>
+            <th>What it does</th>
+            <th>Typical use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Refund Security Deposit</b></td>
+            <td>Marks the deposit as refunded and records refund details.</td>
+            <td>
+              Use when returning the deposit to the tenant. Typically captures items such as refund date, amount refunded,
+              and reason refunded (based on your refund form).
+            </td>
+          </tr>
+          <tr>
+            <td><b>Delete</b></td>
+            <td>Removes the deposit record.</td>
+            <td>Use only for wrong/duplicate entries. For real deposits, prefer refunding instead of deleting.</td>
+          </tr>
+          <tr>
+            <td><b>Create PDF Receipt</b></td>
+            <td>Generates a PDF receipt for the deposit.</td>
+            <td>Use when you need a printable or shareable receipt for the tenant/records.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="note">
+        <b>Good practice:</b> For accuracy and audit trail, avoid deleting real deposits. Use <b>Refund Security Deposit</b> when the tenant is paid back,
+        and use <b>Create PDF Receipt</b> to produce a clear document for records.
+      </div>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+    </section>
+
+    <hr />
+    <p class="small muted">End of guide.</p>
+  </main>
+</body>
+</html>

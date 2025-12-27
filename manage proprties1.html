@@ -1,0 +1,705 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Landlord App — Setup Guide (One Page)</title>
+  <meta name="description" content="One-page setup guide for Landlord App: owners, properties, rental types, currency, usage types, units, tenancy terms, and billable items." />
+  <style>
+    /* Minimal CSS for fast, reliable rendering */
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; color: #111; background: #fff; line-height: 1.55; }
+    main { max-width: 980px; margin: 0 auto; padding: 18px; }
+    header { padding: 12px 0 6px; border-bottom: 1px solid #e6e6e6; margin-bottom: 14px; }
+    h1 { font-size: 24px; margin: 0 0 6px; }
+    h2 { font-size: 18px; margin: 18px 0 8px; }
+    h3 { font-size: 15px; margin: 14px 0 6px; }
+    p { margin: 0 0 10px; }
+    .muted { color: #555; }
+    .path { background: #f6f7f9; border: 1px solid #e6e6e6; padding: 8px 10px; border-radius: 8px; margin: 10px 0 12px; }
+    nav { margin: 10px 0 0; }
+    nav a { margin-right: 10px; color: #0b57d0; text-decoration: none; }
+    nav a:hover { text-decoration: underline; }
+    hr { border: 0; border-top: 1px solid #e6e6e6; margin: 16px 0; }
+    ul, ol { margin: 8px 0 12px 20px; }
+    li { margin: 4px 0; }
+    table { width: 100%; border-collapse: collapse; margin: 10px 0 14px; }
+    th, td { border: 1px solid #e6e6e6; padding: 8px; vertical-align: top; text-align: left; }
+    th { background: #fafafa; }
+    .note { border-left: 4px solid #0b57d0; padding: 8px 10px; background: #f7fbff; margin: 10px 0 14px; }
+    .small { font-size: 13px; color: #555; }
+    .toplink { font-size: 13px; }
+  </style>
+</head>
+
+<body>
+  <main id="top">
+    <header>
+      <h1>Landlord App — Setup Guide</h1>
+      <p class="muted">One-page beginner guide for key setup screens (as labeled in the app UI).</p>
+      <p class="small"><b>Last updated:</b> December 2025</p>
+
+      <nav aria-label="Contents">
+        <a href="#owner">Property Owner</a>
+        <a href="#property">Property</a>
+        <a href="#rental-type">Rental Type</a>
+        <a href="#currency">Currency</a>
+        <a href="#usage-type">Usage Type</a>
+        <a href="#unit">Rental Unit</a>
+        <a href="#terms">Tenancy Term</a>
+        <a href="#billable">Billable Items</a>
+      </nav>
+    </header>
+
+    <!-- 1) PROPERTY OWNER -->
+    <section id="owner">
+      <h2>1) Add Property Owner</h2>
+      <div class="path"><b>Menu path:</b> Manage Properties → Property Owners → Add (+)</div>
+
+      <h3>Steps</h3>
+      <ol>
+        <li>Open <b>Manage Properties</b> (Property Management).</li>
+        <li>Open the <b>Property Owners</b> tab.</li>
+        <li>Tap <b>Add</b> (or <b>+</b>) to open <b>Add new Property Owner</b>.</li>
+        <li>Complete owner details and commission settings, then tap <b>Add new Property Owner</b>.</li>
+      </ol>
+
+      <h3>Owner details fields</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Field (as shown in the app)</th>
+            <th>What to enter</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Enter Name</td>
+            <td>Owner’s full name (person) or legal company name.</td>
+            <td>Use the name you want shown on documents.</td>
+          </tr>
+          <tr>
+            <td>Enter Tel. Number</td>
+            <td>Owner’s phone number.</td>
+            <td>Use a reachable number.</td>
+          </tr>
+          <tr>
+            <td>Enter Physical Address</td>
+            <td>Owner’s address.</td>
+            <td>Use a billing-friendly format.</td>
+          </tr>
+          <tr>
+            <td>Enter Email</td>
+            <td>Owner’s email address.</td>
+            <td>Recommended for statements/communication where used.</td>
+          </tr>
+          <tr>
+            <td>Enter TIN</td>
+            <td>Tax Identification Number.</td>
+            <td>Required where tax compliance applies.</td>
+          </tr>
+          <tr>
+            <td>Enter Mobile Money / Bank Information</td>
+            <td>Payment instructions (bank + mobile money details).</td>
+            <td><b>Critical:</b> printed on invoices/receipts. Make it detailed and accurate.</td>
+          </tr>
+          <tr>
+            <td>VAT Registered (Yes/No)</td>
+            <td>Select Yes if VAT registered; otherwise No.</td>
+            <td>For commercial owners where applicable. Commission calculations are net of VAT where applicable.</td>
+          </tr>
+          <tr>
+            <td>Enter Home Country</td>
+            <td>Owner’s home country.</td>
+            <td>Useful for record completeness/reporting.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Commission Settings</h3>
+      <p>Commission can be <b>Fixed</b>, <b>Percent</b>, or <b>Hybrid</b> (Fixed + Percent).</p>
+      <ul>
+        <li><b>Fixed</b>: calculated by unit:
+          <ul>
+            <li><b>OWNER_PER_MONTH</b></li>
+            <li><b>UNIT_PER_MONTH</b></li>
+            <li><b>OCCUPIED_UNIT_PER_MONTH</b></li>
+          </ul>
+        </li>
+        <li><b>Percent</b>: percentage of <b>RECEIPT</b> (net of VAT where applicable) or <b>INVOICE</b>.</li>
+        <li><b>Hybrid</b>: Fixed fee (using one of the units above) + Percent of RECEIPT or INVOICE.</li>
+      </ul>
+
+      <div class="note">
+        <b>Logo for printing:</b> Use <b>Add / Update Log(o)</b> to attach the owner’s logo for invoices/receipts and other printed documents (depending on templates).
+      </div>
+
+      <h3>Bulk Import Property Owners (Initial Setup)</h3>
+      <p class="muted">
+        If you are onboarding an agency (or portfolio) with many owners, you can import owners in bulk using a CSV file
+        created from a template generated inside the app. This is faster than creating owners one by one.
+      </p>
+
+      <h4>When to use bulk import</h4>
+      <ul>
+        <li>Initial setup where an agency has many property owners to register.</li>
+        <li>You already have owner data in Excel and want to migrate it into the app.</li>
+      </ul>
+
+      <h4>How it works (Template → Fill in Excel → Save CSV → Import)</h4>
+      <ol>
+        <li>
+          On <b>Manage Properties → Property Owners</b>, tap the <b>template button</b> (the button with a <b>small “+”</b> icon).
+          The app generates/downloads an owners import template.
+        </li>
+        <li>
+          Open the template on a computer (Excel or any spreadsheet tool) and fill in the owner records.
+          Complete only the provided columns.
+        </li>
+        <li>
+          Save/export the completed sheet as a <b>CSV file</b> (Comma Separated Values).
+        </li>
+        <li>
+          Back on the <b>Property Owners</b> screen, tap the <b>CSV Import</b> button (the button labeled <b>CSV</b>),
+          then select the saved CSV file to import the owners.
+        </li>
+      </ol>
+
+      <div class="note">
+        <b>Important rules for successful import:</b>
+        <ul>
+          <li><b>Do not change the template headers</b> (column names) or their order unless the app explicitly allows it.</li>
+          <li>Ensure all required fields in the template are completed for every owner row.</li>
+          <li>Use consistent formatting for phone numbers and emails to avoid duplicates and failed imports.</li>
+          <li>After import, open a few owners and confirm payment instructions, VAT registration, and commission settings are correct.</li>
+        </ul>
+      </div>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <!-- 2) PROPERTY -->
+    <section id="property">
+      <h2>2) Add Property (Apartment Block)</h2>
+      <div class="path"><b>Menu path:</b> Manage Properties → View Properties → Add (+)</div>
+
+      <h3>Prerequisites</h3>
+      <ul>
+        <li>Create at least one <b>Property Owner</b>.</li>
+        <li>Create at least one <b>Location</b>.</li>
+      </ul>
+
+      <h3>Fields (spinners + text)</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Field</th>
+            <th>What to select / enter</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Property Owner (spinner)</td>
+            <td>Select the owner.</td>
+            <td>Links the property to an owner for reporting and statements.</td>
+          </tr>
+          <tr>
+            <td>Location (spinner)</td>
+            <td>Select the location.</td>
+            <td>Used for grouping and reporting.</td>
+          </tr>
+          <tr>
+            <td>Property Name (text field)</td>
+            <td>Enter the property name.</td>
+            <td>Use a clear, unique name (e.g., “Nansana Rentals”).</td>
+          </tr>
+          <tr>
+            <td>Property Type (spinner)</td>
+            <td>Select <b>Residential</b>, <b>Commercial</b>, or <b>Hybrid</b>.</td>
+            <td>Hybrid = mixed residential + commercial units.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <!-- 3) RENTAL TYPE -->
+    <section id="rental-type">
+      <h2>3) Add Rental Type (Apartment Type)</h2>
+      <div class="path"><b>Menu path:</b> Manage Properties → Rental Types → Add (+)</div>
+
+      <p>Rental Types define categories of units (e.g., Single Room, One-Bedroom Apartment, Shop, Office).</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Field (as shown in the app)</th>
+            <th>What to enter</th>
+            <th>Tips</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Enter type name</td>
+            <td>Short type name.</td>
+            <td>Keep it consistent; it appears in drop-down lists.</td>
+          </tr>
+          <tr>
+            <td>Enter type details</td>
+            <td>Brief description of what the type includes.</td>
+            <td>Example: “Separate bedroom, living area, kitchen, and bathroom.”</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <!-- 4) CURRENCY -->
+    <section id="currency">
+      <h2>4) Add Currency</h2>
+      <div class="path"><b>Menu path:</b> Manage Properties → Currency → Add (+)</div>
+
+      <div class="note">
+        <b>Important rule:</b> Only <b>one</b> currency should be designated as <b>Home Currency</b>.
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Field (as shown in the app)</th>
+            <th>What to select / enter</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Home Currency (spinner: Yes/No)</td>
+            <td>Select <b>Yes</b> only for your primary default currency.</td>
+            <td>All other currencies should be <b>No</b>.</td>
+          </tr>
+          <tr>
+            <td>Enter currency name</td>
+            <td>Full currency name.</td>
+            <td>Example: “Uganda Shillings”, “Kenya Shillings”.</td>
+          </tr>
+          <tr>
+            <td>Enter currency symbol</td>
+            <td>Symbol or short code.</td>
+            <td>Example: “UGX”, “Ksh”, “$”.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <!-- 5) USAGE TYPE -->
+    <section id="usage-type">
+      <h2>5) Add Usage Type (Apartment Usage & VAT)</h2>
+      <div class="path"><b>Menu path:</b> Manage Properties → Use Types → Add (+)</div>
+
+      <p>
+        <b>Usage Types</b> define how apartments (rental units) are used (for example: Residential or Commercial) and the
+        VAT/tax rules that apply to that usage.
+        This matters most when the usage is <b>Commercial</b> and the <b>Property Owner</b> is marked as <b>VAT Registered = Yes</b>.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Field (as shown in the app)</th>
+            <th>What to enter / select</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Usage Name (e.g. Commercial)</td>
+            <td>Enter a short usage name.</td>
+            <td>Examples: Commercial, Residential, Exempt (if used).</td>
+          </tr>
+          <tr>
+            <td>VAT Applicable (spinner)</td>
+            <td>Select the VAT applicability option (e.g., Standard).</td>
+            <td>Choose what matches your tax rules and business policy.</td>
+          </tr>
+          <tr>
+            <td>VAT Rate (%)</td>
+            <td>Enter the VAT rate as a number (e.g., 18).</td>
+            <td>Do not include the % sign.</td>
+          </tr>
+          <tr>
+            <td>VAT Inclusive (toggle)</td>
+            <td>ON if amounts already include VAT; OFF if VAT should be added on top.</td>
+            <td>Ensure this matches how you price rent and charge billable items.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="note">
+        <b>Practical rule:</b> VAT handling is driven by the unit’s <b>Usage Type</b> and the <b>Property Owner VAT Registered</b> setting.
+        For example, Commercial usage + VAT-registered owner typically requires VAT settings (rate and inclusive/exclusive) to be applied correctly.
+      </div>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <!-- 6) RENTAL UNIT -->
+    <section id="unit">
+      <h2>6) Add Rental Unit (Apartment / Unit)</h2>
+      <div class="path"><b>Menu path:</b> Manage Properties → View Apartments → Add (+)</div>
+
+      <p class="muted">
+        <b>Apartment list actions:</b> On the <b>View Apartments</b> screen, <b>long-press</b> an apartment card (or use the
+        <b>⋮</b> menu) to open the context menu with actions like <b>Delete</b>, <b>Discontinue Apartment</b>,
+        <b>Apartment out of Use</b>, <b>Make Apartment Available</b>, and <b>Edit</b>.
+      </p>
+
+      <h3>Prerequisites</h3>
+      <ul>
+        <li>Property created (View Properties).</li>
+        <li>Rental Type created (Rental Types).</li>
+        <li>Currency created (Currency).</li>
+        <li>Usage Type created (Use Types).</li>
+      </ul>
+
+      <h3>Unit details fields</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Field (as shown in the app)</th>
+            <th>What to select / enter</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Property (spinner)</td>
+            <td>Select the property/apartment block.</td>
+            <td>Links unit to the correct property.</td>
+          </tr>
+          <tr>
+            <td>Rental Type (spinner)</td>
+            <td>Select the unit category (e.g. Two-Bedroom Apartments).</td>
+            <td>Managed under Rental Types.</td>
+          </tr>
+          <tr>
+            <td>Currency (spinner)</td>
+            <td>Select billing currency (e.g. Uganda Shillings).</td>
+            <td>Shown on invoices/receipts for this unit.</td>
+          </tr>
+          <tr>
+            <td>Use Type (spinner)</td>
+            <td>Select apartment usage/VAT type (e.g. Residential (Exempt from VAT)).</td>
+            <td>Controls VAT treatment and inclusive/exclusive behavior for this unit.</td>
+          </tr>
+          <tr>
+            <td>Unit Name (text field)</td>
+            <td>Enter unit identifier (e.g. House 1, Room B2, Shop 03).</td>
+            <td>Keep unique within the property.</td>
+          </tr>
+          <tr>
+            <td>Monthly Rental Amount (text field)</td>
+            <td>Enter monthly rent amount.</td>
+            <td>Use numbers only (example: 500000) unless the app allows separators.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Apartment list (long-press) context menu actions</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Action</th>
+            <th>When to use it</th>
+            <th>What it does / important rules</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Delete</b></td>
+            <td>Only when the unit was created by mistake (e.g., duplicate/wrong entry).</td>
+            <td>
+              Permanently removes the unit <b>only if no tenancy record exists</b> for that unit.
+              If a tenancy has ever existed, use <b>Apartment out of Use</b> or <b>Discontinue Apartment</b> instead to preserve history.
+            </td>
+          </tr>
+
+          <tr>
+            <td><b>Discontinue Apartment</b></td>
+            <td>When the unit is <b>permanently</b> no longer lettable.</td>
+            <td>
+              Marks the unit as discontinued (keeps historical records). Typical cases:
+              space converted into other uses, a house remodelled into a different layout, or a residential unit remodelled into commercial office space.
+            </td>
+          </tr>
+
+          <tr>
+            <td><b>Apartment out of Use</b></td>
+            <td>When the unit is <b>temporarily</b> unavailable.</td>
+            <td>
+              Marks the unit as not available for letting for a period (keeps records), e.g., under maintenance, repairs, or short-term renovation.
+              Use <b>Make Apartment Available</b> when it is ready to let again.
+            </td>
+          </tr>
+
+          <tr>
+            <td><b>Make Apartment Available</b></td>
+            <td>After a unit was set to <b>Apartment out of Use</b>.</td>
+            <td>
+              Returns the unit to an available/lettable state so it can be allocated again.
+            </td>
+          </tr>
+
+          <tr>
+            <td><b>Edit</b></td>
+            <td>When you need to correct or update unit details.</td>
+            <td>
+              Updates unit attributes such as unit name/number, rental type, rent amount, currency, and use type.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Bulk Import Rental Units (Initial Setup)</h3>
+      <p class="muted">
+        If you are setting up a property with many units (e.g., dozens or hundreds), you can import units in bulk instead of adding them one by one.
+        This is done using a CSV file created from a template generated inside the app.
+      </p>
+
+      <h4>When to use bulk import</h4>
+      <ul>
+        <li>Initial onboarding where a substantial number of rental units must be captured quickly.</li>
+        <li>Data already exists in Excel and needs to be migrated into the app using the provided template.</li>
+      </ul>
+
+      <h4>How it works (Template → Fill in Excel → Save CSV → Import)</h4>
+      <ol>
+        <li>
+          On <b>Manage Properties → View Apartments</b>, tap the <b>template button</b> (the button with a <b>small “+”</b> icon).
+          This generates/downloads an import template.
+        </li>
+        <li>
+          Open the template on a computer (e.g., laptop) using Excel (or any spreadsheet tool).
+          Fill in unit details in the provided columns only.
+        </li>
+        <li>
+          Save/export the completed sheet as a <b>CSV file</b> (Comma Separated Values).
+        </li>
+        <li>
+          Back on the <b>View Apartments</b> screen, tap the <b>CSV Import</b> button (the button labeled <b>CSV</b>).
+          Select the saved CSV file to import the units.
+        </li>
+      </ol>
+
+      <div class="note">
+        <b>Important rules for successful import:</b>
+        <ul>
+          <li><b>Do not change the template headers</b> (column names) or their order unless the app explicitly allows it.</li>
+          <li>Ensure required fields in the template are completed for every row (unit).</li>
+          <li>Use valid values that already exist in the app (e.g., Property, Rental Type, Currency, Use Type), exactly as shown in the system lists.</li>
+          <li>Prefer saving CSV as <b>UTF-8</b> if your unit names include special characters.</li>
+          <li>After importing, review a few units on the list to confirm amounts, currency, and use type are correct.</li>
+        </ul>
+      </div>
+
+      <div class="note">
+        <b>Recommended practice:</b> Once a unit has any tenancy history, avoid <b>Delete</b>. Use
+        <b>Apartment out of Use</b> for temporary unavailability and <b>Discontinue Apartment</b> for permanent retirement,
+        so reporting and audit trail remain intact. Also use <b>Show status history</b> on the unit card to review status changes over time.
+      </div>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <!-- 7) TENANCY TERM -->
+    <section id="terms">
+      <h2>7) Add Tenancy Term</h2>
+      <div class="path"><b>Menu path:</b> Manage Properties → Tenancy Terms → Add (+)</div>
+
+      <p>
+        Tenancy Terms define billing rules such as billing cycle, billing mode (calendar vs anniversary),
+        first invoice logic, proration, grace days, deposit, escalation, and late payment charges.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Field (as shown in the app)</th>
+            <th>What to enter / select</th>
+            <th>Notes / Examples</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Billing cycle (spinner: e.g., Monthly)</td>
+            <td>Select how often rent is billed (Monthly, Quarterly, Half-yearly, Annual).</td>
+            <td>This is the billing frequency used to generate invoices.</td>
+          </tr>
+
+          <!-- Billing Rules -->
+          <tr>
+            <td>Billing Mode (spinner)</td>
+            <td>Select how billing periods are anchored.</td>
+            <td>
+              <b>Calendar aligned:</b> Use this billing mode if you want invoices to follow normal calendar boundaries
+              (e.g., 1st to month-end), regardless of when the tenant moved in. This applies when tenants join mid-month.
+              You must decide how to treat the partial period: either bill it separately (prorated) and then bill N full periods,
+              or count the partial period within the initial N periods.<br /><br />
+
+              <b>Anniversary aligned:</b> Use this billing mode if you want invoices to follow the tenant’s start date rather
+              than the normal calendar. For example, a tenant who enters on the 12th will have invoices starting on the 12th
+              and ending on the 11th of the next month (for a monthly cycle).
+            </td>
+          </tr>
+
+          <tr>
+            <td>First Invoice Rule (spinner)</td>
+            <td>Select how the first invoice period is calculated.</td>
+            <td>
+              <b>Partial period + N full periods (calendar-aligned):</b> bills move-in partial period to the next boundary
+              (e.g., month-end), then bills N full periods.<br />
+              <b>N full periods from start date (anniversary-aligned):</b> bills N full periods starting from the tenancy start date.
+            </td>
+          </tr>
+
+          <tr>
+            <td>Prorate partial periods (move-in/move-out) (checkbox)</td>
+            <td>Tick to charge a prorated amount for partial periods.</td>
+            <td>
+              Recommended for <b>calendar-aligned</b> billing when a tenancy starts mid-period.
+              When <b>anniversary aligned</b> is selected, this option is typically hidden/unused.
+            </td>
+          </tr>
+
+          <tr>
+            <td>Proration method (spinner)</td>
+            <td>Select how proration is calculated.</td>
+            <td>
+              <b>Actual days in period:</b> uses the actual number of days in the calendar period (recommended for residential).<br />
+              <b>30-day convention:</b> uses a 30-day month convention (commonly used in some commercial settings).
+            </td>
+          </tr>
+
+          <!-- Existing fields -->
+          <tr>
+            <td>Term Name</td>
+            <td>Enter a clear name.</td>
+            <td>Example: “Monthly – Calendar aligned – 5 Grace Days”.</td>
+          </tr>
+
+          <tr>
+            <td>Rent Grace Days</td>
+            <td>Number of grace days after due date.</td>
+            <td>Example: 5.</td>
+          </tr>
+
+          <tr>
+            <td>Security Deposit Fee</td>
+            <td>Deposit amount required at move-in.</td>
+            <td>Use 0 if no deposit is required.</td>
+          </tr>
+
+          <tr>
+            <td>Initial Payment Periods</td>
+            <td>Number of billing periods billed on the first invoice.</td>
+            <td>
+              Example: 3 (for a 3-month initial invoice on a Monthly cycle).
+              For non-monthly cycles, this is still “number of periods”, not “months”.
+            </td>
+          </tr>
+
+          <tr>
+            <td>Escalation Rate (e.g., 0.05 for 5%)</td>
+            <td>Enter escalation rate as a decimal.</td>
+            <td><b>Important:</b> 0.05 = 5% (do not enter 5).</td>
+          </tr>
+
+          <tr>
+            <td>Escalation Frequency (months)</td>
+            <td>How often escalation applies, in months.</td>
+            <td>Example: 12 = yearly escalation.</td>
+          </tr>
+
+          <tr>
+            <td>Apply Late Payment Charges (checkbox)</td>
+            <td>Tick if late payment charges apply.</td>
+            <td>Enable if your agreements include penalties.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="note">
+        <b>Tip:</b> If you choose <b>Calendar aligned</b> and the tenant moves in mid-month, the first invoice can include a
+        <b>partial period</b> plus the configured number of full periods. If proration is enabled, the partial period is billed
+        using the selected proration method.
+      </div>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
+    <!-- 8) BILLABLE ITEMS -->
+    <section id="billable">
+      <h2>8) Add Billable Item</h2>
+      <div class="path"><b>Menu path:</b> Manage Properties → Billable Items → Add (+)</div>
+
+      <p>
+        Billable Items are additional charges besides rent (e.g., Cleaning Service, Maintenance Fee, Late Payment Charge).
+        When billing, VAT treatment depends on:
+        <b>(1)</b> whether the item is marked <b>Is Vatable?</b>,
+        <b>(2)</b> the unit’s <b>Usage Type</b> (e.g., Commercial vs Residential and VAT settings), and
+        <b>(3)</b> whether the <b>Property Owner</b> is <b>VAT Registered = Yes</b>.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Field (as shown in the app)</th>
+            <th>What to enter / select</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Item Name</td>
+            <td>Name of the charge.</td>
+            <td>Example: Cleaning Service, Garbage Collection, Maintenance Fee.</td>
+          </tr>
+          <tr>
+            <td>Is Vatable? (checkbox)</td>
+            <td>Tick if this item should attract VAT where applicable.</td>
+            <td>
+              If unticked, the item is treated as Non-VATable.
+              If ticked, VAT may apply based on the unit’s Usage Type and owner VAT registration.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="note">
+        <b>Tip:</b> Keep billable item names consistent to avoid duplicates (e.g., use either “Cleaning Service” or “Cleaning”, not both).
+      </div>
+
+      <p class="small muted">
+        Optional: If you publish legal pages on GitHub Pages, you can link them here:
+        <a href="./terms-and-privacy.html">Terms &amp; Privacy</a>
+      </p>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+    </section>
+
+    <hr />
+    <p class="small muted">End of guide.</p>
+  </main>
+</body>
+</html>
