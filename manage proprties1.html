@@ -41,6 +41,7 @@
       <nav aria-label="Contents">
         <a href="#owner">Property Owner</a>
         <a href="#property">Property</a>
+        <a href="#parking">Parking (Zones & Slots)</a>
         <a href="#rental-type">Rental Type</a>
         <a href="#currency">Currency</a>
         <a href="#usage-type">Usage Type</a>
@@ -226,6 +227,66 @@
       <p class="toplink"><a href="#top">Back to top</a></p>
       <hr />
     </section>
+    <!-- PARKING -->
+<section id="parking">
+  <h2>Parking (Zones & Slots)</h2>
+  <div class="path"><b>Menu path:</b> Manage Properties → View Properties → Tap <b>P</b> (Parking icon)</div>
+
+  <p>
+    The Parking module lets you create <b>Parking Zones</b> (e.g., Main Parking, Upper Zone) and then create
+    <b>Parking Slots</b> (A001, A002, …). Slots can later be allocated to tenancies from the Tenancy Parking screen.
+  </p>
+
+  <h3>Step 1 — Open Property Parking</h3>
+  <ol>
+    <li>Go to <b>Manage Properties → View Properties</b>.</li>
+    <li>On the property card, tap the <b>P</b> icon to open the <b>Parking</b> screen.</li>
+  </ol>
+
+  <h3>Step 2 — Create Parking Zones</h3>
+  <ol>
+    <li>In the <b>Zones</b> panel, tap <b>+</b>.</li>
+    <li>Enter the <b>Zone Name</b> (e.g., “Main Parking”).</li>
+    <li>Optional: enter notes and sort order, then <b>Save</b>.</li>
+  </ol>
+
+  <div class="note">
+    <b>Tip:</b> Zones help you group slots by area. This is useful when a property has multiple parking areas.
+  </div>
+
+  <h3>Step 3 — Create Parking Slots (One-by-one)</h3>
+  <ol>
+    <li>Select the zone (e.g., <b>Main Parking</b>).</li>
+    <li>In the <b>Slots</b> panel, tap <b>+</b> to add a slot.</li>
+    <li>Enter <b>Slot Code</b> (e.g., A001) and optional <b>Slot Label</b> (e.g., “Slot 1”).</li>
+    <li>Tap <b>Save</b>.</li>
+  </ol>
+
+  <h3>Step 4 — Create Slots in Batch (Recommended)</h3>
+  <p class="muted">
+    If you have many slots, use batch creation instead of adding them one by one.
+  </p>
+  <ol>
+    <li>Select the zone.</li>
+    <li>Tap the <b>Batch</b> / <b>Multiple Slots</b> action (the batch icon on the slots header).</li>
+    <li>Enter a prefix (e.g., <b>A</b>), start number (e.g., <b>1</b>), end number (e.g., <b>50</b>), and padding (e.g., <b>3</b>).</li>
+    <li>The app generates slots like <b>A001…A050</b>. Tap <b>Create</b>.</li>
+  </ol>
+
+  <div class="note">
+    <b>Best practice:</b> Keep slot codes consistent per zone (A001…A050) so searching and allocation becomes easy.
+  </div>
+
+  <h3>Optional — Parking Limits (per tenancy per zone)</h3>
+  <p>
+    In <b>Tenancy Parking</b>, you can set a <b>max slots limit</b> per zone for a tenancy (example: limit 2 slots in Main Parking).
+    If no limit is set, the tenancy is treated as <b>Unlimited</b>.
+  </p>
+
+  <p class="toplink"><a href="#top">Back to top</a></p>
+  <hr />
+</section>
+
 
     <!-- 3) RENTAL TYPE -->
     <section id="rental-type">
@@ -703,3 +764,4 @@
   </main>
 </body>
 </html>
+
