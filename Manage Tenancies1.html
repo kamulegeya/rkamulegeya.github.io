@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Landlord App — Tenants, Tenancies & Security Deposit Guide</title>
-  <meta name="description" content="Guide for Landlord App: Tenants landing page, creating tenants, bulk importing tenants/tenancies, creating tenancies, tenancy actions, and managing security deposit fees." />
+  <meta name="description" content="Guide for Landlord App: Tenants landing page, creating tenants, bulk importing tenants/tenancies, creating tenancies, tenancy actions (including Parking), and managing security deposit fees." />
   <style>
     body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; color: #111; background: #fff; line-height: 1.55; }
     main { max-width: 980px; margin: 0 auto; padding: 18px; }
@@ -29,6 +29,7 @@
     .small { font-size: 13px; color: #555; }
     .toplink { font-size: 13px; }
     code { background: #f6f7f9; border: 1px solid #e6e6e6; padding: 1px 6px; border-radius: 6px; }
+    .imgph { border: 1px dashed #c9c9c9; padding: 10px; border-radius: 10px; background: #fafafa; margin: 10px 0 14px; }
   </style>
 </head>
 
@@ -36,8 +37,8 @@
   <main id="top">
     <header>
       <h1>Landlord App — Tenants, Tenancies & Security Deposits</h1>
-      <p class="muted">Focused guide for Tenant records, Tenancies (assignment), tenancy actions, bulk import for initial setup, and Security Deposit Fee management.</p>
-      <p class="small"><b>Last updated:</b> December 2025</p>
+      <p class="muted">Focused guide for Tenant records, Tenancies (assignment), tenancy actions (including Parking), bulk import for initial setup, and Security Deposit Fee management.</p>
+      <p class="small"><b>Last updated:</b> January 2026</p>
 
       <nav aria-label="Contents">
         <a href="#landing">Tenants Landing Page</a>
@@ -46,6 +47,7 @@
         <a href="#create-tenancy">Create Tenancy</a>
         <a href="#bulk-tenancy-import">Bulk Import Tenancies</a>
         <a href="#tenancy-actions">Tenancy Actions</a>
+        <a href="#tenancy-parking">Tenancy Parking</a>
         <a href="#security-deposit">Security Deposit Fee</a>
       </nav>
     </header>
@@ -476,6 +478,13 @@
             <td>Extends the current tenancy period (typically end date adjustment).</td>
             <td>Use when continuing the same tenancy record without creating a new one.</td>
           </tr>
+
+          <!-- NEW: PARKING -->
+          <tr>
+            <td><b>Parking...</b></td>
+            <td>Opens the <b>Tenancy Parking</b> screen for managing parking slots allocated to this tenancy.</td>
+            <td>Use to <b>set/change maximum parking slots</b> for the tenancy in a selected zone and to <b>allocate/release slots</b>.</td>
+          </tr>
         </tbody>
       </table>
 
@@ -488,9 +497,130 @@
       <hr />
     </section>
 
+    <!-- TENANCY PARKING (NEW SECTION) -->
+    <section id="tenancy-parking">
+      <h2>7) Tenancy Parking (Set limits and allocate slots)</h2>
+      <div class="path"><b>Menu path:</b> Tenants → Add Tenancy (tab) → <b>Long-press tenancy</b> → <b>Parking...</b></div>
+
+      <p>
+        The <b>Tenancy Parking</b> screen manages which parking slots are assigned to a specific tenant’s tenancy.
+        Parking is managed by <b>Zone</b> (e.g., “Main Parking”, “Lower Parking”), and allocations are recorded with a start date and (optional) end date.
+      </p>
+
+      <h3>Prerequisite: Create Parking Zones and Slots (Property level)</h3>
+      <p class="muted">
+        Before you can allocate parking to a tenancy, the property must have parking zones and slots created.
+        This is done from the property list page using the <b>Parking icon</b>, where you add zones and then add slots (one-by-one or batch).
+      </p>
+
+      <div class="note">
+        <b>Important:</b> Parking inventory (zones/slots) can change over time, so it is managed at <b>Property level</b>,
+        not inside the Apartment (Unit) record.
+      </div>
+
+      <div class="imgph">
+        <b>Screenshot placeholder:</b> Property list showing <b>Parking icon</b> (opens Property Parking setup screen).<br />
+        <span class="small muted">Replace with your screenshot image later, e.g. <code>&lt;img src="images/property-parking-icon.png" alt="Parking icon" /&gt;</code></span>
+      </div>
+
+      <div class="imgph">
+        <b>Screenshot placeholder:</b> Property Parking screen showing <b>Zones</b> on the left and <b>Slots</b> list on the right (Add / Batch Add).<br />
+        <span class="small muted">Replace with your screenshot image later.</span>
+      </div>
+
+      <h3>What you see on Tenancy Parking</h3>
+      <ul>
+        <li><b>Zone selector</b>: choose which zone you are working with.</li>
+        <li><b>Zone stats line</b>: Total, Active, Allocated, Available, plus the tenancy’s Zone Limit and Remaining capacity (if a limit is set).</li>
+        <li><b>Buttons</b>:
+          <ul>
+            <li><b>Set/Change Limit</b> (per zone, per tenancy)</li>
+            <li><b>Allocate</b> (select available slots and allocate to the tenancy)</li>
+            <li><b>Release All</b> (ends all active allocations for this tenancy)</li>
+          </ul>
+        </li>
+        <li><b>Allocated Slots (Active)</b>: list of active slot allocations for this tenancy with a release (X) icon.</li>
+      </ul>
+
+      <h3>Zone Limits (Maximum parking slots for a tenancy)</h3>
+      <p>
+        Zone limits control the <b>maximum number of slots</b> a single tenancy can hold in a selected zone.
+        This is useful when your business rule is “Room1 gets 1 slot” or “Shop gets 2 slots”.
+      </p>
+
+      <h4>How the limit is interpreted</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Limit state</th>
+            <th>Meaning</th>
+            <th>What the user sees</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>No limit set</b></td>
+            <td>The tenancy can allocate any number of slots (subject to zone availability).</td>
+            <td>Stats show <b>Limit: Unlimited</b> (and remaining may show “-”).</td>
+          </tr>
+          <tr>
+            <td><b>Limit = N</b></td>
+            <td>The tenancy can have at most N active slots in that zone.</td>
+            <td>Stats show <b>Limit: N</b> and <b>Remaining: …</b>.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4>Setting / changing a limit</h4>
+      <ol>
+        <li>Open Tenancy Parking (<b>Parking...</b> from tenancy context menu).</li>
+        <li>Select the zone from the <b>Zone</b> drop-down.</li>
+        <li>Tap <b>Set/Change Limit</b>.</li>
+        <li>Enter the <b>Maximum slots</b> and the <b>Effective date</b>, optionally notes, then tap <b>Save</b>.</li>
+      </ol>
+
+      <div class="note">
+        <b>Rule when lowering a limit:</b> The system should not allow setting a limit <b>below the currently allocated active slots</b>.
+        If you want to reduce the limit, first <b>release slots</b> so the current allocation count becomes ≤ the new limit,
+        then set the new lower limit.
+      </div>
+
+      <h3>Allocating parking slots to a tenancy</h3>
+      <p>
+        Allocation assigns selected available slots (in the selected zone) to the tenancy with a start date.
+        The allocation is considered <b>active</b> while end date is blank.
+      </p>
+
+      <h4>Steps (Search + Select slots)</h4>
+      <ol>
+        <li>Select the zone from the <b>Zone</b> spinner.</li>
+        <li>Tap <b>Allocate</b>.</li>
+        <li>Enter a <b>Start date</b>.</li>
+        <li>Use the <b>Search</b> box to filter available slots by code/label.</li>
+        <li>Select one or more slots, then tap <b>ALLOCATE</b>.</li>
+      </ol>
+
+      <div class="note">
+        <b>Limit enforcement during allocation:</b>
+        <ul>
+          <li>If the zone has <b>no limit</b> for this tenancy: allocation is allowed (subject to availability).</li>
+          <li>If a limit exists: the app should block selecting/allocating more than the <b>Remaining</b> capacity.</li>
+        </ul>
+      </div>
+
+      <h3>Releasing slots</h3>
+      <ul>
+        <li><b>Release one</b>: tap the <b>X</b> icon on an allocated slot row, enter End date, then Release.</li>
+        <li><b>Release all</b>: tap <b>Release All</b>, enter End date, then Release All (ends all active allocations for the tenancy).</li>
+      </ul>
+
+      <p class="toplink"><a href="#top">Back to top</a></p>
+      <hr />
+    </section>
+
     <!-- SECURITY DEPOSIT FEE -->
     <section id="security-deposit">
-      <h2>7) Security Deposit Fee (Manage Deposits)</h2>
+      <h2>8) Security Deposit Fee (Manage Deposits)</h2>
       <div class="path"><b>Screen:</b> Manage Security Deposit Fees</div>
 
       <p>
